@@ -1,0 +1,12 @@
+01:31:09 **** Incremental Build of configuration Debug for project learning_FMOD ****
+Info: Internal Builder is used for build
+g++ "-LE:\\programming\\eclipse\\downloadedLib\\fmod\\api\\lib" -o learning_FMOD.exe "src\\learning_FMOD.o" -lfmodex 
+src\learning_FMOD.o: In function `main':
+E:\programming\codes\eclipse\java\learning_FMOD\Debug/../src/learning_FMOD.cpp:40: undefined reference to `FMOD::System::getVersion(unsigned int*)@8'
+E:\programming\codes\eclipse\java\learning_FMOD\Debug/../src/learning_FMOD.cpp:47: undefined reference to `FMOD::System::getNumDrivers(int*)@8'
+E:\programming\codes\eclipse\java\learning_FMOD\Debug/../src/learning_FMOD.cpp:51: undefined reference to `FMOD::System::setOutput(FMOD_OUTPUTTYPE)@8'
+E:\programming\codes\eclipse\java\learning_FMOD\Debug/../src/learning_FMOD.cpp:55: undefined reference to `FMOD::System::getDriverCaps(int, unsigned int*, int*, FMOD_SPEAKERMODE*)@20'
+collect2.exe: error: ld returned 1 exit status
+
+01:31:10 Build Finished (took 1s.13ms)
+

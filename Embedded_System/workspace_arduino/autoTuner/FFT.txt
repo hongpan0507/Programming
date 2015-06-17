@@ -1,0 +1,7 @@
+# of bins = # of samples
+
+use the first half bins because the second part is the mirror image of the first part
+
+frequency = sampling frequency / # samples * bin[#]
+
+mag = |real and imaginary| / (# of samples/2)

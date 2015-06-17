@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;remote_desk_client/src/edu.tamu.ecen424&apos;&#x0D;&#x0A;- Original project: &apos;MP3_Client&apos;&#x0D;&#x0A;- Destination element: &apos;remote_desk_client/src/edu.tamu.ecen424&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     edu.tamu.ecen424.Receive.java&#x0D;&#x0A;     edu.tamu.ecen424.Send.java" description="Copy compilation units" destination="=remote_desk_client/src&lt;edu.tamu.ecen424" element1="/src&lt;edu.tamu.ecen424{Receive.java" element2="/src&lt;edu.tamu.ecen424{Send.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1385160933277" units="2" version="1.0"/>
+</session>

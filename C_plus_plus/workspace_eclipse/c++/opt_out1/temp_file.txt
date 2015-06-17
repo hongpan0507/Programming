@@ -1,0 +1,14 @@
+{
+"location":
+	{
+		"country":"United States",
+		"state":"Texas",
+		"city":"College Station"
+	},
+"weather":
+	{
+		"temp":526.3,
+		"tempunit":"Kelvin"
+	}
+}
+

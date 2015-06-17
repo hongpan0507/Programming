@@ -1,0 +1,37 @@
+
+**** Rebuild of configuration Debug for project cmd_list ****
+
+**** Internal Builder is used for build               ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o src\cmd_list.o ..\src\cmd_list.cpp
+..\src\cmd_list.cpp: In function 'int main()':
+..\src\cmd_list.cpp:28:6: warning: unused variable 'cmd_hex' [-Wunused-variable]
+  int cmd_hex = 0;
+      ^
+g++ -o cmd_list.exe src\cmd_list.o
+Build complete for project cmd_list
+Time consumed: 711  ms.  
+
+**** Build of configuration Debug for project cmd_list ****
+
+**** Internal Builder is used for build               ****
+Nothing to build for cmd_list
+
+**** Rebuild of configuration Debug for project CRC_cal ****
+
+**** Internal Builder is used for build               ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o src\CRC_cal.o ..\src\CRC_cal.cpp
+g++ -o CRC_cal.exe src\CRC_cal.o
+Build complete for project CRC_cal
+Time consumed: 708  ms.  
+
+**** Build of configuration Debug for project cmd_list ****
+
+**** Internal Builder is used for build               ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o src\cmd_list.o ..\src\cmd_list.cpp
+..\src\cmd_list.cpp: In function 'int main()':
+..\src\cmd_list.cpp:28:6: warning: unused variable 'cmd_hex' [-Wunused-variable]
+  int cmd_hex = 0;
+      ^
+g++ -o cmd_list.exe src\cmd_list.o
+Build complete for project cmd_list
+Time consumed: 710  ms.  

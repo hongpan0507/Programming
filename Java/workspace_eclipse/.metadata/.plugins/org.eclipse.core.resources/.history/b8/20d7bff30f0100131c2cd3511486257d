@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+void swap(int *firstNum, int *secondNum){
+	int buff1 = *firstNum;
+	*firstNum = *secondNum;
+	*secondNum = buff1;
+}
+
+int main(){
+	int first, second;
+	cout << "Enter the first number and second number: ";
+	cin >> first >> second;
+	cout << "The first number is: " << first << endl;
+	cout << "The second number is: " << second << endl;
+	swap(first, second);
+	cout << "S W A P ...";
+	cout << "The first number is now: " << first << endl;
+	cout << "The second number is now: " << second << endl;
+}

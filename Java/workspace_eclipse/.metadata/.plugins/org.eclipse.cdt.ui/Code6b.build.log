@@ -1,0 +1,7 @@
+11:49:51 **** Rebuild of configuration Debug for project Code6b ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o Code6b.o "..\\Code6b.cpp" 
+g++ -o Code6b.exe Code6b.o 
+
+11:49:52 Build Finished (took 1s.148ms)
+

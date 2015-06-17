@@ -1,0 +1,8 @@
+11:39:29 **** Incremental Build of configuration Debug for project Code6 ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Code6b.o" "..\\src\\Code6b.cpp" 
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Code6.o" "..\\src\\Code6.cpp" 
+g++ -o Code6.exe "src\\Code6b.o" "src\\Code6.o" 
+
+11:39:32 Build Finished (took 2s.961ms)
+

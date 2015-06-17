@@ -1,0 +1,25 @@
+22:20:05 **** Build of configuration Debug for project teensy_test ****
+make all 
+'Building file: ../Sources/main.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"../Sources" -I"../Includes" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+'Finished building: ../Sources/main.c'
+' '
+'Building file: ../Project_Settings/Startup_Code/startup_MK20D7.S'
+'Invoking: Cross ARM GNU Assembler'
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"Project_Settings/Startup_Code/startup_MK20D7.d" -MT"Project_Settings/Startup_Code/startup_MK20D7.o" -c -o "Project_Settings/Startup_Code/startup_MK20D7.o" "../Project_Settings/Startup_Code/startup_MK20D7.S"
+'Finished building: ../Project_Settings/Startup_Code/startup_MK20D7.S'
+' '
+'Building file: ../Project_Settings/Startup_Code/system_MK20D7.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"../Sources" -I"../Includes" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/system_MK20D7.d" -MT"Project_Settings/Startup_Code/system_MK20D7.o" -c -o "Project_Settings/Startup_Code/system_MK20D7.o" "../Project_Settings/Startup_Code/system_MK20D7.c"
+'Finished building: ../Project_Settings/Startup_Code/system_MK20D7.c'
+' '
+'Building target: teensy_test.elf'
+'Invoking: Cross ARM C++ Linker'
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "MK20DX256xxx7_flash.ld" -Xlinker --gc-sections -L"C:/Users/hpan/Documents/tamu/workspace_kinetis/teensy_test/Project_Settings/Linker_Files" -Wl,-Map,"teensy_test.map" -nanolibc -o "teensy_test.elf"  ./Sources/main.o  ./Project_Settings/Startup_Code/startup_MK20D7.o ./Project_Settings/Startup_Code/system_MK20D7.o   
+'Finished building target: teensy_test.elf'
+' '
+
+22:20:06 Build Finished (took 1s.575ms)
+

@@ -1,0 +1,12 @@
+
+**** Build of configuration Debug for project cmd_list ****
+
+**** Internal Builder is used for build               ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o src\cmd_list.o ..\src\cmd_list.cpp
+..\src\cmd_list.cpp: In function 'int main()':
+..\src\cmd_list.cpp:28:6: warning: unused variable 'cmd_hex' [-Wunused-variable]
+  int cmd_hex = 0;
+      ^
+g++ -o cmd_list.exe src\cmd_list.o
+Build complete for project cmd_list
+Time consumed: 710  ms.  

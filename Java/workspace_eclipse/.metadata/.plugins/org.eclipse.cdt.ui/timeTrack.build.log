@@ -1,0 +1,7 @@
+16:56:26 **** Incremental Build of configuration Debug for project timeTrack ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\timeTrack.o" "..\\src\\timeTrack.cpp" 
+g++ -o timeTrack.exe "src\\timeTrack.o" 
+
+16:56:29 Build Finished (took 2s.484ms)
+

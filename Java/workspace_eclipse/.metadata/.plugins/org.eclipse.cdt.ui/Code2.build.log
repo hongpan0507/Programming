@@ -1,0 +1,7 @@
+01:11:00 **** Rebuild of configuration Debug for project Code2 ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Temperature.o" "..\\src\\Temperature.cpp" 
+g++ -o Code2.exe "src\\Temperature.o" 
+
+01:11:01 Build Finished (took 736ms)
+

@@ -1,0 +1,7 @@
+01:28:15 **** Rebuild of configuration Debug for project learningFMOD ****
+Info: Internal Builder is used for build
+gcc "-IE:\\programming\\eclipse\\downloadedLib\\fmod\\api\\inc" -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\learningFMOD.o" "..\\src\\learningFMOD.c" 
+gcc "-LE:\\programming\\eclipse\\downloadedLib\\fmod\\api\\lib" -o learningFMOD.exe "src\\learningFMOD.o" -lfmodex 
+
+01:28:17 Build Finished (took 1s.860ms)
+

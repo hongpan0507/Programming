@@ -1,0 +1,8 @@
+15:23:23 **** Rebuild of configuration Debug for project opt_out1 ****
+Info: Internal Builder is used for build
+g++ -std=c++11 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\opt_out1.o" "..\\src\\opt_out1.cpp" 
+g++ -std=c++11 -D__GXX_EXPERIMENTAL_CXX0X__ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -o "src\\utilities.o" "..\\src\\utilities.cpp" 
+g++ -std=c++11 -o opt_out1.exe "src\\utilities.o" "src\\opt_out1.o" 
+
+15:23:24 Build Finished (took 1s.459ms)
+

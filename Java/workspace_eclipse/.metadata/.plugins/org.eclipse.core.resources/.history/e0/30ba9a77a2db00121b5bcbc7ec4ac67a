@@ -1,0 +1,43 @@
+import javax.swing.JFrame;
+
+public class runClientRun {
+	public static void main(String[] args) {
+		Thread send = new Thread() {
+			public void run() {
+				boolean go = true;		
+				arduinoClient Client = new arduinoClient();
+				Client.waitConnection();
+				while (go) {
+					String message = JOptionPane.showInputDialog("PC Client >_: ");
+					message = message.toLowerCase().trim();
+					if (message.equals("exit") != true) {
+						try {
+							Client.sendMsg(message);
+						} catch (Exception e) {
+							System.out.println("something went wrong!");
+						}
+					} else if(message.equals("exit")) {
+						Client.cleanUp();
+						go = false;
+						System.out.println("Connection closed.");
+						// input.close();
+					}// end of else
+				}// end of while
+			}// end of run()
+		};// end of thread write()
+		Thread receive = new Thread() {
+			public void run() {
+				arduinoClient Client = new arduinoClient();
+				Client.waitConnection();
+				float frequency = 0;
+					while(true){
+						frequency = Client.receiveMsg();
+						JOptionPane.showMessageDialog(null, "Frequency: " + frequency, "none", JOptionPane.PLAIN_MESSAGE);
+					}//end of while
+			}//end of run
+		};// end of thread receive()
+		
+		receive.start();
+		send.start();
+	}// end of main
+}

@@ -1,0 +1,12 @@
+01:11:03 **** Rebuild of configuration Debug for project FrequencyDetection ****
+Info: Internal Builder is used for build
+g++ "-IE:\\programming\\eclipse\\downloadedLib\\stk\\include" "-IC:\\Program Files (x86)\\FMOD SoundSystem\\FMOD Programmers API Windows\\api\\inc" -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\test.o" "..\\src\\test.cpp" 
+g++ "-IE:\\programming\\eclipse\\downloadedLib\\stk\\include" "-IC:\\Program Files (x86)\\FMOD SoundSystem\\FMOD Programmers API Windows\\api\\inc" -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\learning_KissFFT.o" "..\\src\\learning_KissFFT.cpp" 
+g++ "-IE:\\programming\\eclipse\\downloadedLib\\stk\\include" "-IC:\\Program Files (x86)\\FMOD SoundSystem\\FMOD Programmers API Windows\\api\\inc" -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\MicInterface.o" "..\\src\\MicInterface.cpp" 
+g++ "-IE:\\programming\\eclipse\\downloadedLib\\stk\\include" "-IC:\\Program Files (x86)\\FMOD SoundSystem\\FMOD Programmers API Windows\\api\\inc" -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\learning_STK.o" "..\\src\\learning_STK.cpp" 
+g++ "-IE:\\programming\\eclipse\\downloadedLib\\stk\\include" "-IC:\\Program Files (x86)\\FMOD SoundSystem\\FMOD Programmers API Windows\\api\\inc" -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\FrequencyDetection.o" "..\\src\\FrequencyDetection.cpp" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\kiss_fft.o" "..\\src\\kiss_fft.c" 
+g++ "-LE:\\programming\\eclipse\\downloadedLib\\stk\\src" -o FrequencyDetection.exe "src\\test.o" "src\\learning_STK.o" "src\\learning_KissFFT.o" "src\\kiss_fft.o" "src\\MicInterface.o" "src\\FrequencyDetection.o" -lwinmm -lstk -ldsound 
+
+01:11:05 Build Finished (took 2s.335ms)
+

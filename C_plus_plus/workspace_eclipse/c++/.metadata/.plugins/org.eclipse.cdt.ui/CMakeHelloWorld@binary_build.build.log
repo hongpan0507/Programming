@@ -1,0 +1,12 @@
+21:27:39 **** Clean-only build of project CMakeHelloWorld@binary_build ****
+"C:\\MinGW\\bin\\mingw32-make.exe" clean 
+C:/MinGW/bin/mingw32-make -f CMakeFiles\Makefile2 clean
+mingw32-make[1]: Entering directory 'C:/Users/hpan/Documents/tamu/CMake/binary_build'
+C:/MinGW/bin/mingw32-make -f CMakeFiles\aggie_time.dir\build.make CMakeFiles/aggie_time.dir/clean
+mingw32-make[2]: Entering directory 'C:/Users/hpan/Documents/tamu/CMake/binary_build'
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -P CMakeFiles\aggie_time.dir\cmake_clean.cmake
+mingw32-make[2]: Leaving directory 'C:/Users/hpan/Documents/tamu/CMake/binary_build'
+mingw32-make[1]: Leaving directory 'C:/Users/hpan/Documents/tamu/CMake/binary_build'
+
+21:27:39 Build Finished (took 173ms)
+

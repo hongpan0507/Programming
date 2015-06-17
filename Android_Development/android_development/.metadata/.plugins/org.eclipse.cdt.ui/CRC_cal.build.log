@@ -1,0 +1,8 @@
+
+**** Rebuild of configuration Debug for project CRC_cal ****
+
+**** Internal Builder is used for build               ****
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -o src\CRC_cal.o ..\src\CRC_cal.cpp
+g++ -o CRC_cal.exe src\CRC_cal.o
+Build complete for project CRC_cal
+Time consumed: 708  ms.  

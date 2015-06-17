@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;MP6_UDP_Client&apos;&#x0D;&#x0A;- Original project: &apos;MP6_UDP_Client&apos;&#x0D;&#x0A;- Original element: &apos;MP6_UDP_Client/src/edu.tamu.ecen424.MP6_UDP_Client&apos;" description="Delete element" element1="/src&lt;edu.tamu.ecen424.MP6_UDP_Client" element2="/src&lt;edu.tamu.ecen424" element3="/src&lt;edu.tamu" element4="/src&lt;edu" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1383974720592" subPackages="false" version="1.0"/>
+</session>

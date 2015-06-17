@@ -1,0 +1,7 @@
+17:39:09 **** Incremental Build of configuration Debug for project Code3 ****
+Info: Internal Builder is used for build
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x -o "src\\test.o" "..\\src\\test.cpp" 
+g++ -o Code3.exe "src\\test.o" "src\\Code3.o" 
+
+17:39:10 Build Finished (took 786ms)
+

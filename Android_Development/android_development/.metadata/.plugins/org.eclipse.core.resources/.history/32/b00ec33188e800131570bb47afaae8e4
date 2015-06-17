@@ -1,0 +1,148 @@
+//============================================================================
+// Name        : test_only.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <sstream>
+#include <fstream>
+
+using namespace std;
+
+int CRC_cal (int *data, int *data_size, int *current_CRC, int *CRC_size, int *poly);
+
+int main() {
+	//CRC calculation
+	int seed = 0;
+	int poly = 0x0700;
+	int data = 0xaa;
+	int data_size = 8;	//size of data in bits
+	int CRC = 0;
+	int CRC_size = 16;	//size of CRC in bits
+	int CRC_final = 0;
+
+	//reading a list of commands and convert to hex
+	int cmd_hex = 0;
+	stringstream ss_cmd_hex;
+
+
+	//command list
+	string mod_ID = "";		//mod_ID == FFFF indicates the end of the command list
+	string cmd_ID = "";		//cmd_ID == FFFF indicates the end of a list = start a new list
+	string payload = "";	//mod_ID == FFFF indicates the end of a command
+	string cmd_list_start = "1BC\n1BC\n1DC\n";	//null null start = start of a new list
+	string cmd_list_end = "1BC\n1BC\n";	//null null = the end of a new list
+	string cmd_end = "1FF\n1FF";	//the end of the command list;
+	string cmd_buff = "";
+	stringstream ss_cmd_buff;	//stores command ID and payloads before it loads in to command list
+	stringstream ss_payload_buff;	//stores payloads before it loads in to command list
+	stringstream ss_list_buff;
+
+	ofstream cmd_list_file;	//create a file-writing object
+	cmd_list_file.open("C:/Users/hpan/Desktop/cmd_list/cmd_list_test.txt");	//location of the command list
+
+	cout << "Module ID = FFFF ==> the end of the command list" << endl;
+	cout << "Command ID = FFFF ==> start a new list" << endl;
+	cout << "Payload = FFFF ==> start a new command" << '\n' << endl;
+
+	int list_size = 0;	//keep track of list size
+	int list_size_upper = 0;
+	int list_size_lower = 0;
+	int mod_size = 0;	//keep track of module size
+	int cmd_size = 0;	//keep track of command size
+	int payload_size = 0;	//keep track of payload size
+
+	cout << "Module ID " << (mod_size+1) << " = ";
+	cin >> mod_ID;
+
+	while (mod_ID != "FFFF") {
+		++mod_size;
+		cmd_list_file << cmd_list_start;	//start of the command list
+		cmd_list_file << mod_ID << endl;	//place it to the command list
+		cout << "Module " << mod_ID << "; " <<"Command ID " << (cmd_size+1) << " = ";
+		cin >> cmd_ID;
+		while (cmd_ID != "FFFF") {
+			++cmd_size;
+			CRC = seed;	//reset first CRC for new CRC calculation
+			ss_list_buff << cmd_ID << endl;	//stores command ID before placing into a file
+			ss_cmd_buff << hex << cmd_ID << endl;	//convert string to number
+			ss_cmd_buff >> data;
+			CRC = CRC_cal(&data, &data_size, &CRC, &CRC_size, &poly);	//command ID CRC
+
+			cout << "Module " << mod_ID << "; ";
+			cout << "Command ID " << cmd_ID << "; ";
+			cout << "Payload " << (payload_size+1) << " = ";
+			cin >> payload;
+			while (payload != "FFFF") {
+				++payload_size;
+				ss_payload_buff << hex << payload << endl;	//stores payload for CRC cal
+				cout << "Module " << mod_ID << "; ";
+				cout << "Command ID " << cmd_ID << "; ";
+				cout << "Payload " << (payload_size+1) << " = ";
+				cin >> payload;
+			}	//end of while
+			ss_list_buff << hex << (payload_size - 1) << endl;	//store the size of command
+			data = payload_size - 1;	//command size = payload bytes -1
+			CRC = CRC_cal(&data, &data_size, &CRC, &CRC_size, &poly);
+
+			while (!ss_payload_buff.eof()) {
+				ss_payload_buff >> data;
+				//ss_payload_buff >> ss_list_buff;
+				ss_list_buff << hex << data;
+				CRC = CRC_cal(&data, &data_size, &CRC, &CRC_size, &poly);
+			}
+			CRC_final = CRC >> 8;	// the last 8 bits are always 0
+			ss_list_buff << hex << CRC_final << endl;
+			list_size = list_size + payload_size;
+			payload_size = 0;
+			cout << "Module " << mod_ID << "; " <<"Command ID " << (cmd_size+1) << " = ";
+			cin >> hex >> cmd_ID;
+		}	//end of while
+
+		list_size = list_size + cmd_size*3 - 1;	// list_size = cmd ID + cmd_size + check sum + payload_size - 1
+		list_size_upper = list_size & 0xff00;
+		list_size_lower = list_size & 0x00ff;
+		cmd_list_file << list_size_upper << endl;	//place list size to command list
+		cmd_list_file << list_size_lower << endl;	//place list size to command list
+
+		while (!ss_list_buff.eof()) {
+			ss_list_buff >> cmd_buff;
+			cmd_list_file << cmd_buff << endl;
+		}
+		cmd_list_file << cmd_list_end;
+
+		cout << "Module ID " << (mod_size + 1) << " = ";
+		cin >> mod_ID;
+		cmd_size = 0;	//reset command size for next list
+	}	//end of while
+
+	cmd_list_file << cmd_end;
+	cmd_list_file.close();
+
+	return 0;
+}	//end of main
+
+int CRC_cal (int *data, int *data_size, int *current_CRC, int *CRC_size, int *poly) {
+	int temp_data = 0;
+	int temp_CRC = 0;
+	int MSB_CRC = 0;	//most significant bit of CRC
+
+	for (int i = *data_size - 1; i >= 0; i --) { //perform calculation 8 times (from MSB to LSB)
+		temp_data = *data >> i;
+		temp_data = temp_data & 1;	//"bit-wise and" to get individual bit of the data
+		MSB_CRC = *current_CRC >> (*CRC_size - 1);
+		MSB_CRC = MSB_CRC & 1;	//"bit-wise and" to get MSB of each CRC
+		temp_CRC = *current_CRC << 1; //add zero to the end to "XOR" ploy or 0
+		if (temp_data ^ MSB_CRC) {	// if data bit "XOR" MSB_CRC bit = 1; use poly
+			temp_CRC = temp_CRC ^ *poly;
+		} else if (!(temp_data^MSB_CRC)){	// if data bit "XOR" MSB_CRC bit = 0; use zero
+			temp_CRC = temp_CRC ^ (0x0000);
+		}
+		*current_CRC = temp_CRC & (0xffff); //only keep the least significant 16 bit as CRC
+	}	//end of for
+
+	return *current_CRC;
+}	//end of CRC_cal

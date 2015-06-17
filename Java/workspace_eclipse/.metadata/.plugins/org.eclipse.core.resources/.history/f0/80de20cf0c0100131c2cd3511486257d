@@ -1,0 +1,16 @@
+//============================================================================
+// Name        : Code6.cpp
+// Author      : hong
+// Version     :
+// Copyright   : no warranty; no guarantee
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+int main(string first, string second) {
+	string result = first + second;
+	cout << "The result is: " <<result << endl; // prints !!!Hello World!!!
+	return 0;
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="257" key="DIALOG_WIDTH"/>
+		<item value="111" key="DIALOG_Y_ORIGIN"/>
+		<item value="380" key="DIALOG_HEIGHT"/>
+		<item value="426" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="isRegEx"/>
+		<item value="true" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wholeword"/>
+		<item value="current_CRC" key="selection"/>
+		<list key="findhistory">
+			<item value="pre_CRC"/>
+			<item value="current_CRC"/>
+			<item value="count"/>
+			<item value="size"/>
+			<item value="cout &lt;&lt; &quot;Enter data: &quot;;"/>
+			<item value="temp"/>
+			<item value="Count"/>
+			<item value="received"/>
+		</list>
+		<list key="replacehistory">
+			<item value="current_CRC"/>
+			<item value="temp_CRC"/>
+			<item value="i"/>
+			<item value="data_size"/>
+			<item value="OIStream"/>
+			<item value="port"/>
+			<item value="SizeCount"/>
+			<item value="IncomingDP"/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,231 @@
+package ecen424.hangmanapp;
+
+import java.net.Socket;
+
+
+import android.app.Activity;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+//import android.view.Menu;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+//import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+//import java.net.Socket;
+import java.net.UnknownHostException;
+//import java.util.Scanner;
+
+public class Player extends Activity {
+
+	private Button sendC;
+	private TextView tx1;
+	private EditText inputTxt;
+	private String message;
+	private Socket s;
+	private Handler handler = new Handler();
+	private String stts;
+	private static String hostIP = "10.200.231.1";
+	private static int hostPort = 9009;
+	private Button cnnct;
+
+	@Override
+	
+	public void onCreate(Bundle savedInstanceState)	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.player_menu);
+		inputTxt=(EditText)findViewById(R.id.inputTxt);
+		tx1 =(TextView)findViewById(R.id.msg);
+		sendC=(Button)findViewById(R.id.Butsend);
+		//connect();
+		
+		cnnct=(Button)findViewById(R.id.Butconnect);
+		
+		
+		cnnct.setOnClickListener(onClickListener);
+		sendC.setOnClickListener(onClickListener);
+	
+	}
+	
+	
+private OnClickListener onClickListener = new OnClickListener(){
+	@Override
+	public void onClick(View v){
+		switch (v.getId()){
+			case R.id.Butconnect:
+				Thread thrd;
+				// TODO Auto-generated method stub
+				 tx1.setText("Attempting to connect to server . . .");
+			
+				String st = " starting thread ";
+				tx1.setText(st);
+				//declare + start thread
+				thrd = new Thread(new OpenSocket());
+				thrd.start();
+				
+			break;
+			
+			case R.id.Butsend:
+				
+				 tx1.setText("Sending Letter . . .");
+					try{//declare buffer to hold message sent from server
+						BufferedReader fromServer = null; 
+						//connect buffer to input 
+						fromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
+						//store message received in String message
+						message = fromServer.readLine();
+						//print message
+						handler.post(new Runnable() {
+							 @Override  
+					        public void run() {
+								 tx1.setText(message);
+							 }                     });
+						
+						//declare PrintWriter used to send return message back to server
+						PrintWriter toServer = null;
+						
+						//store input in EditText etMessage in String stts	
+						stts = inputTxt.getText().toString();
+						
+						//open PrintWriter + send stts to server
+						toServer = new PrintWriter(s.getOutputStream(), true);
+						toServer.println(stts);
+						
+						//close the buffer + socket
+						fromServer.close();
+						s.close();
+						}
+					
+					catch (IOException e) {
+			            System.err.println("Failed to send");
+			            System.exit(1);
+			        }
+				
+				
+			break;
+		}
+	}
+	
+	
+	
+};
+	
+	
+// Thread for handling sockets & Messages
+	
+class OpenSocket implements Runnable {
+		Socket socket;
+		PrintWriter out;
+		String inputLine = "blah";
+		@Override
+		public void run() {
+			try {
+				handler.post(new Runnable() {
+					 @Override  
+                     public void run() {
+						 tx1.setText("Attempting to connect to server . . .");
+					 }
+				});
+				//connect to server
+				
+				handler.post(new Runnable() {
+					 @Override  
+                    public void run() {
+						 tx1.setText(" .  .  .");
+					}
+				});
+
+				s=new Socket(hostIP, hostPort);
+
+
+				handler.post(new Runnable() {
+					 @Override  
+                    public void run() {
+						 tx1.setText("Connected to server.");
+					 }
+				});
+				
+				BufferedReader fromServer = null; 
+				//connect buffer to input 
+				fromServer = new BufferedReader(new InputStreamReader(s.getInputStream()));
+				//store message received in String message
+				message = fromServer.readLine();
+				//print message
+				handler.post(new Runnable() {
+					 @Override  
+			        public void run() {
+						 tx1.setText(message);
+					 }                     });
+				
+				
+			}
+			
+			//error handling
+			
+			
+			catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				handler.post(new Runnable() {
+					 public void run() {
+						 tx1.setText("Does not recognize host.");
+					 }
+				});
+				e.printStackTrace();
+				}
+			
+			
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				handler.post(new Runnable() {
+                   public void run() {
+						 tx1.setText("I/O error.");
+					 }
+				});
+				e.printStackTrace();
+				} 
+	
+		
+		}
+	
+		
+	//end of Connect
+
+public void sendChar(){	
+	
+
+	
+}
+
+	}// end of checkChar
+
+public void updateHangman(){
+	
+	
+	ImageView imgView=(ImageView) findViewById(R.id.imgView);
+	Drawable  drawable  = getResources().getDrawable(R.drawable.hman);
+	imgView.setImageDrawable(drawable);
+	
+	}//end of updatehangman
+
+
+public void updateWord(){
+	
+	}//end of updateWord
+
+
+public void wining(){
+	
+		}//end of wining
+
+
+
+}//end of player 
+

@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+externalMigrateFromAuthorizationDatabase/isMigrated=true
+migrateFromAuthorizationDatabase/isMigrated=true
+repositories/106304760ace001217dd915c6c170637=106304760ace001217dd915c6c170637;https\://lemur.tamu.edu/svn/ECEN489-Spring2013/;https\://lemur.tamu.edu/svn/ECEN489-Spring2013/;branches;tags;trunk;true;4c2f70d5-ef88-4824-bd61-d1dea46826b4;https\://lemur.tamu.edu/svn/ECEN489-Spring2013;;false;;;0
+repositories/600abea411ce001217dd915c6c170637=600abea411ce001217dd915c6c170637;https\://lemur.tamu.edu/svn/ECEN491-Summer2013/;ECEN491-Summer2013;branches;tags;trunk;true;8a740687-7b7c-4ed3-a817-8664c5299abb;https\://lemur.tamu.edu/svn/ECEN491-Summer2013;;false;<https\://lemur.tamu.edu\:443> FRED Repositories;;0

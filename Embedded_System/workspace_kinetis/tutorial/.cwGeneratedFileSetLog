@@ -1,0 +1,11 @@
+Sources/main.c
+Includes/MK20D7.h
+Project_Settings/Startup_Code/system_MK20D7.c
+Includes/system_MK20D7.h
+Project_Settings/Startup_Code/startup_MK20D7.S
+Project_Settings/Linker_Files/MK20DX256xxx7_flash.ld
+Includes/core_cm0plus.h
+Includes/core_cm4.h
+Includes/core_cm4_simd.h
+Includes/core_cmFunc.h
+Includes/core_cmInstr.h

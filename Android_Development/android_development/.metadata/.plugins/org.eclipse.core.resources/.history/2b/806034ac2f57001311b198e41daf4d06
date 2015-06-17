@@ -1,0 +1,151 @@
+package edu.tamu.ecen424;
+
+import java.io.*;
+import java.net.Socket;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.imageio.ImageIO;
+
+public class Send extends Thread {
+	//input stream
+	private FileInputStream fiStream = null;
+	private BufferedInputStream biStream = null;
+	private DataInputStream diStream = null;
+	private ByteArrayOutputStream baiStream = null;
+	//output stream
+	private DataOutputStream doStream = null;
+	
+	public static int count = 0;
+	private Socket sock;
+	private File image = null;
+	private byte[] buffer = null;	//buffer for the image
+	public static String imagePath = "";	//screen shot location
+	
+	public Send(Socket socket) {
+		sock = socket;
+	} // end of constructor
+
+	public void run() {
+		try {
+			while(true){
+				ScreenShot();
+				//set up streams
+				image = new File(imagePath);
+				fiStream = new FileInputStream(image);
+				biStream = new BufferedInputStream(fiStream);
+				diStream = new DataInputStream(biStream);
+				doStream = new DataOutputStream(sock.getOutputStream());
+				
+				//set up buffer
+				buffer = new byte[(int) image.length()];
+				//reading and sending screen shot
+				diStream.readFully(buffer, 0, buffer.length);
+				doStream.writeUTF(image.getName());
+				doStream.writeLong(buffer.length);
+				doStream.write(buffer, 0, buffer.length);
+				doStream.flush();
+				++count;
+				System.out.println("Number of images sent: "+count);
+				if(count > 1000){
+					break;
+				}
+			}
+		} catch (IOException e1) {
+			System.out.println("Error occurred when sending image 1" + e1);
+		} catch(Exception e2) {
+			System.out.println("Error occurred when sending image 2" + e2);
+		}// end of try block
+	} // end of run
+	
+	public static void ScreenShot() throws Exception{
+		/**
+         * This class (Robot.java) is used to generate native system input events for the
+         * purposes of test automation, self-running demos, and other
+         * applications where control of the mouse and keyboard is needed.
+         * The primary purpose of Robot is to facilitate automated testing
+         * of Java platform implementations.
+         */
+        Robot robot = new Robot();
+         
+        /**
+         * Get the current screen dimensions.
+         */
+        Dimension d = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+        int width = (int) d.getWidth();
+        int height = (int) d.getHeight();
+         
+         
+        /**
+         * Delay the robot for 5 seconds (5000 ms) allowing you to switch to proper
+         * screen/window whose screenshot is to be taken.
+         *
+         * You can change the delay time as required.
+         */
+        robot.delay(100);
+         
+        /**
+         * Create a screen capture of the active window and then create a buffered image
+         * to be saved to disk.
+         */
+        Image image = robot.createScreenCapture(new Rectangle(0, 0, width,
+                height));
+ 
+        BufferedImage bi = new BufferedImage(width, height,
+                BufferedImage.TYPE_INT_RGB);
+        Graphics g = bi.createGraphics();
+        g.drawImage(image, 0, 0, width, height, null);
+ 
+        /**
+         * Filename where to save the file to.
+         * I am appending formatted timestamp to the filename.
+         */
+        imagePath = "C:/temp/screenCapture_"
+                + createTimeStampStr() + count + ".PNG";
+         
+        /**
+         * Write the captured image to a file.
+         * I am using PNG format. You can choose PNG, JPG, GIF.
+         */
+        writeImage(bi, imagePath, "PNG");
+ 
+        System.out.println("Screen Captured Successfully and Saved to:\n"+imagePath);
+	}	// end of screen shot
+	
+    /**
+     * This method writes a buffered image to a file
+     *
+     * @param img -- > BufferedImage
+     * @param fileLocation --> e.g. "C:/testImage.jpg"
+     * @param extension --> e.g. "jpg","gif","png"
+     */
+    public static void writeImage(BufferedImage img, String fileLocation,
+            String extension) {
+        try {
+            BufferedImage bi = img;
+            File outputfile = new File(fileLocation);
+            ImageIO.write(bi, extension, outputfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } // end of write image
+	
+    /**
+    *
+    * @return String representation of timestamp
+    * in the format of yyyyMMdd_hhmmss (e.g. 20100426_111612)
+    * @throws Exception
+    */
+    public static String createTimeStampStr() throws Exception {
+        Calendar mycalendar = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd_hhmmss");
+        String timeStamp = formatter.format(mycalendar.getTime());
+        return timeStamp;
+    }	// end of create time stamp
+}

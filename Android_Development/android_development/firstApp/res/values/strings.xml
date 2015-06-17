@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MP4</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world</string>
+    <string name="new_act">This is a new activity</string>
+    <string name="edit_message">Do not write here</string>
+    <string name="button_display">Do not touch</string>
+    <string name="act_display">Switch</string>
+    <string name="text_display">Text Appears here</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_display_message">DisplayMessageActivity</string>
+    <string name="title_activity_file">FileActivity</string>
+
+</resources>

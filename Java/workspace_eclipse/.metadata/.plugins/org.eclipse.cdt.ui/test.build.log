@@ -1,0 +1,20 @@
+00:34:15 **** Incremental Build of configuration Debug for project test ****
+Info: Internal Builder is used for build
+g++ "-IE:\\programming\\eclipse\\downloadedLib\\stk-4.4.4\\include" -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\test.o" "..\\src\\test.cpp" 
+g++ -o test.exe "src\\test.o" 
+src\test.o: In function `main':
+E:\programming\codes\eclipse\java\test\Debug/../src/test.cpp:7: undefined reference to `stk::Noise::Noise(unsigned int)'
+src\test.o:test.cpp:(.rdata$_ZTVN3stk5NoiseE[__ZTVN3stk5NoiseE]+0x10): undefined reference to `stk::Stk::sampleRateChanged(double, double)'
+src\test.o: In function `ZN3stk9GeneratorD2Ev':
+E:/programming/eclipse/downloadedLib/stk-4.4.4/include/Generator.h:20: undefined reference to `stk::StkFrames::~StkFrames()'
+E:/programming/eclipse/downloadedLib/stk-4.4.4/include/Generator.h:20: undefined reference to `stk::Stk::~Stk()'
+E:/programming/eclipse/downloadedLib/stk-4.4.4/include/Generator.h:20: undefined reference to `stk::Stk::~Stk()'
+src\test.o: In function `ZN3stk9GeneratorD1Ev':
+E:/programming/eclipse/downloadedLib/stk-4.4.4/include/Generator.h:20: undefined reference to `stk::StkFrames::~StkFrames()'
+E:/programming/eclipse/downloadedLib/stk-4.4.4/include/Generator.h:20: undefined reference to `stk::Stk::~Stk()'
+E:/programming/eclipse/downloadedLib/stk-4.4.4/include/Generator.h:20: undefined reference to `stk::Stk::~Stk()'
+src\test.o:test.cpp:(.rdata$_ZTVN3stk9GeneratorE[__ZTVN3stk9GeneratorE]+0x10): undefined reference to `stk::Stk::sampleRateChanged(double, double)'
+collect2.exe: error: ld returned 1 exit status
+
+00:34:18 Build Finished (took 2s.356ms)
+
