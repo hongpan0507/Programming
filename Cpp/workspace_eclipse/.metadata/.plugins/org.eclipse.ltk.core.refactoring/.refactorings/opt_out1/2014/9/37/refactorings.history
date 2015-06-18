@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;opt_out1/utilities&apos; to &apos;utilities.h&apos;" description="Rename resource &apos;utilities&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="utilities" name="utilities.h" stamp="1410404171250" updateReferences="true"/>
-</session>

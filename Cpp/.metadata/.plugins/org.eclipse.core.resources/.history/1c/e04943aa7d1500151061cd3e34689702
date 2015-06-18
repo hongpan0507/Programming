@@ -1,0 +1,15 @@
+//============================================================================
+// Name        : deca_wave_serial_comm.cpp
+// Author      : hpan
+// Version     :
+// Copyright   : no right
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

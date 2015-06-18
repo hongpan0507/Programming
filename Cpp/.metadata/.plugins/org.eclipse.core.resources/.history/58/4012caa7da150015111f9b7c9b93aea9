@@ -1,0 +1,24 @@
+//============================================================================
+// Name        : deca_wave_serial_comm.cpp
+// Author      : hpan
+// Version     :
+// Copyright   : no right
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "serial_comm/TimeoutSerial.h"
+
+using namespace std;
+
+int main() {
+	char rx[2];
+	TimeoutSerial teensy_serial("/dev/ttyACM0", 9600); //*initialize serial port
+
+	while(true){
+		teensy_serial.read(rx, sizeof(rx));
+		cout << rx << endl;
+	}
+
+	return 0;
+}

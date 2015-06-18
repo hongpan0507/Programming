@@ -1,0 +1,19 @@
+18:08:20 **** Incremental Build of configuration Debug for project test1 ****
+make all 
+Building file: ../src/test1.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/test1.d" -MT"src/test1.d" -o "src/test1.o" "../src/test1.cpp"
+../src/test1.cpp: In function ‘int main()’:
+../src/test1.cpp:21:37: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for(int i = 0; i < time_parse.size(); ++i) {
+                                     ^
+Finished building: ../src/test1.cpp
+ 
+Building target: test1.exe
+Invoking: Cross G++ Linker
+g++  -o "test1.exe"  ./src/test1.o   
+Finished building target: test1.exe
+ 
+
+18:08:20 Build Finished (took 268ms)
+
