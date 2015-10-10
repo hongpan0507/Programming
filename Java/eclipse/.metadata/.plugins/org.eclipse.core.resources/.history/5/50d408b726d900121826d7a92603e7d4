@@ -1,0 +1,63 @@
+import java.io.*;
+import java.net.*;
+
+public class arduinoClient {
+	private Socket connection;
+	// private ObjectInputStream input;
+	private ObjectOutputStream output;
+	private String serverIP = "192.168.1.177";
+	private int portNumber = 2013;
+
+	// constructor
+	public arduinoClient() {
+
+	}// end of constructor
+
+	public void run(String message) {
+		sendMsg(message);
+	}// end of run()
+
+	public void waitConnection() {
+		try {
+			System.out.println("waiting for connection...");
+			connection = new Socket(InetAddress.getByName(serverIP), portNumber);
+			System.out.println("Connection from: "
+					+ connection.getInetAddress().getHostAddress());
+			streamSetup();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}// end of waitConnection()
+
+	private void streamSetup() {
+		try {
+			// input = new ObjectInputStream(connection.getInputStream());
+			output = new ObjectOutputStream(connection.getOutputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}// end of catch
+		System.out.println("Connection is ready!");
+	}// end of streamSetup()
+
+	private void sendMsg(String message) {
+		try {
+			output.writeObject(message);
+			output.flush();
+			if(connection.isConnected() == false){
+				System.out.println("Connection is lost. Shutting down...");
+				cleanUp();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}// end of sendMsg
+
+	public void cleanUp() {
+		try {
+			output.close();
+			connection.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}// end of arduinoClient

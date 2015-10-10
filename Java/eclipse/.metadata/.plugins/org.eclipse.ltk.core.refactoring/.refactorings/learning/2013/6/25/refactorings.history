@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;GUI.java&apos; to &apos;toEhternet/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;learning&apos;&#x0D;&#x0A;- Destination element: &apos;toEhternet/src/(default package)&apos;&#x0D;&#x0A;- Original element: &apos;GUI.java&apos;" description="Copy compilation unit" destination="=toEhternet/src&lt;" element1="/src&lt;{GUI.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1371944411766" units="1" version="1.0"/>
+</session>

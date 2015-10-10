@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;toSerial&apos;" deleteContents="true" description="Delete resource &apos;toSerial&apos;" element1="/toSerial" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1371663568207"/>
+</session>

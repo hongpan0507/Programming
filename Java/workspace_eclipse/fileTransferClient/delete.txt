@@ -1,7 +1,0 @@
-gnu.io.rxtx.linux.x86_2.1.7.3_v20071015
-gnu.io.rxtx.linux.x86_64_2.1.7.3_v20071015
-gnu.io.rxtx.macosx_2.1.7.3_v20071015
-gnu.io.rxtx.solaris.sparc_2.1.7.3_v20071015
-gnu.io.rxtx.source_2.1.7.4_v20071016
-gnu.io.rxtx.win32.x86_2.1.7.3_v20071015
-gnu.io.rxtx_2.1.7.4_v20071016.jar

@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+void swap(int *firstNum, int *secondNum){
+	int buff1 = *firstNum;
+	*firstNum = *secondNum;
+	*secondNum = buff1;
+}
+
+int main(){
+
+}
