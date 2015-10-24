@@ -1,0 +1,20 @@
+//============================================================================
+// Name        : csv_psi.cpp
+// Author      : hpan
+// Version     :
+// Copyright   : no right
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	ofstream csv_file;
+
+	csv_file.open("text");
+
+	return 0;
+}

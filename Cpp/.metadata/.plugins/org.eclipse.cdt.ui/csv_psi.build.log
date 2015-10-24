@@ -1,0 +1,15 @@
+09:46:15 **** Incremental Build of configuration Debug for project csv_psi ****
+make all 
+Building file: ../src/csv_psi.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/csv_psi.d" -MT"src/csv_psi.d" -o "src/csv_psi.o" "../src/csv_psi.cpp"
+Finished building: ../src/csv_psi.cpp
+ 
+Building target: csv_psi
+Invoking: Cross G++ Linker
+g++  -o "csv_psi"  ./src/csv_psi.o   
+Finished building target: csv_psi
+ 
+
+09:46:16 Build Finished (took 408ms)
+

@@ -1,6 +1,6 @@
-17:11:54 **** Build of configuration Debug for project deca_wave_serial_comm ****
+19:47:24 **** Incremental Build of configuration Debug for project deca_wave_serial_comm ****
 make all 
 make: Nothing to be done for `all'.
 
-17:11:54 Build Finished (took 67ms)
+19:47:24 Build Finished (took 71ms)
 

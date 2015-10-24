@@ -1,0 +1,5 @@
+XX	//start of a command
+E6	//access to reg 0x26 (GPIO control)
+0C	//access to sub-reg 0X0C (GIPO output)
+FF	//data; write value to reg:0x26,sub-reg:0x0C; 1 = high, 0 = low
+YY	//end of a command

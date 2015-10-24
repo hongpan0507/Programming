@@ -1,0 +1,15 @@
+19:47:10 **** Build of configuration Debug for project csv_psi_convert ****
+make all 
+Building file: ../src/csv_psi_convert.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/csv_psi_convert.d" -MT"src/csv_psi_convert.d" -o "src/csv_psi_convert.o" "../src/csv_psi_convert.cpp"
+Finished building: ../src/csv_psi_convert.cpp
+ 
+Building target: csv_psi_convert
+Invoking: GCC C++ Linker
+g++  -o "csv_psi_convert"  ./src/csv_psi_convert.o   
+Finished building target: csv_psi_convert
+ 
+
+19:47:10 Build Finished (took 265ms)
+

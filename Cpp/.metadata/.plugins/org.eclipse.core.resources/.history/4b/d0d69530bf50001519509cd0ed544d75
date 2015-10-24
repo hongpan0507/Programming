@@ -1,0 +1,106 @@
+//============================================================================
+// Name        : csv_psi.cpp
+// Author      : hpan
+// Version     :
+// Copyright   : no right
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
+
+int main() {
+	int state = 16;
+	int data_row = 2001;
+	int data_type = 4;
+	int data_row_start = 8;	//data starts from row 8
+
+	string row;
+	string data[state][data_row][data_type];	//frequency; phase; s11; s21
+
+	ifstream csv_file;
+	string file_read_name;
+
+
+	ofstream phase_psi_file;
+	ofstream s11_psi_file;
+	ofstream s21_psi_file;
+
+	string phase_file_name = "/home/hpan/Desktop/Black/phase.csv";
+	string s11_file_name = "/home/hpan/Desktop/Black/s11.csv";
+	string s21_file_name = "/home/hpan/Desktop/Black/s21.csv";
+
+	phase_psi_file.open(phase_file_name.c_str());
+	s11_psi_file.open(s11_file_name.c_str());
+	s21_psi_file.open(s21_file_name.c_str());
+
+	for(int file_count = 0; file_count < state; ++ file_count){
+		//file_read_name = "/home/hpan/Dropbox/Raven_Standard_LLC/digital_phase_shifter/data/CSV/Gen2/stack03/" + to_string(file_count) + ".csv";
+		//file_write_name = "/home/hpan/Dropbox/Raven_Standard_LLC/digital_phase_shifter/data/CSV/Gen2/stack03/" + to_string(file_count) + "_psi.csv";
+		file_read_name = "/home/hpan/Desktop/Black/" + to_string(file_count) + ".csv";
+		csv_file.open(file_read_name.c_str());
+
+		if(csv_file.is_open()){
+			for(int row_dump = 0; row_dump < data_row_start; ++ row_dump){ //data starts from line 8
+				getline(csv_file,row);
+			}
+
+			for(int line_count = 0; line_count < data_row; ++line_count){
+				getline(csv_file,row);
+				stringstream ss(row);
+				string new_row = "";
+				char* ptr;
+				for(int i = 0; i < data_type; ++i){
+					getline(ss,data[file_count][line_count][i], ',');
+					//phase_psi_file<<data[file_count][line_count][i];
+					if(i == 0){
+						double freq = (double)strtod(data[file_count][line_count][i].c_str(), &ptr) / 1000000000;	// convert the first number (frequency) to GHz
+						data[file_count][line_count][i] = to_string(freq);
+					}
+				}
+			}
+		} else {
+			cout << "cannot read from files";
+		}
+		csv_file.close();
+	}
+
+
+	if(phase_psi_file.is_open() && s11_psi_file.is_open() && s21_psi_file.is_open()){
+		for(int i = 1; i < data_type; ++i){
+			for(int j = 0; j < data_row; ++j){
+				string line = "";
+				for(int k = 0; k < state; ++k){
+					if(k < state-1){
+						line += (data[k][j][i] + ",");
+					} else {
+						line += data[k][j][i];
+					}
+				}
+				line = data[0][j][0] + line + '\n';
+				phase_psi_file << line;
+				cout << line << endl;
+				if(i == 1){		//phase
+
+				} else if (i == 2){	//s11
+
+				} else if (i == 3){	//s21
+
+				}
+
+			}
+		}
+	} else {
+		cout << "cannot write to files";
+	}
+	phase_psi_file.close();
+	s11_psi_file.close();
+	s21_psi_file.close();
+
+	return 0;
+}

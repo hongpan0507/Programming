@@ -1,0 +1,57 @@
+//============================================================================
+// Name        : deca_wave_serial_comm.cpp
+// Author      : hpan
+// Version     :
+// Copyright   : no right
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <fstream>
+#include "serial_comm/TimeoutSerial.h"
+
+using namespace std;
+
+#define manual_input 1
+#define file_input 2
+
+int main() {
+	cout << "connecting to teensy..." << endl;
+	TimeoutSerial teensy_serial("/dev/ttyACM0", 9600); //*initialize serial port
+
+	fstream cmd_input;
+	string cmd_read;
+	string cmd_tx = "";
+	string cmd_rx = "";
+	int switch_case = 0;
+
+	while(true){
+		cout << "1. manual cmd input" << endl;
+		cout << "2. select a text file with cmds" << endl;
+		cmd_input.open("deca_wave_cmd.txt", fstream::in);	//read cmds from a file
+
+		while(!cmd_input.eof()){
+			getline(cmd_input,cmd_read);	//store each cmd to a string
+			cmd_tx += cmd_read;
+		}
+
+		teensy_serial.write(cmd_tx.c_str(),cmd_tx.size());
+		cmd_rx = teensy_serial.readString(cmd_tx.size());
+		cout << cmd_rx << endl;
+	}
+
+	/*
+	string cmd1 = "XX";
+	string cmd2 = "E6";
+	string cmd3 = "OC";
+	string cmd4 = "F2";
+	string cmd5 = "YY";
+
+	teensy_serial.write(cmd1.c_str(), cmd1.size());
+	teensy_serial.write(cmd2.c_str(), cmd2.size());
+	teensy_serial.write(cmd3.c_str(), cmd3.size());
+	teensy_serial.write(cmd4.c_str(), cmd4.size());
+	teensy_serial.write(cmd5.c_str(), cmd5.size());
+	*/
+	return 0;
+}
