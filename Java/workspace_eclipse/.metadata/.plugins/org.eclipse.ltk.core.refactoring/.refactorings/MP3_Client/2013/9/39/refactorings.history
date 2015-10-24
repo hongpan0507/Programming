@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;edu.tamu.ecen424.server&apos; to &apos;Client&apos;&#x0D;&#x0A;- Original project: &apos;MP3_Client&apos;&#x0D;&#x0A;- Original element: &apos;edu.tamu.ecen424.server&apos;&#x0D;&#x0A;- Renamed element: &apos;edu.tamu.ecen424.Client&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;server&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;edu.tamu.ecen424{server.java[server" matchStrategy="1" name="Client" qualified="false" references="true" similarDeclarations="false" stamp="1380337018857" textual="false" version="1.0"/>
-</session>
