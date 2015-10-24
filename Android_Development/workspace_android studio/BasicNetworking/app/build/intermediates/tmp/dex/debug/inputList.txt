@@ -1,0 +1,5 @@
+/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/classes/debug
+/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-919c8c5df5322e8fe9ed5087940b7e988a49604a.jar
+/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-131bd7260b457591177a0b0edab1ef53553cfa6c.jar
+/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/pre-dexed/debug/classes-2e4de16da55aaa9b04ad0eecadc855e77825336b.jar
+/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/pre-dexed/debug/classes-8a79cef4fafaa3ebedeed88da9fc93b101e80029.jar

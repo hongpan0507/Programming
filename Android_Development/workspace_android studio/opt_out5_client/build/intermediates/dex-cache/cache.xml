@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/pre-dexed/debug/classes-8a79cef4fafaa3ebedeed88da9fc93b101e80029.jar" />
+    </item>
+    <item
+        jar="/home/hpan/AndroidStudioProjects/android_client/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/hpan/AndroidStudioProjects/android_client/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-fbafa7ca5b8c7962180527cec8a8c0da97d743f5.jar" />
+    </item>
+    <item
+        jar="/home/hpan/AndroidStudioProjects/android_client/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/hpan/AndroidStudioProjects/android_client/app/build/intermediates/pre-dexed/debug/classes-6d48141ee2897d98e51aeaa90aee0c597d2dafe7.jar" />
+    </item>
+    <item
+        jar="/home/hpan/AndroidStudioProjects/android_client/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/hpan/AndroidStudioProjects/android_client/app/build/intermediates/pre-dexed/debug/classes-dd6c2590d7859a998c692236a78d1b3cf838ef98.jar" />
+    </item>
+    <item
+        jar="/home/hpan/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/home/hpan/AndroidStudioProjects/android_client/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-919c8c5df5322e8fe9ed5087940b7e988a49604a.jar" />
+    </item>
+    <item
+        jar="/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-131bd7260b457591177a0b0edab1ef53553cfa6c.jar" />
+    </item>
+    <item
+        jar="/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/hpan/workspace_android/opt_out5_client/app/build/intermediates/pre-dexed/debug/classes-2e4de16da55aaa9b04ad0eecadc855e77825336b.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,5 @@
+/home/hpan/workspace_android/AddressBook/app/build/intermediates/classes/debug
+/home/hpan/workspace_android/AddressBook/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-919c8c5df5322e8fe9ed5087940b7e988a49604a.jar
+/home/hpan/workspace_android/AddressBook/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-e3b54e5c959db7c512a729bd48947fadfe20be72.jar
+/home/hpan/workspace_android/AddressBook/app/build/intermediates/pre-dexed/debug/classes-2f0057de4c0e528696c0b36c4dd2927b7decd0eb.jar
+/home/hpan/workspace_android/AddressBook/app/build/intermediates/pre-dexed/debug/classes-74b67bb84a26b44aa17ae3355852ccee7a64fd4a.jar
