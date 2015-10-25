@@ -75,21 +75,23 @@ void loop() {
     if(cmd_str == "AT_cmd"){  
       String AT_res = hc_bt_comm(cmd_val_str); 
       Serial.println(AT_res);  
-    } else if (cmd_str == "BT_comm"){
+    } else if (cmd_str == "bt_comm"){
       
     } else {
-      Serial.println("command not recognized");
+      Serial.println("serial command not recognized");
     }    
     cmd_ready = false;    //reset for command input
     cmd_str = "";  //reset for command input
     cmd_val_str = "";  //reset for command input
   }  
   
-  if(bt_cmd_ready){   
-    if(bt_cmd_str == "BT_comm"){  
+  if(bt_cmd_ready){ 
+    Serial.println(bt_cmd_str);
+    Serial.println(bt_cmd_val_str);
+    if(bt_cmd_str == "bt_comm"){  
       Serial.println(bt_cmd_val_str);  
     } else {
-      Serial.println("command not recognized");
+      Serial.println("bluetooth command not recognized");
     }    
     bt_cmd_ready = false;    //reset for command input
     bt_cmd_str = "";  //reset for command input
