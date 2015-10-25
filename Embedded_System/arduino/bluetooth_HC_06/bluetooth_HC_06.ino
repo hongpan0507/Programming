@@ -1,146 +1,129 @@
-/*Note:
-1. For nmos, pwm=10 out of 255 is enough to generate high voltage; current = 3mA
-2. For pmos, pwm=245 out of 255 is enough to generate high voltage; current = 4mA
+/******************************************************************
+Tutorials:
+  # http://mcuoneclipse.com/2013/06/19/using-the-hc-06-bluetooth-module/
+  # http://forcetronic.blogspot.com/2014/08/getting-started-with-hc-06-bluetooth.html
 
-*/
-#include <avr/io.h>
-#include <avr/interrupt.h> //C:\Program Files\Arduino\hardware\tools\avr\avr\include\avr
-#include <kinetis.h>
+Device Notes:
+  # HC_06 = CSR_BC417143 (bluetooth) + MX29LV800C (CMOS Flash)
+    MX29LV800C; Macronix Internatinal Co; http://www.macronix.com/en-us/Product/Pages/ProductDetail.aspx?PartNo=MX29LV800C%20T/B     
+  # Default parameter: Baud rate = 9600N81; ID = linvor; Password = 1234  
 
-//---------------pwm--------------------------
-int pwm_freq = 3000;
-int nmos_pwm_val = 20;  //preset pwm pulse width
-int pmos_pwm_val = 230;  //preset pwm pulse width
-const int pwm_pin9 =  9;  //nmos
-const int pwm_pin10 =  10;  //pmos
-const int ctrl_pin18 =  18;  //left; look from the back of the pcb
-const int ctrl_pin19 =  19;  //right
-//--------------------------------------------
-//--------------command input-----------------
+Programming Notes:
+  # The Arduino Leonardo board uses Serial1 to communicate via TTL(Transistor to Transistor Level) serial on pins 0 (RX) and 1 (TX). 
+  # Serial is reserved for USB CDC (Communication Device Class) communication
+********************************************************************/
+
+//--------------PC, Leonardo command variable-----------------
 int cmd_val = 0;  
 char cmd_char;
 String cmd_str = "";
 String cmd_val_str = "";
 boolean cmd_ready = false;
-boolean pin_num_ready = false;
-//--------------------------------------------
-//----------------interrupt-------------------
-int pulse_switch = 0;
-int driver_freq = 60;  //preset piezoelectric pump driver frequency
-int interrupt_bus_freq = 24000000;
-int led = 13;
-//--------------------------------------------
+boolean cmd_type_ready = false;
+//-------------------------------------------------------------------
+//--------------HC-06, Leonardo command variable-----------------
+int bt_cmd_val = 0;  
+char bt_cmd_char;
+String bt_cmd_str = "";
+String bt_cmd_val_str = "";
+boolean bt_cmd_ready = false;
+boolean bt_cmd_type_ready = false;
+//-------------------------------------------------------------------
+int led = 11;
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(pwm_pin9, OUTPUT);
-  pinMode(pwm_pin10, OUTPUT);
-  pinMode(ctrl_pin18, OUTPUT);
-  pinMode(ctrl_pin19, OUTPUT);
-  analogWriteFrequency(pwm_pin9, pwm_freq);
-  analogWriteFrequency(pwm_pin10, pwm_freq);
-  digitalWrite(pwm_pin9, HIGH);  
-  digitalWrite(pwm_pin10, HIGH);
-  digitalWrite(ctrl_pin18, LOW);
-  digitalWrite(ctrl_pin19, LOW);
-  
-  timer0_interrupt();
+  Serial.begin(9600); 
+  Serial1.begin(9600); 
   pinMode(led, OUTPUT); 
+  bluetooth_initialize();
 }
 
 void loop() {
-  //--------------command input-----------------
-  if(Serial.available() > 0) {
+  //--------------PC, leonardo command exchange---------------------------
+  if(Serial.available()) {  //USB CDC communication; non-blocking; use while for blocking
     cmd_char = Serial.read();    
-    if(cmd_char == '='){
-      pin_num_ready = true;      
-    } else if (cmd_char == ';'){
+    if(cmd_char == '='){  //delimiter for determining the type of incoming cmd 
+      cmd_type_ready = true;      
+    } else if (cmd_char == ';'){  //delimiter of the end of incoming cmd; can be used for resetting cmd
       cmd_ready = true;      
-      pin_num_ready = false;   
-    } else if (pin_num_ready == false){
+      cmd_type_ready = false;   
+    } else if (cmd_type_ready == false){  //accumulate charactor for cmd type
       cmd_str += cmd_char;
-    } else if (pin_num_ready == true){
+    } else if (cmd_type_ready == true){  //accumulate charactor for cmd value
       cmd_val_str += cmd_char;
-    }    
+    }   
+  }     
+  //--------------------------------------------------------------------- 
+  //-----------------HC_06, Leonardo command exchange------------------   
+  if(Serial1.available()) {  //RX, TX TTL communication; non-blocking; use while for blocking
+    bt_cmd_char = Serial1.read();    
+    if(bt_cmd_char == '='){  //delimiter for determining the type of incoming cmd 
+      bt_cmd_type_ready = true;      
+    } else if (bt_cmd_char == ';'){  //delimiter of the end of incoming cmd; can be used for resetting cmd
+      bt_cmd_ready = true;      
+      bt_cmd_type_ready = false;   
+    } else if (bt_cmd_type_ready == false){  //accumulate charactor for cmd type
+      bt_cmd_str += bt_cmd_char;
+    } else if (bt_cmd_type_ready == true){  //accumulate charactor for cmd value
+      bt_cmd_val_str += bt_cmd_char;
+    }   
   }
-  //--------------------------------------------
-  //---PWM generation+motor control-------------
-  if(cmd_ready){    
-    cmd_val = strtol(cmd_val_str.c_str(), NULL, 10);  //convert string to int
-    Serial.print(cmd_str + "=");    //output for debugging
-    Serial.println(cmd_val, DEC);  //debug
-        
-    if(cmd_str == "pwm_val"){     
-      cmd_val = pwm_val_check(cmd_val);  //check to make sure 0<=pwm<=255; then change pwm pulse width 
-      nmos_pwm_val = cmd_val;
-      pmos_pwm_val = 255 - cmd_val;  //use nmos pusle width as a reference
-    } else if (cmd_str == "left"){  //pin18
-      if(cmd_val == 0){
-        digitalWrite(ctrl_pin18, LOW);  //turn off motor
-      } else if(cmd_val == 1){
-        digitalWrite(ctrl_pin18, HIGH);  //turn on motor
-        digitalWrite(ctrl_pin19, LOW);  //only allow one motor to turn on at a time
-      }
-    } else if (cmd_str == "right"){  //pin19
-      if(cmd_val == 0){
-        digitalWrite(ctrl_pin19, LOW);  //turn off motor
-      } else if(cmd_val == 1){
-        digitalWrite(ctrl_pin19, HIGH);  //turn on motor
-        digitalWrite(ctrl_pin18, LOW);  //only allow one motor to turn on at a time        
-      }
-    } else if (cmd_str == "freq"){
-      driver_freq = driver_freq_val_check(cmd_val);
-      timer0_interrupt();
-    }
-  //--------------------------------------------
+  //---------------------------------------------------------------------
+
+  //-----------------PC, Leonardo, HC_06 command exchange------------------  
+  if(cmd_ready){   
+    if(cmd_str == "AT_cmd"){  
+      String AT_res = hc_bt_comm(cmd_val_str); 
+      Serial.println(AT_res);  
+    } else if (cmd_str == "BT_comm"){
+      
+    } else {
+      Serial.println("command not recognized");
+    }    
     cmd_ready = false;    //reset for command input
     cmd_str = "";  //reset for command input
     cmd_val_str = "";  //reset for command input
-  }
-}
-
-int pwm_val_check(int cmd_val){  //check if the value entered is in the range of 0-255
-  if(cmd_val > 255){
-    cmd_val = 255;
-  } else if (cmd_val < 0){
-    cmd_val = 0;
-  }
-  return cmd_val;
-}
-
-int driver_freq_val_check(int cmd_val){  //check if the value entered is in the range of 0-255
-  if(cmd_val > 200){
-    cmd_val = 200;
-  } else if (cmd_val < 0){
-    cmd_val = 0;
-  }
-  return cmd_val;
-}
-
-void timer0_interrupt(){  //set up interrupt parameter
-  SIM_SCGC6 |= 0x800000;  //System Clk Gating Control Register 6; PIT is on bit 23; freescale MK20DX page 256 and page 160  
-  PIT_MCR = 0x00;  //0x(PIT enabled, Timer run in Debug mode); freescale MK20DX page 904
-  PIT_LDVAL0 = interrupt_bus_freq/driver_freq - 1;  //driver frequency; timer 0 load value = 24M in hex; timer counts down; freescale MK20DX page 904
-  PIT_TCTRL0 = 0x03;  // 0x(Chain Mode, Timer Interrupt Enable, Timer Enable); freescale MK20DX page 905
-  //PIT_CVAL0 has the value of the current timer; freescale MK20DX page 905
-  NVIC_ENABLE_IRQ(IRQ_PIT_CH0);  //enable interrupt;   
-}
-
-void pit0_isr(void){  //interrupt routine
-  if(pulse_switch == 1) {
-    pulse_switch = 0;
-    digitalWrite(led,LOW);
-    pinMode(pwm_pin10, OUTPUT);  //need to declare as GPIO before can be used as digital out
-    digitalWrite(pwm_pin10, LOW);  //keep pmos on while pulsing nmos
-    analogWrite(pwm_pin9, nmos_pwm_val);  //pulse nmos to generate high positive voltage
-  } else {
-    pulse_switch = 1;  
-    digitalWrite(led,HIGH);     
-    pinMode(pwm_pin9, OUTPUT);  //need to declare as GPIO before can be used as digital out
-    digitalWrite(pwm_pin9, HIGH);  //keep nmos on while pulsing pmos
-    analogWrite(pwm_pin10, pmos_pwm_val);  //pulse pmos to generate high negative voltage   
   }  
-  //Timer Flag Register; Timer Interrupt Flag (TIF) must be set to 1 to clear the flag                   
-  PIT_TFLG0 = 1;   //very important!!!
+  
+  if(bt_cmd_ready){   
+    if(bt_cmd_str == "BT_comm"){  
+      Serial.println(bt_cmd_val_str);  
+    } else {
+      Serial.println("command not recognized");
+    }    
+    bt_cmd_ready = false;    //reset for command input
+    bt_cmd_str = "";  //reset for command input
+    bt_cmd_val_str = "";  //reset for command input
+  }  
+  //--------------------------------------------------------------------    
 }
 
+void bluetooth_initialize(){
+  delay(2000);    
+  Serial.println(hc_bt_comm("AT"));   
+  delay(500);
+  Serial.println(hc_bt_comm("AT+VERSION"));   //hc_06 firmware versio
+  delay(500);
+  Serial.println(hc_bt_comm("AT+BAUD4"));   //set hc_06 baud rate to 9600; check on datasheet for more parameter
+  delay(500);
+  Serial.println(hc_bt_comm("AT+NAMEAtmega32_u4"));   //set bluetooth name to Atmega32_u4
+  delay(500);
+  Serial.println(hc_bt_comm("AT+PIN9600"));   //set bluetooth password to 9600
+  delay(500);
+  Serial.println(hc_bt_comm("AT+PO"));   //set hc_06 odd parity check on
+  Serial.println("Bluetooth parameters all set");
+}
+
+String hc_bt_comm(String cmd_val_str){
+  String cmd_res = "";  
+  Serial1.write(cmd_val_str.c_str());  //RX, TX TTL communication
+  delay(550); //HC06 requires 500 msec for reply
+  while(Serial1.available()){    //RX, TX TTL communication
+    char cmd_return = (char)Serial1.read();     //receive returned commands
+    cmd_res += cmd_return;   
+    digitalWrite(led,HIGH);
+    delay(10); 
+    digitalWrite(led,LOW);
+  }   
+  return cmd_res;  
+}
