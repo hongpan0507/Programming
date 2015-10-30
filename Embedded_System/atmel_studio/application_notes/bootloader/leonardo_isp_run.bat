@@ -1,0 +1,2 @@
+cd /D C:\Program Files (x86)\Arduino\hardware\tools\avr\bin
+avrdude -C"C:\Program Files (x86)\Arduino\hardware\tools\avr\etc\avrdude.conf" -F  -v -v -v -v -pattiny85 -carduino -P\\.\COM14 -b19200 -Uflash:w:C:\Users\hpan\AppData\Local\Temp\build3634056853840960724.tmp\attiny_85_blink.cpp.hex:i
