@@ -31,10 +31,10 @@ int main(void){
   while (1) {   
     PORTB |= 1<<PORTB3;    //pull PB3 high
     PORTB |= 1<<PORTB4;    //pull PB4 high
-    _delay_ms(1000);
+    _delay_ms(100);
     PORTB &= ~(1<<PORTB3);  //pull PB3 low
     PORTB &= ~(1<<PORTB4);  //pull PB4 low    
-    _delay_ms(1000);  
+    _delay_ms(100);  
   }         
 }
 

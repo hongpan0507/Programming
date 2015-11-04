@@ -43,7 +43,7 @@
 #include <util/delay.h>
 
 int main(void){		//LED on PA2 & PA7    
-	const uint8_t delay_time = 100;
+	const uint16_t delay_time = 100;
 	DDRA |= 1<<DDRA2;	//configure PA2 as output
 	DDRA |= 1<<DDRA7;	//configure PA7 as output
 	PORTA |= 1<<PORTA2;	//pull PA2 high

@@ -41,15 +41,15 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-//#include <avr/iotn841.h>
 
 int main(void){		//LED on PA2 & PA7    
-	const uint8_t delay_time = 100;
+	const uint8_t delay_time = 1000;
 	DDRA |= 1<<DDRA2;	//configure PA2 as output
 	DDRA |= 1<<DDRA7;	//configure PA7 as output
 	PORTA |= 1<<PORTA2;	//pull PA2 high
 	PORTA &= ~(1<<PORTA7);	//pull PA7 low
 	_delay_ms(delay_time);	//internal delay function
+ 
     while (1){
   		PINA |= 1<<PINA2;	//toggle PA2
   		PINA |= 1<<PINA7;	//toggle PA7
