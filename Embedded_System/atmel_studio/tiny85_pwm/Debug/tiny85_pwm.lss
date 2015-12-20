@@ -1,0 +1,175 @@
+
+tiny85_pwm.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000009a  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000000ee  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000000ee  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000120  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  0000015c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000001b3  00000000  00000000  0000017c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000107  00000000  00000000  0000032f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000013b  00000000  00000000  00000436  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000024  00000000  00000000  00000574  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000001c1  00000000  00000000  00000598  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000014  00000000  00000000  00000759  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  0000076d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0e c0       	rjmp	.+28     	; 0x1e <__ctors_end>
+   2:	15 c0       	rjmp	.+42     	; 0x2e <__bad_interrupt>
+   4:	14 c0       	rjmp	.+40     	; 0x2e <__bad_interrupt>
+   6:	13 c0       	rjmp	.+38     	; 0x2e <__bad_interrupt>
+   8:	12 c0       	rjmp	.+36     	; 0x2e <__bad_interrupt>
+   a:	11 c0       	rjmp	.+34     	; 0x2e <__bad_interrupt>
+   c:	10 c0       	rjmp	.+32     	; 0x2e <__bad_interrupt>
+   e:	0f c0       	rjmp	.+30     	; 0x2e <__bad_interrupt>
+  10:	0e c0       	rjmp	.+28     	; 0x2e <__bad_interrupt>
+  12:	0d c0       	rjmp	.+26     	; 0x2e <__bad_interrupt>
+  14:	0c c0       	rjmp	.+24     	; 0x2e <__bad_interrupt>
+  16:	0b c0       	rjmp	.+22     	; 0x2e <__bad_interrupt>
+  18:	0a c0       	rjmp	.+20     	; 0x2e <__bad_interrupt>
+  1a:	09 c0       	rjmp	.+18     	; 0x2e <__bad_interrupt>
+  1c:	08 c0       	rjmp	.+16     	; 0x2e <__bad_interrupt>
+
+0000001e <__ctors_end>:
+  1e:	11 24       	eor	r1, r1
+  20:	1f be       	out	0x3f, r1	; 63
+  22:	cf e5       	ldi	r28, 0x5F	; 95
+  24:	d2 e0       	ldi	r29, 0x02	; 2
+  26:	de bf       	out	0x3e, r29	; 62
+  28:	cd bf       	out	0x3d, r28	; 61
+  2a:	02 d0       	rcall	.+4      	; 0x30 <main>
+  2c:	34 c0       	rjmp	.+104    	; 0x96 <_exit>
+
+0000002e <__bad_interrupt>:
+  2e:	e8 cf       	rjmp	.-48     	; 0x0 <__vectors>
+
+00000030 <main>:
+#include <avr/io.h>
+#include <util/delay.h>
+
+int main(void) {
+	//DDRB |= 1 << DDB3;	
+	DDRB |= 1 << DDB4;	//set PB4 as output
+  30:	bc 9a       	sbi	0x17, 4	; 23
+	
+	//-----------------select PCK as clk source------------------------
+	PLLCSR |= 1 << PCKE;	//PCK enable = use 64MHz clk source; asynchronus mode
+  32:	87 b5       	in	r24, 0x27	; 39
+  34:	84 60       	ori	r24, 0x04	; 4
+  36:	87 bd       	out	0x27, r24	; 39
+	PLLCSR |= 1 << PLLE;	//enable PLL
+  38:	87 b5       	in	r24, 0x27	; 39
+  3a:	82 60       	ori	r24, 0x02	; 2
+  3c:	87 bd       	out	0x27, r24	; 39
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  3e:	87 ec       	ldi	r24, 0xC7	; 199
+  40:	90 e0       	ldi	r25, 0x00	; 0
+  42:	01 97       	sbiw	r24, 0x01	; 1
+  44:	f1 f7       	brne	.-4      	; 0x42 <__SREG__+0x3>
+  46:	00 c0       	rjmp	.+0      	; 0x48 <__SREG__+0x9>
+  48:	00 00       	nop
+	_delay_us(100);		//refer to the programming note
+	while(!(PLLCSR & (1<<PLOCK))){	//extract PLOCK bit; if not set, wait; if set, move forward; page 94
+  4a:	07 b4       	in	r0, 0x27	; 39
+  4c:	00 fe       	sbrs	r0, 0
+  4e:	fd cf       	rjmp	.-6      	; 0x4a <__SREG__+0xb>
+		;
+	}
+	//------------------------------------------------------------------
+	
+	TCCR1 |= 1 << CTC1;		//reset timer/counter after compare match with OCR1C register; page 89	
+  50:	80 b7       	in	r24, 0x30	; 48
+  52:	80 68       	ori	r24, 0x80	; 128
+  54:	80 bf       	out	0x30, r24	; 48
+	TCCR1 |= ((1<<CS12) | (1<<CS10));	//select prescaler; page 89; page 88
+  56:	80 b7       	in	r24, 0x30	; 48
+  58:	85 60       	ori	r24, 0x05	; 5
+  5a:	80 bf       	out	0x30, r24	; 48
+	TCCR1 &= ~((1<<CS13) | (1<<CS11));	//select prescaler; page 89; page 88
+  5c:	80 b7       	in	r24, 0x30	; 48
+  5e:	85 7f       	andi	r24, 0xF5	; 245
+  60:	80 bf       	out	0x30, r24	; 48
+	
+	GTCCR |= 1 << PWM1B;	//enable PWM1B module
+  62:	8c b5       	in	r24, 0x2c	; 44
+  64:	80 64       	ori	r24, 0x40	; 64
+  66:	8c bd       	out	0x2c, r24	; 44
+	GTCCR |= 1 << COM1B1;	//clear the OC1B output line; when match is detected; page 90
+  68:	8c b5       	in	r24, 0x2c	; 44
+  6a:	80 62       	ori	r24, 0x20	; 32
+  6c:	8c bd       	out	0x2c, r24	; 44
+	GTCCR &= ~(1 << COM1B0);	//clear the OC1B output line; when match is detected; page 90
+  6e:	8c b5       	in	r24, 0x2c	; 44
+  70:	8f 7e       	andi	r24, 0xEF	; 239
+  72:	8c bd       	out	0x2c, r24	; 44
+	OCR1B = 127;	//output compare register value; page 91
+  74:	8f e7       	ldi	r24, 0x7F	; 127
+  76:	8b bd       	out	0x2b, r24	; 43
+	OCR1C = 199;	//output compare register value; page 92; page 88
+  78:	87 ec       	ldi	r24, 0xC7	; 199
+  7a:	8d bd       	out	0x2d, r24	; 45
+#define F_CPU 8e6
+
+#include <avr/io.h>
+#include <util/delay.h>
+
+int main(void) {
+  7c:	90 e0       	ldi	r25, 0x00	; 0
+  7e:	89 2f       	mov	r24, r25
+	OCR1C = 199;	//output compare register value; page 92; page 88
+			
+    /* Replace with your application code */
+    while (1) {
+		for(int i=0; i<200; ++i){
+			OCR1B = i;
+  80:	8b bd       	out	0x2b, r24	; 43
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  82:	ef e1       	ldi	r30, 0x1F	; 31
+  84:	fe e4       	ldi	r31, 0x4E	; 78
+  86:	31 97       	sbiw	r30, 0x01	; 1
+  88:	f1 f7       	brne	.-4      	; 0x86 <__SREG__+0x47>
+  8a:	00 c0       	rjmp	.+0      	; 0x8c <__SREG__+0x4d>
+  8c:	00 00       	nop
+  8e:	8f 5f       	subi	r24, 0xFF	; 255
+	OCR1B = 127;	//output compare register value; page 91
+	OCR1C = 199;	//output compare register value; page 92; page 88
+			
+    /* Replace with your application code */
+    while (1) {
+		for(int i=0; i<200; ++i){
+  90:	88 3c       	cpi	r24, 0xC8	; 200
+  92:	b1 f7       	brne	.-20     	; 0x80 <__SREG__+0x41>
+  94:	f4 cf       	rjmp	.-24     	; 0x7e <__SREG__+0x3f>
+
+00000096 <_exit>:
+  96:	f8 94       	cli
+
+00000098 <__stop_program>:
+  98:	ff cf       	rjmp	.-2      	; 0x98 <__stop_program>

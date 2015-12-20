@@ -37,7 +37,7 @@
 -------------------------------------------------------------------------------------------					
  */ 
 
-#define F_CPU 8e6	//CPU clock must be defined first in order to use internal delay function
+#define F_CPU 16e6	//CPU clock must be defined first in order to use internal delay function
 
 #include <avr/io.h>
 #include <util/delay.h>

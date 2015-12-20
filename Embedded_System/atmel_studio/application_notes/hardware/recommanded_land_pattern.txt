@@ -1,0 +1,15 @@
+http://atmel.force.com/support/articles/en_US/FAQ/Footprints-Land-Pattern-Recommendation
+
+Question	
+Do you have any PCB footprints/Land patterns recommendation available?
+
+
+Answer	
+We do unfortunately not supply CAD symbols/PCB footprints. All AVR devices use a standard industry package (JEDEC). The formal reference to the standard is available in the respective datasheet under the 'Packaging Information' chapter.
+
+There are footprints available made by third party vendors. For example, you can use the link: IPC Land Pattern Calculator for calculating land patterns using the IPC-7351A Land Pattern Calculator.
+It allows users to view IPC approved land pattern dimensional data in tabular form as well as graphical images that illustrate how a component is attached to the land pattern on the board.
+
+You can also find OrCAD and Protel99SE AVR Library on avrfreaks at this link: Footprints. The standard industry footprints are usually distributed with layout tools such as Orcad, Altium, Eagle, etc. 
+
+Please note that these are not made by Atmel; hence they will not be supported by us.

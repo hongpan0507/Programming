@@ -21,9 +21,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   8 .debug_frame  00000024  00000000  00000000  000004f8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000001c2  00000000  00000000  0000051c  2**0
+  9 .debug_str    000001c3  00000000  00000000  0000051c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000010  00000000  00000000  000006de  2**0
+ 10 .debug_ranges 00000010  00000000  00000000  000006df  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -74,11 +74,11 @@ Disassembly of section .text:
   4c:	d9 cf       	rjmp	.-78     	; 0x0 <__vectors>
 
 0000004e <main>:
+#include <avr/io.h>
 #include <util/delay.h>
 
-int main(void){
-    //LED on PA2 & PA7
-	const uint8_t delay_time = 100;
+int main(void){		//LED on PA2 & PA7    
+	const uint16_t delay_time = 100;
 	DDRA |= 1<<DDRA2;	//configure PA2 as output
   4e:	d2 9a       	sbi	0x1a, 2	; 26
 	DDRA |= 1<<DDRA7;	//configure PA7 as output

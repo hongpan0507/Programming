@@ -237,6 +237,7 @@ ISR(TWI_SLAVE_vect, ISR_BLOCK){	//I2C interrupt service routine; blocking all ot
 
 00000144 <_Z8I2C_inith>:
 //---------------------------------------------------------------------------------------------------------------------
+
 //------------------------------User Defined Functions--------------------------------------------------------------
 void I2C_init(uint8_t slave_addr){	//initialize I2C module
 	PRR &= ~(1<<PRTWI); //enable TWI module in PRR; page 152

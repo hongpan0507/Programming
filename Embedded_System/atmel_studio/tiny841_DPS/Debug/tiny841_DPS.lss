@@ -1,0 +1,492 @@
+
+tiny841_DPS.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000004  00800100  0000029c  00000330  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000029c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000002  00800104  00800104  00000334  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000334  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000364  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000060  00000000  00000000  000003a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000362  00000000  00000000  00000400  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000001c6  00000000  00000000  00000762  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000200  00000000  00000000  00000928  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000114  00000000  00000000  00000b28  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000002a3  00000000  00000000  00000c3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000001de  00000000  00000000  00000edf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000050  00000000  00000000  000010bd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1d c0       	rjmp	.+58     	; 0x3c <__ctors_end>
+   2:	37 c0       	rjmp	.+110    	; 0x72 <__bad_interrupt>
+   4:	36 c0       	rjmp	.+108    	; 0x72 <__bad_interrupt>
+   6:	35 c0       	rjmp	.+106    	; 0x72 <__bad_interrupt>
+   8:	34 c0       	rjmp	.+104    	; 0x72 <__bad_interrupt>
+   a:	33 c0       	rjmp	.+102    	; 0x72 <__bad_interrupt>
+   c:	32 c0       	rjmp	.+100    	; 0x72 <__bad_interrupt>
+   e:	31 c0       	rjmp	.+98     	; 0x72 <__bad_interrupt>
+  10:	30 c0       	rjmp	.+96     	; 0x72 <__bad_interrupt>
+  12:	2f c0       	rjmp	.+94     	; 0x72 <__bad_interrupt>
+  14:	2e c0       	rjmp	.+92     	; 0x72 <__bad_interrupt>
+  16:	2d c0       	rjmp	.+90     	; 0x72 <__bad_interrupt>
+  18:	2c c0       	rjmp	.+88     	; 0x72 <__bad_interrupt>
+  1a:	2b c0       	rjmp	.+86     	; 0x72 <__bad_interrupt>
+  1c:	2a c0       	rjmp	.+84     	; 0x72 <__bad_interrupt>
+  1e:	29 c0       	rjmp	.+82     	; 0x72 <__bad_interrupt>
+  20:	28 c0       	rjmp	.+80     	; 0x72 <__bad_interrupt>
+  22:	27 c0       	rjmp	.+78     	; 0x72 <__bad_interrupt>
+  24:	26 c0       	rjmp	.+76     	; 0x72 <__bad_interrupt>
+  26:	25 c0       	rjmp	.+74     	; 0x72 <__bad_interrupt>
+  28:	25 c0       	rjmp	.+74     	; 0x74 <__vector_20>
+  2a:	23 c0       	rjmp	.+70     	; 0x72 <__bad_interrupt>
+  2c:	22 c0       	rjmp	.+68     	; 0x72 <__bad_interrupt>
+  2e:	21 c0       	rjmp	.+66     	; 0x72 <__bad_interrupt>
+  30:	20 c0       	rjmp	.+64     	; 0x72 <__bad_interrupt>
+  32:	b5 c0       	rjmp	.+362    	; 0x19e <__vector_25>
+  34:	8f c0       	rjmp	.+286    	; 0x154 <__vector_26>
+  36:	1d c0       	rjmp	.+58     	; 0x72 <__bad_interrupt>
+  38:	1c c0       	rjmp	.+56     	; 0x72 <__bad_interrupt>
+  3a:	41 c0       	rjmp	.+130    	; 0xbe <__vector_29>
+
+0000003c <__ctors_end>:
+  3c:	11 24       	eor	r1, r1
+  3e:	1f be       	out	0x3f, r1	; 63
+  40:	cf ef       	ldi	r28, 0xFF	; 255
+  42:	d2 e0       	ldi	r29, 0x02	; 2
+  44:	de bf       	out	0x3e, r29	; 62
+  46:	cd bf       	out	0x3d, r28	; 61
+
+00000048 <__do_copy_data>:
+  48:	11 e0       	ldi	r17, 0x01	; 1
+  4a:	a0 e0       	ldi	r26, 0x00	; 0
+  4c:	b1 e0       	ldi	r27, 0x01	; 1
+  4e:	ec e9       	ldi	r30, 0x9C	; 156
+  50:	f2 e0       	ldi	r31, 0x02	; 2
+  52:	02 c0       	rjmp	.+4      	; 0x58 <__do_copy_data+0x10>
+  54:	05 90       	lpm	r0, Z+
+  56:	0d 92       	st	X+, r0
+  58:	a4 30       	cpi	r26, 0x04	; 4
+  5a:	b1 07       	cpc	r27, r17
+  5c:	d9 f7       	brne	.-10     	; 0x54 <__do_copy_data+0xc>
+
+0000005e <__do_clear_bss>:
+  5e:	21 e0       	ldi	r18, 0x01	; 1
+  60:	a4 e0       	ldi	r26, 0x04	; 4
+  62:	b1 e0       	ldi	r27, 0x01	; 1
+  64:	01 c0       	rjmp	.+2      	; 0x68 <.do_clear_bss_start>
+
+00000066 <.do_clear_bss_loop>:
+  66:	1d 92       	st	X+, r1
+
+00000068 <.do_clear_bss_start>:
+  68:	a6 30       	cpi	r26, 0x06	; 6
+  6a:	b2 07       	cpc	r27, r18
+  6c:	e1 f7       	brne	.-8      	; 0x66 <.do_clear_bss_loop>
+  6e:	f0 d0       	rcall	.+480    	; 0x250 <main>
+  70:	13 c1       	rjmp	.+550    	; 0x298 <_exit>
+
+00000072 <__bad_interrupt>:
+  72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
+
+00000074 <__vector_20>:
+}
+
+//------------------------------Interrupt Service Routine--------------------------------------------------------------
+//SPIF bit is set when a serial transfer is complete; p158
+//SPIF bit is cleared by hardware when the corresponding interrupt is served; page 158
+ISR(SPI_vect, ISR_BLOCK){	//SPI interrupt service routine; blocking all other interrupts
+  74:	1f 92       	push	r1
+  76:	0f 92       	push	r0
+  78:	0f b6       	in	r0, 0x3f	; 63
+  7a:	0f 92       	push	r0
+  7c:	11 24       	eor	r1, r1
+  7e:	8f 93       	push	r24
+  80:	ef 93       	push	r30
+  82:	ff 93       	push	r31
+	//send data to digital phase shifter here
+	data_in = SPDR;		//read data from SPI buffer
+  84:	80 91 b0 00 	lds	r24, 0x00B0
+  88:	80 93 05 01 	sts	0x0105, r24
+	UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
+  8c:	80 91 05 01 	lds	r24, 0x0105
+  90:	80 93 80 00 	sts	0x0080, r24
+	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
+  94:	e6 e8       	ldi	r30, 0x86	; 134
+  96:	f0 e0       	ldi	r31, 0x00	; 0
+  98:	80 81       	ld	r24, Z
+  9a:	86 ff       	sbrs	r24, 6
+  9c:	fd cf       	rjmp	.-6      	; 0x98 <__vector_20+0x24>
+		;
+	}
+	UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193
+  9e:	e6 e8       	ldi	r30, 0x86	; 134
+  a0:	f0 e0       	ldi	r31, 0x00	; 0
+  a2:	80 81       	ld	r24, Z
+  a4:	80 64       	ori	r24, 0x40	; 64
+  a6:	80 83       	st	Z, r24
+	received_signal = true;
+  a8:	81 e0       	ldi	r24, 0x01	; 1
+  aa:	80 93 04 01 	sts	0x0104, r24
+}
+  ae:	ff 91       	pop	r31
+  b0:	ef 91       	pop	r30
+  b2:	8f 91       	pop	r24
+  b4:	0f 90       	pop	r0
+  b6:	0f be       	out	0x3f, r0	; 63
+  b8:	0f 90       	pop	r0
+  ba:	1f 90       	pop	r1
+  bc:	18 95       	reti
+
+000000be <__vector_29>:
+
+ISR(TWI_SLAVE_vect, ISR_BLOCK){	//I2C interrupt service routine; blocking all other interrupts
+  be:	1f 92       	push	r1
+  c0:	0f 92       	push	r0
+  c2:	0f b6       	in	r0, 0x3f	; 63
+  c4:	0f 92       	push	r0
+  c6:	11 24       	eor	r1, r1
+  c8:	8f 93       	push	r24
+  ca:	ef 93       	push	r30
+  cc:	ff 93       	push	r31
+	//send data to digital phase shifter here
+	if(TWSSRA & (1<<TWASIF)){	//address/stop detection; page 206
+  ce:	80 91 a3 00 	lds	r24, 0x00A3
+  d2:	86 ff       	sbrs	r24, 6
+  d4:	0c c0       	rjmp	.+24     	; 0xee <__vector_29+0x30>
+		if(TWSSRA & (1<<TWAS)){		//address detection; page 207
+  d6:	80 91 a3 00 	lds	r24, 0x00A3
+  da:	80 ff       	sbrs	r24, 0
+  dc:	08 c0       	rjmp	.+16     	; 0xee <__vector_29+0x30>
+			TWSCRB &= ~(1<<TWAA);	//send ACK; page 206
+  de:	e4 ea       	ldi	r30, 0xA4	; 164
+  e0:	f0 e0       	ldi	r31, 0x00	; 0
+  e2:	80 81       	ld	r24, Z
+  e4:	8b 7f       	andi	r24, 0xFB	; 251
+  e6:	80 83       	st	Z, r24
+			TWSCRB |= ((1<<TWCMD0) | (1<<TWCMD1));		//ACK + clear TWI Address/Stop Interrupt Flag; page 206
+  e8:	80 81       	ld	r24, Z
+  ea:	83 60       	ori	r24, 0x03	; 3
+  ec:	80 83       	st	Z, r24
+		}
+	}
+	if(TWSSRA & (1<<TWDIF)){	//data receive complete detection; page 207
+  ee:	80 91 a3 00 	lds	r24, 0x00A3
+  f2:	88 23       	and	r24, r24
+  f4:	24 f5       	brge	.+72     	; 0x13e <__vector_29+0x80>
+		TWSCRB |= 1<<TWAA;	//send NACK; page 206
+  f6:	e4 ea       	ldi	r30, 0xA4	; 164
+  f8:	f0 e0       	ldi	r31, 0x00	; 0
+  fa:	80 81       	ld	r24, Z
+  fc:	84 60       	ori	r24, 0x04	; 4
+  fe:	80 83       	st	Z, r24
+		data_in = TWSD;		//automatic NACK in smart mode; page 206
+ 100:	80 91 a0 00 	lds	r24, 0x00A0
+ 104:	80 93 05 01 	sts	0x0105, r24
+		
+		UDR0 = data_in<<2;		//place data to USART0 data buffer and initiate data transfer to the phase shifter; page 190; why left shift 2 bits: refer to digital phase shifter note
+ 108:	80 91 05 01 	lds	r24, 0x0105
+ 10c:	88 0f       	add	r24, r24
+ 10e:	88 0f       	add	r24, r24
+ 110:	80 93 80 00 	sts	0x0080, r24
+		while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
+ 114:	e6 e8       	ldi	r30, 0x86	; 134
+ 116:	f0 e0       	ldi	r31, 0x00	; 0
+ 118:	80 81       	ld	r24, Z
+ 11a:	86 ff       	sbrs	r24, 6
+ 11c:	fd cf       	rjmp	.-6      	; 0x118 <__vector_29+0x5a>
+			;
+		}				
+		UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193
+ 11e:	e6 e8       	ldi	r30, 0x86	; 134
+ 120:	f0 e0       	ldi	r31, 0x00	; 0
+ 122:	80 81       	ld	r24, Z
+ 124:	80 64       	ori	r24, 0x40	; 64
+ 126:	80 83       	st	Z, r24
+		TWSSRA |= 1<<TWDIF;		//clear TWI data interrupt flag; page 207
+ 128:	e3 ea       	ldi	r30, 0xA3	; 163
+ 12a:	f0 e0       	ldi	r31, 0x00	; 0
+ 12c:	80 81       	ld	r24, Z
+ 12e:	80 68       	ori	r24, 0x80	; 128
+ 130:	80 83       	st	Z, r24
+		PORTA |= (1<<PORTA0);	//pull PA0 high; apply changes
+ 132:	d8 9a       	sbi	0x1b, 0	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 134:	85 e0       	ldi	r24, 0x05	; 5
+ 136:	8a 95       	dec	r24
+ 138:	f1 f7       	brne	.-4      	; 0x136 <__vector_29+0x78>
+ 13a:	00 00       	nop
+		_delay_us(1);	//delay required for the phase shifter 
+		PORTA &= ~(1<<PORTA0);	//pull PA0 low; apply changes	
+ 13c:	d8 98       	cbi	0x1b, 0	; 27
+	}
+	received_signal = true;
+ 13e:	81 e0       	ldi	r24, 0x01	; 1
+ 140:	80 93 04 01 	sts	0x0104, r24
+}
+ 144:	ff 91       	pop	r31
+ 146:	ef 91       	pop	r30
+ 148:	8f 91       	pop	r24
+ 14a:	0f 90       	pop	r0
+ 14c:	0f be       	out	0x3f, r0	; 63
+ 14e:	0f 90       	pop	r0
+ 150:	1f 90       	pop	r1
+ 152:	18 95       	reti
+
+00000154 <__vector_26>:
+
+ISR(USART1_RX_vect, ISR_BLOCK){	//USART1 Receive complete interrupt service routine	
+ 154:	1f 92       	push	r1
+ 156:	0f 92       	push	r0
+ 158:	0f b6       	in	r0, 0x3f	; 63
+ 15a:	0f 92       	push	r0
+ 15c:	11 24       	eor	r1, r1
+ 15e:	8f 93       	push	r24
+ 160:	ef 93       	push	r30
+ 162:	ff 93       	push	r31
+	//send data to digital phase shifter here
+	data_in = UDR1;		//receive data from the USART1 receiver buffer; page 180
+ 164:	80 91 90 00 	lds	r24, 0x0090
+ 168:	80 93 05 01 	sts	0x0105, r24
+	UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
+ 16c:	80 91 05 01 	lds	r24, 0x0105
+ 170:	80 93 80 00 	sts	0x0080, r24
+	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
+ 174:	e6 e8       	ldi	r30, 0x86	; 134
+ 176:	f0 e0       	ldi	r31, 0x00	; 0
+ 178:	80 81       	ld	r24, Z
+ 17a:	86 ff       	sbrs	r24, 6
+ 17c:	fd cf       	rjmp	.-6      	; 0x178 <__vector_26+0x24>
+		;
+	}
+	UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193
+ 17e:	e6 e8       	ldi	r30, 0x86	; 134
+ 180:	f0 e0       	ldi	r31, 0x00	; 0
+ 182:	80 81       	ld	r24, Z
+ 184:	80 64       	ori	r24, 0x40	; 64
+ 186:	80 83       	st	Z, r24
+	received_signal = true;	
+ 188:	81 e0       	ldi	r24, 0x01	; 1
+ 18a:	80 93 04 01 	sts	0x0104, r24
+}
+ 18e:	ff 91       	pop	r31
+ 190:	ef 91       	pop	r30
+ 192:	8f 91       	pop	r24
+ 194:	0f 90       	pop	r0
+ 196:	0f be       	out	0x3f, r0	; 63
+ 198:	0f 90       	pop	r0
+ 19a:	1f 90       	pop	r1
+ 19c:	18 95       	reti
+
+0000019e <__vector_25>:
+
+ISR(USART1_START_vect, ISR_BLOCK){	//USART1 start condition detection interrupt service routine
+ 19e:	1f 92       	push	r1
+ 1a0:	0f 92       	push	r0
+ 1a2:	0f b6       	in	r0, 0x3f	; 63
+ 1a4:	0f 92       	push	r0
+ 1a6:	11 24       	eor	r1, r1
+ 1a8:	8f 93       	push	r24
+ 1aa:	ef 93       	push	r30
+ 1ac:	ff 93       	push	r31
+	if(UCSR1A & (1<<UDRE1)){	//check if the USART1 buffer is empty; page 181
+ 1ae:	80 91 96 00 	lds	r24, 0x0096
+ 1b2:	85 ff       	sbrs	r24, 5
+ 1b4:	04 c0       	rjmp	.+8      	; 0x1be <__vector_25+0x20>
+		UDR1 = data_out[1];	//place data to the USART1 transmiter buffer; page 180
+ 1b6:	80 91 01 01 	lds	r24, 0x0101
+ 1ba:	80 93 90 00 	sts	0x0090, r24
+	}
+	UCSR1D |= 1<<RXS1;	//clear start condition detection flag; page 185
+ 1be:	e3 e9       	ldi	r30, 0x93	; 147
+ 1c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c2:	80 81       	ld	r24, Z
+ 1c4:	80 64       	ori	r24, 0x40	; 64
+ 1c6:	80 83       	st	Z, r24
+}
+ 1c8:	ff 91       	pop	r31
+ 1ca:	ef 91       	pop	r30
+ 1cc:	8f 91       	pop	r24
+ 1ce:	0f 90       	pop	r0
+ 1d0:	0f be       	out	0x3f, r0	; 63
+ 1d2:	0f 90       	pop	r0
+ 1d4:	1f 90       	pop	r1
+ 1d6:	18 95       	reti
+
+000001d8 <_Z8I2C_inith>:
+	UCSR1B |= (1<<TXEN1);	//enable receiver; page 182
+	UCSR1B |= (1<<RXEN1);	//enable receiver; page 182
+}
+
+void I2C_init(uint8_t slave_addr){	//initialize I2C module
+	PRR &= ~(1<<PRTWI); //enable TWI module in PRR; page 152; page 39
+ 1d8:	e0 e7       	ldi	r30, 0x70	; 112
+ 1da:	f0 e0       	ldi	r31, 0x00	; 0
+ 1dc:	90 81       	ld	r25, Z
+ 1de:	9f 77       	andi	r25, 0x7F	; 127
+ 1e0:	90 83       	st	Z, r25
+	TWSCRA |= 1<<TWEN;	//enable Two-Wire imterface in slave mode; page 205
+ 1e2:	e5 ea       	ldi	r30, 0xA5	; 165
+ 1e4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e6:	90 81       	ld	r25, Z
+ 1e8:	98 60       	ori	r25, 0x08	; 8
+ 1ea:	90 83       	st	Z, r25
+	TWSCRA |= 1<<TWDIE;	//enable TWI data interrupt; page 205
+ 1ec:	90 81       	ld	r25, Z
+ 1ee:	90 62       	ori	r25, 0x20	; 32
+ 1f0:	90 83       	st	Z, r25
+	TWSCRA |= 1<<TWASIE;	//enable TWI Address/Stop interrupt; page 205
+ 1f2:	90 81       	ld	r25, Z
+ 1f4:	90 61       	ori	r25, 0x10	; 16
+ 1f6:	90 83       	st	Z, r25
+	TWSCRA |= 1<<TWSME;	//enable TWI smart mode; automatic NACK after a data package is received; page 205
+ 1f8:	90 81       	ld	r25, Z
+ 1fa:	91 60       	ori	r25, 0x01	; 1
+ 1fc:	90 83       	st	Z, r25
+	TWSA = slave_addr<<1;	//7-bit address; setting the bit 0 enables general call address recognition logic; not used this in case; page 208
+ 1fe:	88 0f       	add	r24, r24
+ 200:	80 93 a2 00 	sts	0x00A2, r24
+ 204:	08 95       	ret
+
+00000206 <_Z15USART0_SPI_inith>:
+	DDRA &= ~(1<<DDRA7);	//set PA7/SS as input; in slave mode, ss is always input; probably not needed; page 155
+	DDRA |= 1<<DDRA5;	//set PA6/MISO as output
+}
+
+void USART0_SPI_init(uint8_t baud_rate){	//initialize USART0 to operate in SPI master mode
+	PRR &= ~(1<<PRUSART0);	//enable USART0 module in PRR; page39; page 160
+ 206:	e0 e7       	ldi	r30, 0x70	; 112
+ 208:	f0 e0       	ldi	r31, 0x00	; 0
+ 20a:	90 81       	ld	r25, Z
+ 20c:	9f 7d       	andi	r25, 0xDF	; 223
+ 20e:	90 83       	st	Z, r25
+	UBRR0 = 0;	//set the baud_rate to zero; page 189
+ 210:	a1 e8       	ldi	r26, 0x81	; 129
+ 212:	b0 e0       	ldi	r27, 0x00	; 0
+ 214:	11 96       	adiw	r26, 0x01	; 1
+ 216:	1c 92       	st	X, r1
+ 218:	1e 92       	st	-X, r1
+	DDRA |= 1<<DDRA3;	//set PA3 as output; XCK0 must be set as output; page 187
+ 21a:	d3 9a       	sbi	0x1a, 3	; 26
+	UCSR0C |= (1<<UMSEL00) | (1<<UMSEL01);	//enable SPI mode in USART0; page 195
+ 21c:	e4 e8       	ldi	r30, 0x84	; 132
+ 21e:	f0 e0       	ldi	r31, 0x00	; 0
+ 220:	90 81       	ld	r25, Z
+ 222:	90 6c       	ori	r25, 0xC0	; 192
+ 224:	90 83       	st	Z, r25
+	UCSR0C &= ~((1<<UDORD0) | (1<<UCPHA0) | (1<<UCPOL0));	//MSB first; clk phase = 0, clk polarity = 0; page 195
+ 226:	90 81       	ld	r25, Z
+ 228:	98 7f       	andi	r25, 0xF8	; 248
+ 22a:	90 83       	st	Z, r25
+	UCSR0A &= ~(1<<U2X0);	//set to zero to use synchronous mode; probably not needed because operating in SPI mode; page 181
+ 22c:	e6 e8       	ldi	r30, 0x86	; 134
+ 22e:	f0 e0       	ldi	r31, 0x00	; 0
+ 230:	90 81       	ld	r25, Z
+ 232:	9d 7f       	andi	r25, 0xFD	; 253
+ 234:	90 83       	st	Z, r25
+	UCSR0B |= (1<<TXEN0);	//enable receiver and transmitter; page 194
+ 236:	e5 e8       	ldi	r30, 0x85	; 133
+ 238:	f0 e0       	ldi	r31, 0x00	; 0
+ 23a:	90 81       	ld	r25, Z
+ 23c:	98 60       	ori	r25, 0x08	; 8
+ 23e:	90 83       	st	Z, r25
+	UCSR0B &= ~(1<<RXEN0);	//disable receiver; page 194
+ 240:	90 81       	ld	r25, Z
+ 242:	9f 7e       	andi	r25, 0xEF	; 239
+ 244:	90 83       	st	Z, r25
+	UBRR0 = baud_rate;	//set the baud_rate; baud_rate = 0 -> 1Mbps; page 180
+ 246:	90 e0       	ldi	r25, 0x00	; 0
+ 248:	11 96       	adiw	r26, 0x01	; 1
+ 24a:	9c 93       	st	X, r25
+ 24c:	8e 93       	st	-X, r24
+ 24e:	08 95       	ret
+
+00000250 <main>:
+ volatile uint8_t data_in = 0;	//receive data
+ volatile uint8_t data_out[] = {0x15, 0xAB, 0x04, 0x45};	//send data
+ volatile bool received_signal = false;	//flash LED
+
+int main(){
+	DDRB |= 1<<DDRB2;	//set PB2 as output to flash LED
+ 250:	ba 9a       	sbi	0x17, 2	; 23
+	DDRA |= 1<<DDRA0;	//set PA0 as output to apply change to the digital phase shifter	
+ 252:	d0 9a       	sbi	0x1a, 0	; 26
+	PORTA &= ~(1<<PORTA0);	//pull PA0 low	
+ 254:	d8 98       	cbi	0x1b, 0	; 27
+	
+	cli();	//disable global interrupt; atmel built-in function
+ 256:	f8 94       	cli
+	USART0_SPI_init(0);	//initialize USART0 module; user defined function; set the baud_rate to 1Mbps; page 180
+ 258:	80 e0       	ldi	r24, 0x00	; 0
+ 25a:	d5 df       	rcall	.-86     	; 0x206 <_Z15USART0_SPI_inith>
+	//USART1_init(103);	//initialize USART1 module; user defined function; set the baud_rate to 9600; page 179
+	I2C_init(0x08);		//initialize I2C module with address = 0x08; user defined function
+ 25c:	88 e0       	ldi	r24, 0x08	; 8
+ 25e:	bc df       	rcall	.-136    	; 0x1d8 <_Z8I2C_inith>
+	//SPI_init();	//initialize SPI module; user defined function
+	sei();	//enable global interrupt; atmel built-in function
+ 260:	78 94       	sei
+		 
+	while(1){
+		if(received_signal){
+ 262:	80 91 04 01 	lds	r24, 0x0104
+ 266:	88 23       	and	r24, r24
+ 268:	e1 f3       	breq	.-8      	; 0x262 <main+0x12>
+			received_signal = false;
+ 26a:	10 92 04 01 	sts	0x0104, r1
+			PINB |= 1<<PINB2;	//toggle PORTB2
+ 26e:	b2 9a       	sbi	0x16, 2	; 22
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 270:	2f ef       	ldi	r18, 0xFF	; 255
+ 272:	81 ee       	ldi	r24, 0xE1	; 225
+ 274:	94 e0       	ldi	r25, 0x04	; 4
+ 276:	21 50       	subi	r18, 0x01	; 1
+ 278:	80 40       	sbci	r24, 0x00	; 0
+ 27a:	90 40       	sbci	r25, 0x00	; 0
+ 27c:	e1 f7       	brne	.-8      	; 0x276 <main+0x26>
+ 27e:	00 c0       	rjmp	.+0      	; 0x280 <main+0x30>
+ 280:	00 00       	nop
+			_delay_ms(100);
+			PINB |= 1<<PINB2;	//toggle PORTB2
+ 282:	b2 9a       	sbi	0x16, 2	; 22
+ 284:	2f ef       	ldi	r18, 0xFF	; 255
+ 286:	81 ee       	ldi	r24, 0xE1	; 225
+ 288:	94 e0       	ldi	r25, 0x04	; 4
+ 28a:	21 50       	subi	r18, 0x01	; 1
+ 28c:	80 40       	sbci	r24, 0x00	; 0
+ 28e:	90 40       	sbci	r25, 0x00	; 0
+ 290:	e1 f7       	brne	.-8      	; 0x28a <main+0x3a>
+ 292:	00 c0       	rjmp	.+0      	; 0x294 <main+0x44>
+ 294:	00 00       	nop
+ 296:	e5 cf       	rjmp	.-54     	; 0x262 <main+0x12>
+
+00000298 <_exit>:
+ 298:	f8 94       	cli
+
+0000029a <__stop_program>:
+ 29a:	ff cf       	rjmp	.-2      	; 0x29a <__stop_program>
