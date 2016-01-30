@@ -39,3 +39,4 @@ def test_func(number):
         print(number)
 
 test_func(num2)
+
