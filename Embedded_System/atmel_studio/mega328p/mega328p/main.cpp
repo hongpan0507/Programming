@@ -12,12 +12,20 @@
 
 int main(void)	//turn on LED on pin13 of arduino uno
 {	
+	/*
     DDRB |= 1<<DDB5;	//set PB5 as output
     while (1) {
 		PORTB |= 1<<PORTB5;		//pull PB5 high
 		_delay_ms(1000);
 		PORTB &= ~(1<<PORTB5);	//pull PB5 low
 		_delay_ms(1000);
-    }
+    }*/
+	DDRD |= 1<<DDD7;	//set PB5 as output
+	while (1) {
+		PORTD |= 1<<PORTD7;		//pull PB5 high
+		_delay_ms(100);
+		PORTD &= ~(1<<PORTD7);	//pull PB5 low
+		_delay_ms(100);
+	}
 }
 

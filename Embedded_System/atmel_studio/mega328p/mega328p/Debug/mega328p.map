@@ -361,9 +361,9 @@ END GROUP
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0xe4 main.o
 
-.debug_line     0x00000000      0x126
+.debug_line     0x00000000      0x128
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x126 main.o
+ .debug_line    0x00000000      0x128 main.o
 
 .debug_frame    0x00000000       0x24
  *(.debug_frame)
