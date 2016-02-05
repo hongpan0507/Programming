@@ -18,28 +18,22 @@ s_mtx_e = np.array([[s11_e, s12_e], [s21_e, s22_e]], dtype=complex)
 
 # convert common-emitter S-parameter to common-emitter y-matrix parameter
 # Microwave Transistor Amplifier page 62
-y_matrix_e = np.zeros([2, 2], dtype=complex)
 y_matrix_e = utl.s_to_y(s_mtx_e)
 
 # convert common-emitter y-matrix parameter to common-base y-matrix parameter
 # Microwave Transistor Amplifier page 63
-y_matrix_b = np.zeros([2, 2], dtype=complex)
 y_matrix_b = utl.y_e_to_y_b(y_matrix_e)
 
 # convert common-emitter y-matrix parameter to common-collect y-matrix parameter
 # Microwave Transistor Amplifier page 63
-y_matrix_c = np.zeros([2, 2], dtype=complex)
 y_matrix_c = utl.y_e_to_y_c(y_matrix_e)
-
 
 # convert common-base y-matrix parameter to common-base s-matrix parameter
 # Microwave Transistor Amplifier page 62
-s_matrix_b = np.zeros([2, 2], dtype=complex)
 s_matrix_b = utl.y_to_s(y_matrix_b)
 
 # convert common-collector y-matrix parameter to common-collect s-matrix parameter
 # Microwave Transistor Amplifier page 62
-s_matrix_c = np.zeros([2, 2], dtype=complex)
 s_matrix_c = utl.y_to_s(y_matrix_c)
 
 print ('s-parameter base: ')
