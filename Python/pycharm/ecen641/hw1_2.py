@@ -1,6 +1,8 @@
 # ecen641 hw1; problem 1.27
 # Microwave Transistor Amplifier page 91
 
+import sys
+sys.path.insert(0, 'D:\Github\Programming\Python\pycharm')
 from cmath import exp
 import numpy as np
 import utilities as utl
