@@ -78,25 +78,93 @@ for b_s_row in z0lver_b_s_para:  # row is a python list that contains the data
     z0lver_b_s21.append(float(b_s_row[' S21']))
     z0lver_b_s22.append(float(b_s_row[' S22']))
 
+ana_reslt_a_s11 = []
+ana_reslt_a_s21 = []
+for i in xrange(0, len(z0lver_a_freq)):
+    ana_reslt_a_s11.append(-12.4)    # from calculation
+    ana_reslt_a_s21.append(-1.05)    # from calculation
+
+ana_reslt_a_s22 = ana_reslt_a_s11     # symmetric circuit
+ana_reslt_a_s12 = ana_reslt_a_s21     # symmetric circuit
+ana_reslt_b_s11 = ana_reslt_a_s11   # shift reference plane; magnitude doesn't change
+ana_reslt_b_s12 = ana_reslt_a_s12   # shift reference plane; magnitude doesn't change
+ana_reslt_b_s21 = ana_reslt_a_s21   # shift reference plane; magnitude doesn't change
+ana_reslt_b_s22 = ana_reslt_a_s22   # shift reference plane; magnitude doesn't change
+
 # plotting
-plot.plot(hfss_a_freq, hfss_a_s11, 'r--')
-plot.plot(hfss_b_freq, hfss_b_s11, 'b-')
-plot.plot(z0lver_a_freq, z0lver_a_s11, 'g--')
-plot.plot(z0lver_b_freq, z0lver_b_s11, 'y-')
+plot.figure(1)  # create empty figure
+ax1 = plot.subplot(221)     # create axes handle for figure 1
+ax1.plot(hfss_a_freq, hfss_a_s11, 'r--', label="hfss_a_s11")
+ax1.plot(z0lver_a_freq, z0lver_a_s11, 'b-', label="z0lver_a_s11")
+ax1.plot(z0lver_a_freq, ana_reslt_a_s11, 'g:', label="analytical_a_s11")
 plot.axis([2, 3, -15, -10])     # [xmin, xmax, ymin, ymax]
+plot.legend(loc=1)  # loc=4 => bottom right corner
 plot.xlabel('Frequency (GHz)')
 plot.ylabel('Magnitude (dB)')
+plot.title('s-parameter (reference plane not shifted)')
+ax2 = plot.subplot(222)     # create axes handle for figure 1
+ax2.plot(hfss_a_freq, hfss_a_s12, 'r--', label="hfss_a_s12")
+ax2.plot(z0lver_a_freq, z0lver_a_s12, 'b-', label="z0lver_a_s12")
+ax2.plot(z0lver_a_freq, ana_reslt_a_s12, 'g:', label="analytical_a_s12")
+plot.axis([2, 3, -2, -1])     # [xmin, xmax, ymin, ymax]
+plot.legend(loc=4)  # loc=4 => bottom right corner
+plot.xlabel('Frequency (GHz)')
+plot.ylabel('Magnitude (dB)')
+plot.title('s-parameter (reference plane not shifted)')
+ax3 = plot.subplot(223)     # create axes handle for figure 1
+ax3.plot(hfss_a_freq, hfss_a_s21, 'r--', label="hfss_a_s21")
+ax3.plot(z0lver_a_freq, z0lver_a_s21, 'b-', label="z0lver_a_s21")
+ax3.plot(z0lver_a_freq, ana_reslt_a_s21, 'g:', label="analytical_a_s21")
+plot.axis([2, 3, -2, -1])     # [xmin, xmax, ymin, ymax]
+plot.legend(loc=4)  # loc=4 => bottom right corner
+plot.xlabel('Frequency (GHz)')
+plot.ylabel('Magnitude (dB)')
+plot.title('s-parameter (reference plane not shifted)')
+ax4 = plot.subplot(224)     # create axes handle for figure 1
+ax4.plot(hfss_a_freq, hfss_a_s22, 'r--', label="hfss_a_s22")
+ax4.plot(z0lver_a_freq, z0lver_a_s22, 'b-', label="z0lver_a_s22")
+ax4.plot(z0lver_a_freq, ana_reslt_a_s22, 'g:', label="analytical_a_s22")
+plot.axis([2, 3, -15, -10])     # [xmin, xmax, ymin, ymax]
+plot.legend(loc=1)  # loc=4 => bottom right corner
+plot.xlabel('Frequency (GHz)')
+plot.ylabel('Magnitude (dB)')
+plot.title('s-parameter (reference plane not shifted)')
+
+plot.figure(2)  # create empty figure
+ax1 = plot.subplot(221)     # create axes handle for figure 1
+ax1.plot(hfss_b_freq, hfss_b_s11, 'r--', label="hfss_b_s11")
+ax1.plot(z0lver_b_freq, z0lver_b_s11, 'b-', label="z0lver_b_s11")
+ax1.plot(z0lver_a_freq, ana_reslt_b_s11, 'g:', label="analytical_b_s11")
+plot.axis([2, 3, -15, -10])     # [xmin, xmax, ymin, ymax]
+plot.legend(loc=1)  # loc=4 => bottom right corner
+plot.xlabel('Frequency (GHz)')
+plot.ylabel('Magnitude (dB)')
+plot.title('s-parameter (reference plane shifted)')
+ax2 = plot.subplot(222)     # create axes handle for figure 1
+ax2.plot(hfss_b_freq, hfss_b_s12, 'r--', label="hfss_b_s12")
+ax2.plot(z0lver_b_freq, z0lver_b_s12, 'b-', label="z0lver_b_s12")
+ax2.plot(z0lver_a_freq, ana_reslt_b_s12, 'g:', label="analytical_b_s12")
+plot.axis([2, 3, -2, -1])     # [xmin, xmax, ymin, ymax]
+plot.legend(loc=4)  # loc=4 => bottom right corner
+plot.xlabel('Frequency (GHz)')
+plot.ylabel('Magnitude (dB)')
+plot.title('s-parameter (reference plane shifted)')
+ax3 = plot.subplot(223)     # create axes handle for figure 1
+ax3.plot(hfss_b_freq, hfss_b_s21, 'r--', label="hfss_b_s21")
+ax3.plot(z0lver_b_freq, z0lver_b_s21, 'b-', label="z0lver_b_s21")
+ax3.plot(z0lver_a_freq, ana_reslt_b_s21, 'g:', label="analytical_b_s21")
+plot.axis([2, 3, -2, -1])     # [xmin, xmax, ymin, ymax]
+plot.legend(loc=4)  # loc=4 => bottom right corner
+plot.xlabel('Frequency (GHz)')
+plot.ylabel('Magnitude (dB)')
+plot.title('s-parameter (reference plane shifted)')
+ax4 = plot.subplot(224)     # create axes handle for figure 1
+ax4.plot(hfss_b_freq, hfss_b_s22, 'r--', label="hfss_b_s22")
+ax4.plot(z0lver_b_freq, z0lver_b_s22, 'b-', label="z0lver_b_s22")
+ax4.plot(z0lver_a_freq, ana_reslt_b_s22, 'g:', label="analytical_b_s22")
+plot.axis([2, 3, -15, -10])     # [xmin, xmax, ymin, ymax]
+plot.legend(loc=1)  # loc=4 => bottom right corner
+plot.xlabel('Frequency (GHz)')
+plot.ylabel('Magnitude (dB)')
+plot.title('s-parameter (reference plane shifted)')
 plot.show()
-# plot.figure(1)  # create empty figure
-# ax1 = plot.subplot(111)     # create axes handle for figure 1
-
-print len(hfss_a_freq)
-print len(hfss_b_freq)
-print len(z0lver_a_freq)
-print len(z0lver_b_freq)
-print hfss_a_freq
-print hfss_b_freq
-print z0lver_a_freq
-print z0lver_b_freq
-
-

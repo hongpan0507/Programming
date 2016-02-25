@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../ecen452/.idea/ecen452.iml" filepath="$PROJECT_DIR$/../ecen452/.idea/ecen452.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ecen641.iml" filepath="$PROJECT_DIR$/.idea/ecen641.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/lab1/problem6/.idea/problem6.iml" filepath="$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/lab1/problem6/.idea/problem6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../programs/.idea/programs.iml" filepath="$PROJECT_DIR$/../programs/.idea/programs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tutorial/.idea/tutorial.iml" filepath="$PROJECT_DIR$/../tutorial/.idea/tutorial.iml" />
     </modules>
   </component>
 </project>

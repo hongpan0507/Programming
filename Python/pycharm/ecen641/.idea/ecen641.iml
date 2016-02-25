@@ -5,6 +5,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ecen452" />
+    <orderEntry type="module" module-name="tutorial" />
+    <orderEntry type="module" module-name="problem6" />
+    <orderEntry type="module" module-name="programs" />
   </component>
   <component name="TestRunnerService">
     <option name="projectConfiguration" value="Nosetests" />
