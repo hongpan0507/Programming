@@ -55,6 +55,3 @@ plot.ylabel('S11 Magnitude (dB)')
 plot.title('state 1')
 plot.legend(loc=4)  # loc=4 => bottom right corner
 plot.show()
-
-
-
