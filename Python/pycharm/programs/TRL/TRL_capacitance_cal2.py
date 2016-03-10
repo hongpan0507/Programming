@@ -18,7 +18,7 @@ DeEmbed_l = 15e-3      # de-embed length
 e_eff = 3.31    # effective dielectric constant
 
 # file_reactance = open('reflect_z_img.csv', 'rb')  # open the file for reading
-file_reactance = open('test1.csv', 'rb')  # open the file for reading
+file_reactance = open('reflect_z_img.csv', 'rb')  # open the file for reading
 reactance = csv.reader(file_reactance, delimiter=',')   # convert cvs file to python list
 file_capacitance = open('refelect_cap.csv', 'wb') # open the file for writing
 capacitance = csv.writer(file_capacitance, delimiter=',')   # convert cvs file to python list
@@ -31,14 +31,14 @@ reflect_cap = []
 z_img = []
 
 for row in reactance:   # row contains the row data
-    if reactance.line_num > 0:    # ignore the first line
+    if reactance.line_num > 1:    # ignore the first line
         if row[0] == 'END':     # check if row reaches the last one
             break
-        z_img.append(float(row[2]))     # original z_img for plotting purpose only
+        z_img.append(float(row[1]))     # original z_img for plotting purpose only
         row[0] = float(row[0])*1e9    # convert frequency from GHz to Hz
-        row[2] = 1/(2*pi*row[0]*-1*float(row[2]))  # convert reactance to capacitance in F
+        row[1] = 1/(2*pi*row[0]*-1*float(row[1]))  # convert reactance to capacitance in F
         freq.append(row[0])
-        reflect_cap.append(row[2])
+        reflect_cap.append(row[1])
         capacitance.writerow(row)
 
 # debug
