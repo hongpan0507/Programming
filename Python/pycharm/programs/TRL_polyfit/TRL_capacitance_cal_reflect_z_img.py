@@ -20,7 +20,7 @@ e_eff = 3.31    # effective dielectric constant
 # file_reactance = open('reflect_z_img.csv', 'rb')  # open the file for reading
 file_reactance = open('reflect_z_img.csv', 'rb')  # open the file for reading
 reactance = csv.reader(file_reactance, delimiter=',')   # convert cvs file to python list
-file_capacitance = open('refelect_cap.csv', 'wb') # open the file for writing
+file_capacitance = open('reflect_cap.csv', 'wb') # open the file for writing
 capacitance = csv.writer(file_capacitance, delimiter=',')   # convert cvs file to python list
 
 pi = np.pi

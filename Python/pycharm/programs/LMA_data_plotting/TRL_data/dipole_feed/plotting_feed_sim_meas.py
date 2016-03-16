@@ -23,6 +23,11 @@ measured_s11_mag_state0 = []
 
 
 # ***************************** Simulated Data *****************************
+for row in sim_csv_s11_mag_state0:   # row contains the row data
+    if sim_csv_s11_mag_state0.line_num > 1:    # ignore the first line
+        if row[0] == 'END':     # check if row reaches the last one
+            break
+        sim_s11_mag_state0.append(row[1])
 # *************************************************************************
 
 # ***************************** Measured Data *****************************
@@ -33,12 +38,6 @@ for row in measured_csv_s11_mag_state0:   # row contains the row data
         freq.append(row[0])
         constant_0dB.append(0)
         measured_s11_mag_state0.append(row[1])
-
-for row in sim_csv_s11_mag_state0:   # row contains the row data
-    if sim_csv_s11_mag_state0.line_num > 1:    # ignore the first line
-        if row[0] == 'END':     # check if row reaches the last one
-            break
-        sim_s11_mag_state0.append(row[1])
 
 print sim_s11_mag_state0.__sizeof__()
 print measured_s11_mag_state0.__sizeof__()
