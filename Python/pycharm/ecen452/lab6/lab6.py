@@ -30,11 +30,20 @@ sim_s11_mag = []
 sim_s21_phase = []
 sim_s21_mag = []
 
+freq_marker = []
+measured_s11_marker = []
+sim_s11_marker = []
+measured_s21_marker = []
+sim_s21_marker = []
+marker1 = 2.5
+marker2 = 3.5
+
 for row in measured_phase:   # row contains the row data
     if measured_phase.line_num > 8:    # ignore the first line
         if row[0] == 'END':     # check if row reaches the last one
             break
-        freq.append(float(row[0])/1e9)   # convert from Hz to GHz
+        freq_num = float(row[0])/1e9
+        freq.append(freq_num)   # convert from Hz to GHz
         measured_s11_phase.append(float(row[1]))
         measured_s21_phase.append(float(row[2]))
 
@@ -42,6 +51,11 @@ for row in measured_mag:   # row contains the row data
     if measured_mag.line_num > 8:    # ignore the first line
         if row[0] == 'END':     # check if row reaches the last one
             break
+        freq_num = float(row[0])/1e9
+        if freq_num == marker1 or freq_num == marker2:     
+            freq_marker.append(freq_num)
+            measured_s11_marker.append(float(row[1]))
+            measured_s21_marker.append(float(row[2]))
         measured_s11_mag.append(float(row[1]))
         measured_s21_mag.append(float(row[2]))
 
@@ -56,6 +70,11 @@ for row in sim_mag:   # row contains the row data
     if sim_mag.line_num > 1:    # ignore the first line
         if row[0] == 'END':     # check if row reaches the last one
             break
+        freq_num = float(row[0])
+        if freq_num == marker1 or freq_num == marker2:
+            sim_s11_marker.append(float(row[1]))
+            sim_s21_marker.append(float(row[2]))
+            print sim_s11_marker
         sim_s11_mag.append(float(row[1]))
         sim_s21_mag.append(float(row[2]))
 
@@ -103,7 +122,11 @@ n += 1
 plot.figure(n)
 ax1 = plot.subplot(111)
 ax1.plot(freq, measured_s11_mag, 'r-', label="s11 measured_mag")
+ax1.scatter(freq_marker, measured_s11_marker, s=80, marker="+", color='r', label=("x="+str(freq_marker)+"\ny="+str(measured_s11_marker)))
 ax1.plot(freq, sim_s11_mag, 'b-', label="s11 simulated_mag")
+ax1.scatter(freq_marker, sim_s11_marker, s=80, marker="+", color='b', label=("x="+str(freq_marker)+"\ny="+str(sim_s11_marker)))
+# for i in range(0, len(freq_marker)):
+#     ax1.annotate(("marker "+str(i)), (freq_marker[i], sim_s11_marker[i]))
 # ax1.axis([1.5, 4.5, -0.25, 0.25])     # [xmin, xmax, ymin, ymax]
 plot.xlabel('Frequency (GHz)')
 plot.ylabel('magnitude (dB)')
