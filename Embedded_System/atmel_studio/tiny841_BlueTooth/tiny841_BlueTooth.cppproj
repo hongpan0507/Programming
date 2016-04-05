@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>tiny841_usart</AssemblyName>
-    <Name>tiny841_usart</Name>
-    <RootNamespace>tiny841_usart</RootNamespace>
+    <AssemblyName>tiny841_BlueTooth</AssemblyName>
+    <Name>tiny841_BlueTooth</Name>
+    <RootNamespace>tiny841_BlueTooth</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
