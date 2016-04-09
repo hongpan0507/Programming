@@ -2,63 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9966ce3e-c321-427c-a5cc-c05887f4582b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ecen452/lab6/lab6_BSF_s_para_mag.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ecen452/lab6/lab6_BSF_s_para_phase.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ecen452/lab7/HP_LS_180deg.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ecen452/lab7/HP_LS_90deg.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ecen452/lab7/HP_LS_THRU.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ecen452/lab7/HP_LS_THRU2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../ecen452/lab7/lab7.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../programs/equation_sol.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../programs/s-parameter_extraction/TRL_Reflect_S11_ReIm.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../programs/s-parameter_extraction/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../programs/s-parameter_extraction/reflect_s11_discrete.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../programs/s-parameter_extraction/reflect_s11_discrete_RI_deembedding.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../programs/s-parameter_extraction/reflect_s11_discrete_RI_no_deembedding.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../programs/s-parameter_extraction/s-parameter_extract.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../programs/TRL_polyfit/refelect_cap.csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/mega328/.vs/mega328/v14/.atsuo" afterPath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/mega328/.vs/mega328/v14/.atsuo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/mega328p/.vs/mega328p/v14/.atsuo" afterPath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/mega328p/.vs/mega328p/v14/.atsuo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny841/.vs/tiny841/v14/.atsuo" afterPath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny841/.vs/tiny841/v14/.atsuo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny841_usart/.vs/tiny841_usart/v14/.atsuo" afterPath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny841_usart/.vs/tiny841_usart/v14/.atsuo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny85/.vs/tiny85/v14/.atsuo" afterPath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny85/.vs/tiny85/v14/.atsuo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny85_pwm/.vs/tiny85_pwm/v14/.atsuo" afterPath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny85_pwm/.vs/tiny85_pwm/v14/.atsuo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny841_usart/tiny841_usart.cppproj" afterPath="$PROJECT_DIR$/../../../Embedded_System/atmel_studio/tiny841_usart/tiny841_usart.cppproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ecen641.iml" afterPath="$PROJECT_DIR$/.idea/ecen641.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/1/RL_Test_1_t0v.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/1/RL_Test_1_t0v.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/1/RL_Test_1_t2v.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/1/RL_Test_1_t2v.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/1/RL_Test_1_t4v_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/1/RL_Test_1_t4v_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/1/RL_Test_1_t5v_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/1/RL_Test_1_t5v_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/1/RL_Test_1_t6v_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/1/RL_Test_1_t6v_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/1/RL_Test_1_t7v_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/1/RL_Test_1_t7v_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/1/__init__.py" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/1/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/1/plotting.py" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/1/plotting.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/2/plotting.py" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/4/plotting.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/2/t0.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/2/t0.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/2/t3.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/2/t3.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/2/t4.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/2/t4.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/2/t5.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/2/t5.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/2/t7.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/2/t7.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/3/plotting.py" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/3/plotting.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/3/t2_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/3/t2_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/4/plotting.py" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/2/plotting.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/4/t1_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/4/t1_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/4/t2_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/4/t2_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/4/t3_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/4/t3_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/RL_Dipole.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/RL_Dipole.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/plotting.py" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/plotting.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/simulated_state_0_s11.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/simulated_state_0_s11.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t0_wo_gating_trial2.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t0_wo_gating_trial2.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t1_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t1_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t2_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t2_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t3_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t3_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t4_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t4_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t5.5_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t5.5_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t5_wo_gating_trial2.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t5_wo_gating_trial2.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t6_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t6_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/5/t7_wo_gating.csv" afterPath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/5/t7_wo_gating.csv" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../programs/LMA_data_plotting/panel2/__init__.py" afterPath="$PROJECT_DIR$/exam1/microstrip_line.py" />
     </list>
     <ignored path="ecen641.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,20 +25,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="lab6.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ecen452/lab6/lab6.py">
+      <file leaf-file-name="lab6.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/lab6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
-              <folding>
-                <element signature="e#534#544#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="1.0165913">
+              <caret line="122" column="14" selection-start-line="122" selection-start-column="14" selection-end-line="122" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lab7.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../ecen452/lab7/lab7.py">
+      <file leaf-file-name="lab6_LPF_s_para_mag.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/lab6_LPF_s_para_mag.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lab7_wilkinson_s_para_mag.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab7/lab7_wilkinson_s_para_mag.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -159,12 +113,14 @@
         <option value="$PROJECT_DIR$/../programs/equation_sol.py" />
         <option value="$PROJECT_DIR$/../programs/s-parameter_extract.py" />
         <option value="$PROJECT_DIR$/../programs/s-parameter_extraction/s-parameter_extract.py" />
+        <option value="$PROJECT_DIR$/../ecen452/lab7/lab7.py" />
+        <option value="$PROJECT_DIR$/../ecen452/marker.py" />
         <option value="$PROJECT_DIR$/../ecen452/lab6/lab6.py" />
+        <option value="$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/lab6.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
     <option name="width" value="960" />
     <option name="height" value="1170" />
   </component>
@@ -200,122 +156,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="ecen641" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen641" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="programs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen641" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="programs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="s-parameter_extraction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen641" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="programs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LMA_data_plotting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen641" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="programs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LMA_data_plotting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="panel2A" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen641" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="programs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LMA_data_plotting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="panel2A" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen641" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen452" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lab7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen641" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen452" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lab6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen641" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecen452" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -356,78 +196,27 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHub/PortableGit_25d850739bc178b2eb13c3e2a9faafea2f9143c0/cmd/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Github\Programming\Python\pycharm\ecen452\lab7" />
-      <recent name="D:\Github\Programming\Python\pycharm\ecen452\lab6" />
-      <recent name="D:\Github\Programming\Python\pycharm\programs\s-parameter_extraction" />
-      <recent name="D:\Github\Programming\Python\pycharm\programs" />
-      <recent name="D:\Github\Programming\Python\pycharm\programs\LMA_data_plotting\panel2\5" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Github\ECEN452-Spring2016\Students\hongpan0507\Lab7" />
       <recent name="D:\Github\Programming\Python\pycharm\ecen452\lab7" />
       <recent name="D:\Github\Programming\Python\pycharm\programs\s-parameter_extraction" />
       <recent name="D:\Github\Programming\Python\pycharm\programs\LMA_data_plotting\panel1" />
       <recent name="D:\Github\Programming\Python\pycharm\programs\LMA_data_plotting\TRL_data\dipole_feed" />
-      <recent name="D:\Github\Programming\Python\pycharm\programs\LMA_data_plotting\TRL" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\ECEN452-Spring2016\Students\hongpan0507\Lab7" />
+      <recent name="D:\Github\ECEN452-Spring2016\Students\hongpan0507\Lab6" />
+      <recent name="D:\Github\Programming\Python\pycharm\ecen452\lab7" />
+      <recent name="D:\Github\Programming\Python\pycharm\ecen452\lab6" />
+      <recent name="D:\Github\Programming\Python\pycharm\programs\s-parameter_extraction" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.lab6">
-    <configuration default="false" name="microstrip_line" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exam1" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ecen641" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exam1/microstrip_line.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="hw3" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/transistor_stability" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ecen641" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/transistor_stability/hw3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="s-parameter_extract" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../programs" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="programs" />
-      <option name="SCRIPT_NAME" value="D:\Github\Programming\Python\pycharm\programs\s-parameter_extraction\s-parameter_extract.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.lab6 (1)">
     <configuration default="false" name="lab6" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -458,6 +247,57 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="programs" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../programs/s-parameter_extraction/s-parameter_extract.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="lab7" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../ecen452/lab7" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ecen452" />
+      <option name="SCRIPT_NAME" value="D:\Github\ECEN452-Spring2016\Students\hongpan0507\Lab7\lab7.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="marker" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../ecen452" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ecen452" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../ecen452/marker.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="lab6 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ECEN452-Spring2016" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/lab6.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -585,19 +425,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.microstrip_line" />
-      <item index="1" class="java.lang.String" itemvalue="Python.hw3" />
-      <item index="2" class="java.lang.String" itemvalue="Python.s-parameter_extract" />
-      <item index="3" class="java.lang.String" itemvalue="Python.lab6" />
-      <item index="4" class="java.lang.String" itemvalue="Python.s-parameter_extract (1)" />
+      <item index="0" class="java.lang.String" itemvalue="Python.lab6" />
+      <item index="1" class="java.lang.String" itemvalue="Python.s-parameter_extract (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.lab7" />
+      <item index="3" class="java.lang.String" itemvalue="Python.marker" />
+      <item index="4" class="java.lang.String" itemvalue="Python.lab6 (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.lab6" />
-        <item index="1" class="java.lang.String" itemvalue="Python.s-parameter_extract (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.s-parameter_extract" />
-        <item index="3" class="java.lang.String" itemvalue="Python.hw3" />
-        <item index="4" class="java.lang.String" itemvalue="Python.microstrip_line" />
+        <item index="0" class="java.lang.String" itemvalue="Python.lab6 (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.lab6" />
+        <item index="2" class="java.lang.String" itemvalue="Python.marker" />
+        <item index="3" class="java.lang.String" itemvalue="Python.lab7" />
+        <item index="4" class="java.lang.String" itemvalue="Python.s-parameter_extract (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -660,31 +500,37 @@
       <option name="project" value="LOCAL" />
       <updated>1457647625367</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="lab 3">
+      <created>1459884205928</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1459884205928</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1170" extended-state="0" />
+    <frame x="0" y="0" width="960" height="1170" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30260304" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29718006" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3073218" sideWeight="0.4273319" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33429673" sideWeight="0.5065076" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3073218" sideWeight="0.57266814" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33429673" sideWeight="0.4934924" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24920969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.49566162" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39942253" sideWeight="0.77982646" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3019272" sideWeight="0.56480503" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916266" sideWeight="0.4913232" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39942253" sideWeight="0.77982646" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -718,55 +564,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../programs/LMA_data_plotting/TRL_data/dipole_feed/dipole_feed_port2.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../programs/LMA_data_plotting/TRL_data/dipole_feed/plotting_dipole_feed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7149938">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../programs/LMA_data_plotting/panel1/measured_0_modified.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../programs/LMA_data_plotting/panel1/measured_1_modified.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../programs/LMA_data_plotting/panel1/simulated_0.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../programs/LMA_data_plotting/panel1/simulated_1.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/3/t2_wo_gating.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../programs/LMA_data_plotting/panel2A/4/t1_wo_gating.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -967,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.036036037">
           <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.036036037">
           <caret line="31" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="4001" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -983,7 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -991,7 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-108.24702">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -999,7 +792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-89.41019">
           <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,7 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.77369165">
           <caret line="3997" column="35" selection-start-line="3997" selection-start-column="35" selection-end-line="3997" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,7 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24893919">
           <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,7 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43994212">
           <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,7 +820,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="150" column="0" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="6" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ecen452/marker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -1039,56 +834,92 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ecen452/lab7/HP_LS_90deg.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ecen452/lab7/HP_LS_180deg.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ecen452/lab7/HP_LS_THRU.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ecen452/lab7/HP_LS_THRU2.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../ecen452/lab6/lab6.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
-          <folding>
-            <element signature="e#534#544#0" expanded="true" />
-          </folding>
+          <caret line="131" column="29" selection-start-line="131" selection-start-column="29" selection-end-line="131" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ecen452/lab7/lab7.py">
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab7/HP_LS_90deg.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab7/HP_LS_180deg.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab7/HP_LS_THRU.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab7/HP_LS_THRU2.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab7/lab7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7121711">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/Milled_LPF_dB.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/Milled_LPF_phase.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/lab6_BSF_s_para_mag.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab7/lab7_wilkinson_s_para_mag.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/lab6_LPF_s_para_mag.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../ECEN452-Spring2016/Students/hongpan0507/Lab6/lab6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0165913">
+          <caret line="122" column="14" selection-start-line="122" selection-start-column="14" selection-end-line="122" selection-end-column="14" />
           <folding />
         </state>
       </provider>

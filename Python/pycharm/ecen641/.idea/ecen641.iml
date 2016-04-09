@@ -8,6 +8,8 @@
     <orderEntry type="module" module-name="tutorial" />
     <orderEntry type="module" module-name="problem6" />
     <orderEntry type="module" module-name="programs" />
+    <orderEntry type="module" module-name="ECEN452-Spring2016" />
+    <orderEntry type="module" module-name="ECEN452-Spring2016" />
   </component>
   <component name="TestRunnerService">
     <option name="projectConfiguration" value="Nosetests" />

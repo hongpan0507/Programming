@@ -1,9 +1,15 @@
 /*
  * tiny841_BlueTooth.cpp
- *
+ * ECEN 452 final project
  * Created: 4/3/2016 9:04:18 PM
  * Author : hpan
  * All page numbers are referred to ATtiny 841 datasheet unless state otherwise
+ * program function:		
+		1. Receive command from PC via bluetooth (UART0 RX)
+		2. Configure DAC via SPI
+		3. measure the output of the DAC via ADC
+		4. report the ADC measurement back to PC via bluetooth (UART0 TX)
+		5. adjust DAC output based on the measurement from PNA
  -------------------------------------------------------------------------------------------
  * Device Programming Notes:
 	 # To set a bit: bitwise or; Ex. PORTB |= 1 << PORTB3; //pull PB3 high
@@ -37,12 +43,11 @@
 	 }
 	 # Lock Bit = 0xFF
  -------------------------------------------------------------------------------------------
- * USART programming notes:
-	 #	Clk_ext < Clk_osc/4;	// external clk speed limit in slave synchronous mode; page 163
-	 # double speed available for asynchronous mode
-	 
+ * SPI programming notes:	 
+	 # Output port must be defined as in Table 17-1 page 153
+	 # disable SPI mode, change SPI parameter, enable SPI mode; follow this order or MASTER/SLAVE mode cannot be changed
+	 # clear SPIF interrupt flag by reading status register and access SPI data register; page 158
  -------------------------------------------------------------------------------------------
- 
  */
 
  #define F_CPU 16e6	//CPU clock must be defined first in order to use internal delay function
@@ -55,140 +60,82 @@
  #include <util/delay.h>
 
  
- void SPI_init();	//initialize SPI module
- void I2C_init(uint8_t slave_addr);	//initialize I2C module
- void USART1_init(uint8_t baud_rate);	//initialize USART1 module
- void USART0_SPI_init(uint8_t baud_rate);	//initialize SPI module
-
+ void SPI_init();	//initialize SPI module 
+ void USART0_init(uint8_t baud_rate);	//initialize SPI module
+ volatile uint8_t data_flush = 0;	//useless data
  volatile uint8_t data_in = 0;	//receive data
  volatile uint8_t data_out[] = {0x15, 0xAB, 0x04, 0x45};	//send data
  volatile bool received_signal = false;	//flash LED
 
-int main(){
-	DDRA |= 1<<DDRA7;	//set PA7 as output to flash LED
+int main(){			
+	DDRB |= 1<<DDRB2;	//set PB2 as output to flash LED
 	cli();	//disable global interrupt; atmel built-in function
-	USART0_SPI_init(0);	//initialize USART0 module; user defined function; set the baud_rate to 1Mbps; page 180
-	USART1_init(103);	//initialize USART1 module; user defined function; set the baud_rate to 9600; page 179
-	//I2C_init(0x08);		//initialize I2C module with address = 0x08; user defined function
-	//SPI_init();	//initialize SPI module; user defined function
+	USART0_init(103);	//initialize USART0 module; user defined function; set the baud_rate to 9600; page 180		
+	SPI_init();	//initialize SPI module; user defined function
 	sei();	//enable global interrupt; atmel built-in function
 		 
-	while(1){
-		PINA |= 1<<PINA7;	//toggle PORTA7
-		_delay_ms(100);
-		PINA |= 1<<PINA7;	//toggle PORTA7
-		_delay_ms(100);
+	while(1){						
 		if(received_signal){
 			received_signal = false;
-			PINA |= 1<<PINA7;	//toggle PORTA7
+			PINB |= 1<<PINB2;	//toggle PORTB2
 			_delay_ms(100);
-			PINA |= 1<<PINA7;	//toggle PORTA7
+			PINB |= 1<<PINB2;	//toggle PORTB2
 			_delay_ms(100);
 		}
 	}
 }
 
 //------------------------------Interrupt Service Routine--------------------------------------------------------------
-//SPIF bit is set when a serial transfer is complete; p158
-//SPIF bit is cleared by hardware when the corresponding interrupt is served; page 158
-ISR(SPI_vect, ISR_BLOCK){	//SPI interrupt service routine; blocking all other interrupts
+ISR(USART0_RX_vect, ISR_BLOCK){	//USART1 Receive complete interrupt service routine	
 	//send data to digital phase shifter here
-	data_in = SPDR;		//read data from SPI buffer
-	UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
-	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
-		;
-	}
-	UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193
-	received_signal = true;
-}
-
-ISR(TWI_SLAVE_vect, ISR_BLOCK){	//I2C interrupt service routine; blocking all other interrupts
-	//send data to digital phase shifter here
-	if(TWSSRA & (1<<TWASIF)){	//address/stop detection; page 206
-		if(TWSSRA & (1<<TWAS)){		//address detection; page 207
-			TWSCRB &= ~(1<<TWAA);	//send ACK; page 206
-			TWSCRB |= ((1<<TWCMD0) | (1<<TWCMD1));		//ACK + clear TWI Address/Stop Interrupt Flag; page 206
-		}
-	}
-	if(TWSSRA & (1<<TWDIF)){	//data receive complete detection; page 207
-		TWSCRB |= 1<<TWAA;	//send NACK; page 206
-		data_in = TWSD;		//automatic NACK in smart mode; page 206
-		UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
-		while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
-			;
-		}
-		UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193
-		TWSSRA |= 1<<TWDIF;		//clear TWI data interrupt flag; page 207
-	}
-	received_signal = true;
-}
-
-ISR(USART1_START_vect, ISR_BLOCK){	//USART1 start condition detection interrupt service routine	
-	if(UCSR1A & (1<<UDRE1)){	//check if the USART1 buffer is empty; page 181
-		UDR1 = data_out[1];	//place data to the USART1 transmiter buffer; page 180
+	data_in = UDR0;		//receive data from the USART1 receiver buffer; page 180		
+	UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; provide feedback to check bluetooth command page 190	
+	PORTA &= ~(1<<PORTA7);	//ss low; start SPI transfer
+	SPDR = data_in;	//place data to SPI data buffer and send to the DAC	
+	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0 transfer is complete; page 193
+		;	// wait until USART0 TX transfer is completed
 	}	
-	UCSR1D |= 1<<RXS1;	//clear start condition detection flag; page 185		
-}
-
-ISR(USART1_RX_vect, ISR_BLOCK){	//USART1 Receive complete interrupt service routine	
-	//send data to digital phase shifter here
-	data_in = UDR1;		//receive data from the USART1 receiver buffer; page 180
-	UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
-	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
-		;
-	}
-	UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193
+	while(!(SPSR & (1<<SPIF))){	//SPIF bit is set if SPI transfer is complete; page 158
+		;	// wait until SPI transfer is completed
+	}	
+	data_flush = SPDR;		//clear SPI interrupt flag; page 158
+	UCSR0A |= 1<<TXC0;	//clear USART0 transmit complete signal; page 193		
+	PORTA |= (1<<PORTA7);	//ss high; stop SPI transfer
 	received_signal = true;	
 }
+
 //---------------------------------------------------------------------------------------------------------------------
 
 //------------------------------User Defined Functions--------------------------------------------------------------
-void USART1_init(uint8_t baud_rate){	//initialize USART1 module as asynchronous slave mode  
-	PRR &= ~(1<<PRUSART1);	//enable USART1 module in PRR; page39; page 160		
-	UCSR1C &= ~((1<<UMSEL11) | (1<<UMSEL10));	//enable asynchronous mode in USART1; page 183
-	UCSR1C &= ~((1<<UPM11)|(1<<UPM10));	//disable parity check; page 184
-	UCSR1C &= ~(1<<USBS1);	//use 1 stop bit; page 184
-	UCSR1C |= ((1<<UCSZ11) | (1<<UCSZ10));	//use 8 character per frame; page 184
-	UCSR1B &= ~(1<<UCSZ12);	//use 8 character per frame; page 184
-	UCSR1C &= ~(1<<UCPOL1);		//Clk polarity; write zero when using asynchronous mode; page 184
-	UBRR1 = baud_rate;	//set the baud_rate; page 179
-	UCSR1B |= 1<<RXCIE1;	//enable RX complete Interrupt; page 182
-	UCSR1D |= 1<<RXSIE1;	//enable RX start interrupt; page 185
-	UCSR1B |= (1<<TXEN1);	//enable receiver; page 182
-	UCSR1B |= (1<<RXEN1);	//enable receiver; page 182
-}
-
-void I2C_init(uint8_t slave_addr){	//initialize I2C module
-	PRR &= ~(1<<PRTWI); //enable TWI module in PRR; page 152; page 39
-	TWSCRA |= 1<<TWEN;	//enable Two-Wire imterface in slave mode; page 205
-	TWSCRA |= 1<<TWDIE;	//enable TWI data interrupt; page 205
-	TWSCRA |= 1<<TWASIE;	//enable TWI Address/Stop interrupt; page 205
-	TWSCRA |= 1<<TWSME;	//enable TWI smart mode; automatic NACK after a data package is received; page 205
-	TWSA = slave_addr<<1;	//7-bit address; setting the bit 0 enables general call address recognition logic; not used this in case; page 208
-}
-
-void SPI_init(){	//initialize SPI module
+void SPI_init(){	//initialize SPI module		
 	PRR &= ~(1<<PRSPI); //enable SPI module in PRR; page 152; Page 39
-	SPCR |= 1<<SPE;	//enable SPI module in SPI control Register; page 157
-	SPCR |= 1<<SPIE;	//enable SPI interrupt; page 157; page 158
+	SPCR &= ~(1<<SPE);	//disable SPI module in SPI control Register in order to make changes; page 157	
 	SPCR &= ~(1<<DORD);	//MSB to be transmitted first; page 157
-	SPCR &= ~(1<<MSTR);	//enable SPI slave mode; page 157
+	SPCR |= (1<<MSTR);	//enable SPI master mode; page 157
 	SPCR &= ~(1<CPOL);	//SPI clk is low when idle; page 158
 	SPCR &= ~(1<CPHA);	//Data is valid on leading edge; page 158
-	REMAP &= ~(1<SPIMAP);	//use default pin map; page 159
-	DDRA &= ~(1<<DDRA7);	//set PA7/SS as input; in slave mode, ss is always input; probably not needed; page 155
-	DDRA |= 1<<DDRA5;	//set PA6/MISO as output
+	REMAP &= ~(1<SPIMAP);	//use default pin map; page 159		
+	DDRA |= 1<<DDRA4;	//set PA4 as output to use as SCK
+	DDRA |= 1<<DDRA6;	//set PA6 as output to use as MOSI
+	DDRA |= 1<<DDRA7;	//set PA7 as output to use as SS	
+	SPCR |= 1<<SPE;	//enable SPI module in SPI control Register; page 157	
 }
 
-void USART0_SPI_init(uint8_t baud_rate){	//initialize USART0 to operate in SPI master mode
+void USART0_init(uint8_t baud_rate){	//initialize USART0 to operate in asynchronous mode
 	PRR &= ~(1<<PRUSART0);	//enable USART0 module in PRR; page39; page 160
-	UBRR0 = 0;	//set the baud_rate to zero; page 189
-	DDRA |= 1<<DDRA3;	//set PA3 as output; XCK0 must be set as output; page 187
-	UCSR0C |= (1<<UMSEL00) | (1<<UMSEL01);	//enable SPI mode in USART0; page 195
-	UCSR0C &= ~((1<<UDORD0) | (1<<UCPHA0) | (1<<UCPOL0));	//MSB first; clk phase = 0, clk polarity = 0; page 195
-	UCSR0A &= ~(1<<U2X0);	//set to zero to use synchronous mode; probably not needed because operating in SPI mode; page 181
-	UCSR0B |= (1<<TXEN0);	//enable receiver and transmitter; page 194
-	UCSR0B &= ~(1<<RXEN0);	//disable receiver; page 194
+	UBRR0 = 0;	//set the baud_rate to zero; page 189	
+	UCSR0C &= ~((1<<UMSEL00) | (1<<UMSEL01));	//enable USART0 in asynchronous mode; page 195
+	UCSR0C |= (1<<UPM01)|(1<<UPM00);	//enable parity check; odd parity; page 183
+	UCSR0C |= (1<<USBS0);	//select 1 stop bit; page 184
+	UCSR0B &= ~(1<<UCSZ02);	//character size; set tp 8 bit; page 184
+	UCSR0C |= (1<<UCSZ01)|(1<<UCSZ00);	//character size; set tp 8 bit; page 184
+	UCSR0C &= ~(1<<UCPOL0);	//set to zero when using asynchronous mode; page 184	
+	UCSR0C |= (1<<UDORD0);	//LSB first; page 195	
+	UCSR0A &= ~(1<<U2X0);	//do no double transmission speed; page 181	
 	UBRR0 = baud_rate;	//set the baud_rate; baud_rate = 0 -> 1Mbps; page 180
+	UCSR0B |= 1<<RXCIE0;	//enable RX complete Interrupt; page 182
+	//UCSR0D |= 1<<RXSIE0;	//enable RX start interrupt; page 185
+	UCSR0B |= (1<<TXEN0);	//enable receiver; page 182
+	UCSR0B |= (1<<RXEN0);	//enable receiver; page 182
 }
 //---------------------------------------------------------------------------------------------------------------------

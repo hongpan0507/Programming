@@ -3,31 +3,31 @@ tiny841_spi.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000004  00800100  0000019e  00000232  2**0
+  0 .data         00000004  00800100  00000174  00000208  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000019e  00000000  00000000  00000094  2**1
+  1 .text         00000174  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000002  00800104  00800104  00000236  2**0
+  2 .bss          00000002  00800104  00800104  0000020c  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000236  2**0
+  3 .comment      00000030  00000000  00000000  0000020c  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000268  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000023c  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000038  00000000  00000000  000002a4  2**0
+  5 .debug_aranges 00000038  00000000  00000000  00000278  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000023a  00000000  00000000  000002dc  2**0
+  6 .debug_info   000002d9  00000000  00000000  000002b0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000017e  00000000  00000000  00000516  2**0
+  7 .debug_abbrev 00000176  00000000  00000000  00000589  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000016e  00000000  00000000  00000694  2**0
+  8 .debug_line   00000184  00000000  00000000  000006ff  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000070  00000000  00000000  00000804  2**2
+  9 .debug_frame  00000070  00000000  00000000  00000884  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000232  00000000  00000000  00000874  2**0
+ 10 .debug_str    00000232  00000000  00000000  000008f4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000056  00000000  00000000  00000aa6  2**0
+ 11 .debug_loc    00000056  00000000  00000000  00000b26  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000028  00000000  00000000  00000afc  2**0
+ 12 .debug_ranges 00000028  00000000  00000000  00000b7c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -53,7 +53,7 @@ Disassembly of section .text:
   22:	27 c0       	rjmp	.+78     	; 0x72 <__bad_interrupt>
   24:	26 c0       	rjmp	.+76     	; 0x72 <__bad_interrupt>
   26:	25 c0       	rjmp	.+74     	; 0x72 <__bad_interrupt>
-  28:	93 c0       	rjmp	.+294    	; 0x150 <__vector_20>
+  28:	78 c0       	rjmp	.+240    	; 0x11a <__vector_20>
   2a:	23 c0       	rjmp	.+70     	; 0x72 <__bad_interrupt>
   2c:	22 c0       	rjmp	.+68     	; 0x72 <__bad_interrupt>
   2e:	21 c0       	rjmp	.+66     	; 0x72 <__bad_interrupt>
@@ -76,7 +76,7 @@ Disassembly of section .text:
   48:	11 e0       	ldi	r17, 0x01	; 1
   4a:	a0 e0       	ldi	r26, 0x00	; 0
   4c:	b1 e0       	ldi	r27, 0x01	; 1
-  4e:	ee e9       	ldi	r30, 0x9E	; 158
+  4e:	e4 e7       	ldi	r30, 0x74	; 116
   50:	f1 e0       	ldi	r31, 0x01	; 1
   52:	02 c0       	rjmp	.+4      	; 0x58 <__do_copy_data+0x10>
   54:	05 90       	lpm	r0, Z+
@@ -98,8 +98,8 @@ Disassembly of section .text:
   68:	a6 30       	cpi	r26, 0x06	; 6
   6a:	b2 07       	cpc	r27, r18
   6c:	e1 f7       	brne	.-8      	; 0x66 <.do_clear_bss_loop>
-  6e:	47 d0       	rcall	.+142    	; 0xfe <main>
-  70:	94 c0       	rjmp	.+296    	; 0x19a <_exit>
+  6e:	23 d0       	rcall	.+70     	; 0xb6 <main>
+  70:	7f c0       	rjmp	.+254    	; 0x170 <_exit>
 
 00000072 <__bad_interrupt>:
   72:	c6 cf       	rjmp	.-116    	; 0x0 <__vectors>
@@ -110,218 +110,202 @@ Disassembly of section .text:
 }
 
 void SPI_init(){	//initialize SPI module	
-	PRR &= ~(1<<PRSPI); //enable SPI module in PRR; page 152; Page 39
+	PRR &= ~(1<<PRSPI); //enable SPI module in PRR; page 152; Page 39	
   74:	e0 e7       	ldi	r30, 0x70	; 112
   76:	f0 e0       	ldi	r31, 0x00	; 0
   78:	80 81       	ld	r24, Z
   7a:	8f 7e       	andi	r24, 0xEF	; 239
   7c:	80 83       	st	Z, r24
-	SPCR |= 1<<SPE;	//enable SPI module in SPI control Register; page 157
+	SPCR |= 1<<SPIE;	//enable SPI interrupt; page 157; page 158
   7e:	e2 eb       	ldi	r30, 0xB2	; 178
   80:	f0 e0       	ldi	r31, 0x00	; 0
   82:	80 81       	ld	r24, Z
-  84:	80 64       	ori	r24, 0x40	; 64
+  84:	80 68       	ori	r24, 0x80	; 128
   86:	80 83       	st	Z, r24
-	SPCR |= 1<<SPIE;	//enable SPI interrupt; page 157; page 158
-  88:	80 81       	ld	r24, Z
-  8a:	80 68       	ori	r24, 0x80	; 128
-  8c:	80 83       	st	Z, r24
 	SPCR &= ~(1<<DORD);	//MSB to be transmitted first; page 157
+  88:	80 81       	ld	r24, Z
+  8a:	8f 7d       	andi	r24, 0xDF	; 223
+  8c:	80 83       	st	Z, r24
+	// SPCR &= ~(1<<MSTR);	//enable SPI slave mode; page 157	
+	
+	SPCR |= (1<<MSTR);	//enable master slave mode; page 157	
   8e:	80 81       	ld	r24, Z
-  90:	8f 7d       	andi	r24, 0xDF	; 223
+  90:	80 61       	ori	r24, 0x10	; 16
   92:	80 83       	st	Z, r24
-	SPCR &= ~(1<<MSTR);	//enable SPI slave mode; page 157	
-  94:	80 81       	ld	r24, Z
-  96:	8f 7e       	andi	r24, 0xEF	; 239
-  98:	80 83       	st	Z, r24
 	SPCR &= ~(1<CPOL);	//SPI clk is low when idle; page 158
+  94:	80 81       	ld	r24, Z
+  96:	8e 7f       	andi	r24, 0xFE	; 254
+  98:	80 83       	st	Z, r24
+	SPCR &= ~(1<CPHA);	//Data is valid on leading edge; page 158
   9a:	80 81       	ld	r24, Z
   9c:	8e 7f       	andi	r24, 0xFE	; 254
   9e:	80 83       	st	Z, r24
-	SPCR &= ~(1<CPHA);	//Data is valid on leading edge; page 158
-  a0:	80 81       	ld	r24, Z
-  a2:	8e 7f       	andi	r24, 0xFE	; 254
-  a4:	80 83       	st	Z, r24
 	REMAP &= ~(1<SPIMAP);	//use default pin map; page 159
-  a6:	e5 e6       	ldi	r30, 0x65	; 101
-  a8:	f0 e0       	ldi	r31, 0x00	; 0
-  aa:	80 81       	ld	r24, Z
-  ac:	80 83       	st	Z, r24
-	DDRA &= ~(1<<DDRA7);	//set PA7/SS as input; in slave mode, ss is always input; probably not needed; page 155
-  ae:	d7 98       	cbi	0x1a, 7	; 26
-	DDRA |= 1<<DDRA5;	//set PA6/MISO as output
-  b0:	d5 9a       	sbi	0x1a, 5	; 26
-  b2:	08 95       	ret
+  a0:	a5 e6       	ldi	r26, 0x65	; 101
+  a2:	b0 e0       	ldi	r27, 0x00	; 0
+  a4:	8c 91       	ld	r24, X
+  a6:	8c 93       	st	X, r24
+	// DDRA &= ~(1<<DDRA7);	//set PA7/SS as input; in slave mode, ss is always input; probably not needed; page 155
+	DDRA |= (1<<DDRA7);	//set PA7/SS as output
+  a8:	d7 9a       	sbi	0x1a, 7	; 26
+	DDRA |= 1<<DDRA6;	//set PA6/MOSI as output
+  aa:	d6 9a       	sbi	0x1a, 6	; 26
+	DDRA |= 1<<DDRA4;	//set PA4/SCK as output
+  ac:	d4 9a       	sbi	0x1a, 4	; 26
+	SPCR |= 1<<SPE;	//enable SPI module in SPI control Register; page 157
+  ae:	80 81       	ld	r24, Z
+  b0:	80 64       	ori	r24, 0x40	; 64
+  b2:	80 83       	st	Z, r24
+  b4:	08 95       	ret
 
-000000b4 <_Z15USART0_SPI_inith>:
-}
-
-void USART0_SPI_init(uint8_t baud_rate){	//initialize USART0 to operate in SPI master mode
-	PRR &= ~(1<<PRUSART0);	//enable USART0 module in PRR; page39; page 160
-  b4:	e0 e7       	ldi	r30, 0x70	; 112
-  b6:	f0 e0       	ldi	r31, 0x00	; 0
-  b8:	90 81       	ld	r25, Z
-  ba:	9f 7d       	andi	r25, 0xDF	; 223
-  bc:	90 83       	st	Z, r25
-	UBRR0 = 0;	//set the baud_rate to zero; page 189
-  be:	a1 e8       	ldi	r26, 0x81	; 129
-  c0:	b0 e0       	ldi	r27, 0x00	; 0
-  c2:	11 96       	adiw	r26, 0x01	; 1
-  c4:	1c 92       	st	X, r1
-  c6:	1e 92       	st	-X, r1
-	DDRA |= 1<<DDRA3;	//set PA3 as output; XCK0 must be set as output; page 187
-  c8:	d3 9a       	sbi	0x1a, 3	; 26
-	UCSR0C |= (1<<UMSEL00) | (1<<UMSEL01);	//enable SPI mode in USART0; page 195
-  ca:	e4 e8       	ldi	r30, 0x84	; 132
-  cc:	f0 e0       	ldi	r31, 0x00	; 0
-  ce:	90 81       	ld	r25, Z
-  d0:	90 6c       	ori	r25, 0xC0	; 192
-  d2:	90 83       	st	Z, r25
-	UCSR0C &= ~((1<<UDORD0) | (1<<UCPHA0) | (1<<UCPOL0));	//MSB first; clk phase = 0, clk polarity = 0; page 195
-  d4:	90 81       	ld	r25, Z
-  d6:	98 7f       	andi	r25, 0xF8	; 248
-  d8:	90 83       	st	Z, r25
-	UCSR0A &= ~(1<<U2X0);	//set to zero to use synchronous mode; probably not needed because operating in SPI mode; page 181
-  da:	e6 e8       	ldi	r30, 0x86	; 134
-  dc:	f0 e0       	ldi	r31, 0x00	; 0
-  de:	90 81       	ld	r25, Z
-  e0:	9d 7f       	andi	r25, 0xFD	; 253
-  e2:	90 83       	st	Z, r25
-	UCSR0B |= (1<<TXEN0);	//enable receiver and transmitter; page 194
-  e4:	e5 e8       	ldi	r30, 0x85	; 133
-  e6:	f0 e0       	ldi	r31, 0x00	; 0
-  e8:	90 81       	ld	r25, Z
-  ea:	98 60       	ori	r25, 0x08	; 8
-  ec:	90 83       	st	Z, r25
-	UCSR0B &= ~(1<<RXEN0);	//disable receiver; page 194
-  ee:	90 81       	ld	r25, Z
-  f0:	9f 7e       	andi	r25, 0xEF	; 239
-  f2:	90 83       	st	Z, r25
-	UBRR0 = baud_rate;	//set the baud_rate; baud_rate = 0 -> 1Mbps; page 180
-  f4:	90 e0       	ldi	r25, 0x00	; 0
-  f6:	11 96       	adiw	r26, 0x01	; 1
-  f8:	9c 93       	st	X, r25
-  fa:	8e 93       	st	-X, r24
-  fc:	08 95       	ret
-
-000000fe <main>:
+000000b6 <main>:
 volatile uint8_t data_in = 0;	//receive data
 volatile uint8_t data_out[] = {0x15, 0xAB, 0x04, 0x45};	//send data		
 volatile bool received_signal = false;	
 
 int main(){					
 	DDRB |= 1<<DDRB2;	
-  fe:	ba 9a       	sbi	0x17, 2	; 23
+  b6:	ba 9a       	sbi	0x17, 2	; 23
+	
 	cli();	//disable global interrupt; atmel built-in function
- 100:	f8 94       	cli
-	USART0_SPI_init(0);	//initialize USART0 module; user defined function; set the baud_rate to 1Mbps; page 180
- 102:	80 e0       	ldi	r24, 0x00	; 0
- 104:	d7 df       	rcall	.-82     	; 0xb4 <_Z15USART0_SPI_inith>
+  b8:	f8 94       	cli
+	//USART0_SPI_init(0);	//initialize USART0 module; user defined function; set the baud_rate to 1Mbps; page 180
 	SPI_init();	//initialize SPI module; user defined function
- 106:	b6 df       	rcall	.-148    	; 0x74 <_Z8SPI_initv>
+  ba:	dc df       	rcall	.-72     	; 0x74 <_Z8SPI_initv>
 	sei();	//enable global interrupt; atmel built-in function
- 108:	78 94       	sei
+  bc:	78 94       	sei
 				
 	while(1){		
-		SPDR = data_out[1];	//place data to SPI data buffer
- 10a:	a0 e0       	ldi	r26, 0x00	; 0
- 10c:	b1 e0       	ldi	r27, 0x01	; 1
- 10e:	e0 eb       	ldi	r30, 0xB0	; 176
- 110:	f0 e0       	ldi	r31, 0x00	; 0
- 112:	11 96       	adiw	r26, 0x01	; 1
- 114:	8c 91       	ld	r24, X
- 116:	11 97       	sbiw	r26, 0x01	; 1
- 118:	80 83       	st	Z, r24
-		if(received_signal){
- 11a:	80 91 04 01 	lds	r24, 0x0104
- 11e:	88 23       	and	r24, r24
- 120:	c1 f3       	breq	.-16     	; 0x112 <main+0x14>
-			received_signal = false;
- 122:	10 92 04 01 	sts	0x0104, r1
-			PINB |= 1<<PINB2;	//toggle PORTB2
- 126:	b2 9a       	sbi	0x16, 2	; 22
+		_delay_ms(100);
+		PORTA &= ~(1<<PORTA7);
+		SPDR = data_out[1];	//place data to SPI data buffer					
+  be:	a0 e0       	ldi	r26, 0x00	; 0
+  c0:	b1 e0       	ldi	r27, 0x01	; 1
+  c2:	e0 eb       	ldi	r30, 0xB0	; 176
+  c4:	f0 e0       	ldi	r31, 0x00	; 0
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 128:	2f ef       	ldi	r18, 0xFF	; 255
- 12a:	81 ee       	ldi	r24, 0xE1	; 225
- 12c:	94 e0       	ldi	r25, 0x04	; 4
- 12e:	21 50       	subi	r18, 0x01	; 1
- 130:	80 40       	sbci	r24, 0x00	; 0
- 132:	90 40       	sbci	r25, 0x00	; 0
- 134:	e1 f7       	brne	.-8      	; 0x12e <main+0x30>
- 136:	00 c0       	rjmp	.+0      	; 0x138 <main+0x3a>
- 138:	00 00       	nop
+  c6:	2f ef       	ldi	r18, 0xFF	; 255
+  c8:	81 ee       	ldi	r24, 0xE1	; 225
+  ca:	94 e0       	ldi	r25, 0x04	; 4
+  cc:	21 50       	subi	r18, 0x01	; 1
+  ce:	80 40       	sbci	r24, 0x00	; 0
+  d0:	90 40       	sbci	r25, 0x00	; 0
+  d2:	e1 f7       	brne	.-8      	; 0xcc <main+0x16>
+  d4:	00 c0       	rjmp	.+0      	; 0xd6 <main+0x20>
+  d6:	00 00       	nop
+	SPI_init();	//initialize SPI module; user defined function
+	sei();	//enable global interrupt; atmel built-in function
+				
+	while(1){		
+		_delay_ms(100);
+		PORTA &= ~(1<<PORTA7);
+  d8:	df 98       	cbi	0x1b, 7	; 27
+		SPDR = data_out[1];	//place data to SPI data buffer					
+  da:	11 96       	adiw	r26, 0x01	; 1
+  dc:	8c 91       	ld	r24, X
+  de:	11 97       	sbiw	r26, 0x01	; 1
+  e0:	80 83       	st	Z, r24
+		PORTA |= (1<<PORTA7);
+  e2:	df 9a       	sbi	0x1b, 7	; 27
+		if(received_signal){
+  e4:	80 91 04 01 	lds	r24, 0x0104
+  e8:	88 23       	and	r24, r24
+  ea:	69 f3       	breq	.-38     	; 0xc6 <main+0x10>
+			received_signal = false;
+  ec:	10 92 04 01 	sts	0x0104, r1
+			PINB |= 1<<PINB2;	//toggle PORTB2
+  f0:	b2 9a       	sbi	0x16, 2	; 22
+  f2:	2f ef       	ldi	r18, 0xFF	; 255
+  f4:	81 ee       	ldi	r24, 0xE1	; 225
+  f6:	94 e0       	ldi	r25, 0x04	; 4
+  f8:	21 50       	subi	r18, 0x01	; 1
+  fa:	80 40       	sbci	r24, 0x00	; 0
+  fc:	90 40       	sbci	r25, 0x00	; 0
+  fe:	e1 f7       	brne	.-8      	; 0xf8 <main+0x42>
+ 100:	00 c0       	rjmp	.+0      	; 0x102 <main+0x4c>
+ 102:	00 00       	nop
 			_delay_ms(100);
 			PINB |= 1<<PINB2;	//toggle PORTB2
- 13a:	b2 9a       	sbi	0x16, 2	; 22
- 13c:	2f ef       	ldi	r18, 0xFF	; 255
- 13e:	81 ee       	ldi	r24, 0xE1	; 225
- 140:	94 e0       	ldi	r25, 0x04	; 4
- 142:	21 50       	subi	r18, 0x01	; 1
- 144:	80 40       	sbci	r24, 0x00	; 0
- 146:	90 40       	sbci	r25, 0x00	; 0
- 148:	e1 f7       	brne	.-8      	; 0x142 <main+0x44>
- 14a:	00 c0       	rjmp	.+0      	; 0x14c <main+0x4e>
- 14c:	00 00       	nop
- 14e:	e1 cf       	rjmp	.-62     	; 0x112 <main+0x14>
+ 104:	b2 9a       	sbi	0x16, 2	; 22
+ 106:	2f ef       	ldi	r18, 0xFF	; 255
+ 108:	81 ee       	ldi	r24, 0xE1	; 225
+ 10a:	94 e0       	ldi	r25, 0x04	; 4
+ 10c:	21 50       	subi	r18, 0x01	; 1
+ 10e:	80 40       	sbci	r24, 0x00	; 0
+ 110:	90 40       	sbci	r25, 0x00	; 0
+ 112:	e1 f7       	brne	.-8      	; 0x10c <main+0x56>
+ 114:	00 c0       	rjmp	.+0      	; 0x116 <main+0x60>
+ 116:	00 00       	nop
+ 118:	d6 cf       	rjmp	.-84     	; 0xc6 <main+0x10>
 
-00000150 <__vector_20>:
+0000011a <__vector_20>:
 	UBRR0 = baud_rate;	//set the baud_rate; baud_rate = 0 -> 1Mbps; page 180
 }
 
 //SPIF bit is set when a serial transfer is complete; p158
 //SPIF bit is cleared by hardware when the corresponding interrupt is served; page 158
 ISR(SPI_vect, ISR_BLOCK){	//SPI interrupt service routine; blocking all other interrupts	
- 150:	1f 92       	push	r1
- 152:	0f 92       	push	r0
- 154:	0f b6       	in	r0, 0x3f	; 63
- 156:	0f 92       	push	r0
- 158:	11 24       	eor	r1, r1
- 15a:	8f 93       	push	r24
- 15c:	ef 93       	push	r30
- 15e:	ff 93       	push	r31
+ 11a:	1f 92       	push	r1
+ 11c:	0f 92       	push	r0
+ 11e:	0f b6       	in	r0, 0x3f	; 63
+ 120:	0f 92       	push	r0
+ 122:	11 24       	eor	r1, r1
+ 124:	2f 93       	push	r18
+ 126:	8f 93       	push	r24
+ 128:	9f 93       	push	r25
 	//send data to digital phase shifter here	
 	data_in = SPDR;		//read data from SPI buffer
- 160:	80 91 b0 00 	lds	r24, 0x00B0
- 164:	80 93 05 01 	sts	0x0105, r24
-
-	UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
- 168:	80 91 05 01 	lds	r24, 0x0105
- 16c:	80 93 80 00 	sts	0x0080, r24
-	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
- 170:	e6 e8       	ldi	r30, 0x86	; 134
- 172:	f0 e0       	ldi	r31, 0x00	; 0
- 174:	80 81       	ld	r24, Z
- 176:	86 ff       	sbrs	r24, 6
- 178:	fd cf       	rjmp	.-6      	; 0x174 <__vector_20+0x24>
-		;
-	}		
-	UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193	
- 17a:	e6 e8       	ldi	r30, 0x86	; 134
- 17c:	f0 e0       	ldi	r31, 0x00	; 0
- 17e:	80 81       	ld	r24, Z
- 180:	80 64       	ori	r24, 0x40	; 64
- 182:	80 83       	st	Z, r24
-	
+ 12a:	80 91 b0 00 	lds	r24, 0x00B0
+ 12e:	80 93 05 01 	sts	0x0105, r24
+	//UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
+	//while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
+		//;
+	//}		
+	//UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193	
+	PINB |= 1<<PINB2;	//toggle PORTB2
+ 132:	b2 9a       	sbi	0x16, 2	; 22
+ 134:	2f ef       	ldi	r18, 0xFF	; 255
+ 136:	81 ee       	ldi	r24, 0xE1	; 225
+ 138:	94 e0       	ldi	r25, 0x04	; 4
+ 13a:	21 50       	subi	r18, 0x01	; 1
+ 13c:	80 40       	sbci	r24, 0x00	; 0
+ 13e:	90 40       	sbci	r25, 0x00	; 0
+ 140:	e1 f7       	brne	.-8      	; 0x13a <__vector_20+0x20>
+ 142:	00 c0       	rjmp	.+0      	; 0x144 <__vector_20+0x2a>
+ 144:	00 00       	nop
+			_delay_ms(100);
+			PINB |= 1<<PINB2;	//toggle PORTB2
+ 146:	b2 9a       	sbi	0x16, 2	; 22
+ 148:	2f ef       	ldi	r18, 0xFF	; 255
+ 14a:	81 ee       	ldi	r24, 0xE1	; 225
+ 14c:	94 e0       	ldi	r25, 0x04	; 4
+ 14e:	21 50       	subi	r18, 0x01	; 1
+ 150:	80 40       	sbci	r24, 0x00	; 0
+ 152:	90 40       	sbci	r25, 0x00	; 0
+ 154:	e1 f7       	brne	.-8      	; 0x14e <__vector_20+0x34>
+ 156:	00 c0       	rjmp	.+0      	; 0x158 <__vector_20+0x3e>
+ 158:	00 00       	nop
+			_delay_ms(100);	
 	received_signal = true;	
- 184:	81 e0       	ldi	r24, 0x01	; 1
- 186:	80 93 04 01 	sts	0x0104, r24
+ 15a:	81 e0       	ldi	r24, 0x01	; 1
+ 15c:	80 93 04 01 	sts	0x0104, r24
 }
- 18a:	ff 91       	pop	r31
- 18c:	ef 91       	pop	r30
- 18e:	8f 91       	pop	r24
- 190:	0f 90       	pop	r0
- 192:	0f be       	out	0x3f, r0	; 63
- 194:	0f 90       	pop	r0
- 196:	1f 90       	pop	r1
- 198:	18 95       	reti
+ 160:	9f 91       	pop	r25
+ 162:	8f 91       	pop	r24
+ 164:	2f 91       	pop	r18
+ 166:	0f 90       	pop	r0
+ 168:	0f be       	out	0x3f, r0	; 63
+ 16a:	0f 90       	pop	r0
+ 16c:	1f 90       	pop	r1
+ 16e:	18 95       	reti
 
-0000019a <_exit>:
- 19a:	f8 94       	cli
+00000170 <_exit>:
+ 170:	f8 94       	cli
 
-0000019c <__stop_program>:
- 19c:	ff cf       	rjmp	.-2      	; 0x19c <__stop_program>
+00000172 <__stop_program>:
+ 172:	ff cf       	rjmp	.-2      	; 0x172 <__stop_program>

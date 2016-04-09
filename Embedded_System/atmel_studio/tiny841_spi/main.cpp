@@ -55,6 +55,7 @@
 			CPOL = 1;	//CLK is high when inactive; CLK starts and ends high
 			CPHA = 1;	//Data is valid on CLK trailing edge
 		}	
+		# Look up Pin direction at page 153; must be defined for both master and slave mode
 -------------------------------------------------------------------------------------------					
 	* USART0 in SPI mode:
 		# f_max = f_cpu/2;
@@ -82,13 +83,17 @@ volatile bool received_signal = false;
 
 int main(){					
 	DDRB |= 1<<DDRB2;	
+	
 	cli();	//disable global interrupt; atmel built-in function
-	USART0_SPI_init(0);	//initialize USART0 module; user defined function; set the baud_rate to 1Mbps; page 180
+	//USART0_SPI_init(0);	//initialize USART0 module; user defined function; set the baud_rate to 1Mbps; page 180
 	SPI_init();	//initialize SPI module; user defined function
 	sei();	//enable global interrupt; atmel built-in function
 				
 	while(1){		
-		SPDR = data_out[1];	//place data to SPI data buffer
+		_delay_ms(100);
+		PORTA &= ~(1<<PORTA7);
+		SPDR = data_out[1];	//place data to SPI data buffer					
+		PORTA |= (1<<PORTA7);
 		if(received_signal){
 			received_signal = false;
 			PINB |= 1<<PINB2;	//toggle PORTB2
@@ -100,16 +105,20 @@ int main(){
 }
 
 void SPI_init(){	//initialize SPI module	
-	PRR &= ~(1<<PRSPI); //enable SPI module in PRR; page 152; Page 39
-	SPCR |= 1<<SPE;	//enable SPI module in SPI control Register; page 157
+	PRR &= ~(1<<PRSPI); //enable SPI module in PRR; page 152; Page 39	
 	SPCR |= 1<<SPIE;	//enable SPI interrupt; page 157; page 158
 	SPCR &= ~(1<<DORD);	//MSB to be transmitted first; page 157
-	SPCR &= ~(1<<MSTR);	//enable SPI slave mode; page 157	
+	// SPCR &= ~(1<<MSTR);	//enable SPI slave mode; page 157	
+	
+	SPCR |= (1<<MSTR);	//enable master slave mode; page 157	
 	SPCR &= ~(1<CPOL);	//SPI clk is low when idle; page 158
 	SPCR &= ~(1<CPHA);	//Data is valid on leading edge; page 158
 	REMAP &= ~(1<SPIMAP);	//use default pin map; page 159
-	DDRA &= ~(1<<DDRA7);	//set PA7/SS as input; in slave mode, ss is always input; probably not needed; page 155
-	DDRA |= 1<<DDRA5;	//set PA6/MISO as output
+	// DDRA &= ~(1<<DDRA7);	//set PA7/SS as input; in slave mode, ss is always input; probably not needed; page 155
+	DDRA |= (1<<DDRA7);	//set PA7/SS as output
+	DDRA |= 1<<DDRA6;	//set PA6/MOSI as output
+	DDRA |= 1<<DDRA4;	//set PA4/SCK as output
+	SPCR |= 1<<SPE;	//enable SPI module in SPI control Register; page 157
 }
 
 void USART0_SPI_init(uint8_t baud_rate){	//initialize USART0 to operate in SPI master mode
@@ -130,12 +139,15 @@ ISR(SPI_vect, ISR_BLOCK){	//SPI interrupt service routine; blocking all other in
 	//send data to digital phase shifter here	
 	data_in = SPDR;		//read data from SPI buffer
 
-	UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
-	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
-		;
-	}		
-	UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193	
-	
+	//UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
+	//while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
+		//;
+	//}		
+	//UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193	
+	PINB |= 1<<PINB2;	//toggle PORTB2
+			_delay_ms(100);
+			PINB |= 1<<PINB2;	//toggle PORTB2
+			_delay_ms(100);	
 	received_signal = true;	
 }
 
