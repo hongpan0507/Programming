@@ -50,38 +50,63 @@
  -------------------------------------------------------------------------------------------
  */
 
- #define F_CPU 16e6	//CPU clock must be defined first in order to use internal delay function
- #define UDORD0 2	//not defined by the header file; define manually; page 195
- #define UCPHA0 1	//not defined by the header file; define manually; page 195
- #define UCPOL0 0	//not defined by the header file; define manually; page 195
+#define F_CPU 16e6	//CPU clock must be defined first in order to use internal delay function
+#define UDORD0 2	//not defined by the header file; define manually; page 195
+#define UCPHA0 1	//not defined by the header file; define manually; page 195
+#define UCPOL0 0	//not defined by the header file; define manually; page 195
 
- #include <avr/interrupt.h>
- #include <avr/io.h>
- #include <util/delay.h>
+#include <avr/interrupt.h>
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h> 
 
+void UART_TX(uint8_t TX_data);	//send data using UART0
  
- void SPI_init();	//initialize SPI module 
- void USART0_init(uint8_t baud_rate);	//initialize SPI module
- volatile uint8_t data_flush = 0;	//useless data
- volatile uint8_t data_in = 0;	//receive data
- volatile uint8_t data_out[] = {0x15, 0xAB, 0x04, 0x45};	//send data
- volatile bool received_signal = false;	//flash LED
+void SPI_init();	//initialize SPI module 
+void USART0_init(uint8_t baud_rate);	//initialize SPI module
+void ADC_init();	//initialize ADC parameter
 
-int main(){			
-	DDRB |= 1<<DDRB2;	//set PB2 as output to flash LED
+volatile uint8_t data_flush = 0;	//useless data
+volatile uint8_t data_in = 0;	//receive data
+volatile uint8_t data_out[] = {0x15, 0xAB, 0x04, 0x45};	//send data	
+volatile bool received_signal = false;	//flash LED
+volatile uint8_t ADC_val[2];	//ADC conversion value; high, low
+
+int main(){				
+	const uint8_t v_ref = 5;
+	double volt = 0;
+	uint16_t volt_data = 0;
+	// DDRB |= 1<<DDRB2;	//set PB2 as output to flash LED
+	
 	cli();	//disable global interrupt; atmel built-in function
 	USART0_init(103);	//initialize USART0 module; user defined function; set the baud_rate to 9600; page 180		
 	SPI_init();	//initialize SPI module; user defined function
+	ADC_init(); //initialize ADC module; user defined function
 	sei();	//enable global interrupt; atmel built-in function
-		 
-	while(1){						
-		if(received_signal){
-			received_signal = false;
-			PINB |= 1<<PINB2;	//toggle PORTB2
-			_delay_ms(100);
-			PINB |= 1<<PINB2;	//toggle PORTB2
-			_delay_ms(100);
+			 
+	while(1){			
+		_delay_ms(500);
+		
+		ADCSRA |= 1<<ADSC;	//start ADC conversion; page 148
+		while(!(ADCSRA & (1<<ADIF))){	//ADIF is set if conversion is complete, and the data is ready for reading; page 148
+			;	//wait until the ADC conversion is done
 		}
+		ADC_val[0] = ADCL;	//read low bits first
+		ADC_val[1] = ADCH;		//read high bits
+		ADCSRA |= (1<<ADIF); //clear ADIF; page 148
+		
+		volt_data |= ADC_val[1];	// combine high bits and low bits
+		volt_data = volt_data << 8;	// combine high bits and low bits
+		volt_data |= ADC_val[0];	// combine high bits and low bits
+		
+		volt = 	double(v_ref * volt_data) / 1024.0;		// conversion formula; page	143	
+						
+		UART_TX(ADC_val[1]); //send high bits first
+		UART_TX(ADC_val[0]); //send low bits
+		
+		volt_data = 0;	//clear all bits to void left-over data
 	}
 }
 
@@ -107,6 +132,14 @@ ISR(USART0_RX_vect, ISR_BLOCK){	//USART1 Receive complete interrupt service rout
 //---------------------------------------------------------------------------------------------------------------------
 
 //------------------------------User Defined Functions--------------------------------------------------------------
+void UART_TX(uint8_t TX_data){	//send data using UART0
+	UDR0 = TX_data;	//place data to USART0 data buffer and initiate data transfer; provide feedback to check bluetooth command page 190	
+	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0 transfer is complete; page 193
+		;	// wait until USART0 TX transfer is completed
+	}							
+	UCSR0A |= 1<<TXC0;	//clear USART0 transmit complete signal; page 193
+}
+
 void SPI_init(){	//initialize SPI module		
 	PRR &= ~(1<<PRSPI); //enable SPI module in PRR; page 152; Page 39
 	SPCR &= ~(1<<SPE);	//disable SPI module in SPI control Register in order to make changes; page 157	
@@ -137,5 +170,14 @@ void USART0_init(uint8_t baud_rate){	//initialize USART0 to operate in asynchron
 	//UCSR0D |= 1<<RXSIE0;	//enable RX start interrupt; page 185
 	UCSR0B |= (1<<TXEN0);	//enable receiver; page 182
 	UCSR0B |= (1<<RXEN0);	//enable receiver; page 182
+}
+
+void ADC_init(){	//assuming the system clk is 16MHz; otherwise change prescaler; do not go over 200khz; page 135
+	PRR &= ~(1<<PRADC);		//write logic 0 to enable ADC module; page38; page134
+	ADMUXB &= ~(1<<REFS2 | 1<<REFS1 | 1<<REFS0);	//select Vcc as reference; page 146
+	ADCSRA |= (1<<ADPS2 | 1<<ADPS1 | 1<<ADPS0);		//set ADC prescaler to 128; ADC freq = 16MHz/128=125KHz; page 148
+	DIDR1 |= 1<<ADC8D;	//disable digital input on PB2; page 150
+	ADMUXA |= 1<<MUX3;	//select PB2 (ADC8) as ADC input channel; page 134; pgae 144
+	ADCSRA |= 1<<ADEN;	//enable ADC; page 148; page 134
 }
 //---------------------------------------------------------------------------------------------------------------------
