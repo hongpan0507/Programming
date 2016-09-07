@@ -43,15 +43,32 @@
 #include <util/delay.h>
 
 int main(void){		//LED on PA2 & PA7    
-	const uint16_t delay_time = 100;
-	DDRA |= 1<<DDRA2;	//configure PA2 as output
-	DDRA |= 1<<DDRA7;	//configure PA7 as output
-	PORTA |= 1<<PORTA2;	//pull PA2 high
-	PORTA &= ~(1<<PORTA7);	//pull PA7 low
+	
+	//const uint16_t delay_time = 1000;
+	//DDRA |= 1<<DDRA2;	//configure PA2 as output
+	//DDRA |= 1<<DDRA7;	//configure PA7 as output
+	//PORTA |= 1<<PORTA2;	//pull PA2 high
+	//PORTA &= ~(1<<PORTA7);	//pull PA7 low
+	//_delay_ms(delay_time);	//internal delay function
+    //while (1){
+		//PINA |= 1<<PINA2;	//toggle PA2
+		//PINA |= 1<<PINA7;	//toggle PA7
+		//_delay_ms(delay_time);	//internal delay function
+		///*
+		//PORTA |= 1<<PORTA2;	//pull PA2 high
+		//PORTA &= ~(1<<PORTA7);	//pull PA7 low
+		//_delay_ms(delay_time);	//internal delay function
+		//PORTA &= ~(1<<PORTA2);	//pull PA2 low
+		//PORTA |= 1<<PORTA7;	//pull PA7 high
+		//_delay_ms(delay_time);	//internal delay function
+		//*/				
+    //}
+	const uint16_t delay_time = 1000;
+	DDRA |= 1<<DDRA0;	//configure PA0 as output	
+	PORTA |= 1<<PORTA0;	//pull PA0 high	
 	_delay_ms(delay_time);	//internal delay function
     while (1){
-		PINA |= 1<<PINA2;	//toggle PA2
-		PINA |= 1<<PINA7;	//toggle PA7
+		PINA |= 1<<PINA0;	//toggle PA0		
 		_delay_ms(delay_time);	//internal delay function
 		/*
 		PORTA |= 1<<PORTA2;	//pull PA2 high
