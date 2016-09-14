@@ -81,7 +81,7 @@ int main(){
 		USART1_TX(0x03);	//port number
 		USART1_TX(0x21);	//phase shift
 		PINA |= 1<<PINA7;
-		_delay_ms(1000);		
+		_delay_ms(1500);		
 	}
 }
 

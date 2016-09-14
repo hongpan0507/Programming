@@ -30,7 +30,7 @@ Data Format send to DPS chip by SPI:
 #include <avr/cpufunc.h>
 #include <util/delay.h>
 
-const uint8_t DPS_addr = 0x01;	//DPS hard coded address
+const uint8_t DPS_addr = 0x05;	//DPS hard coded address
 
 uint8_t usart_byte_count = 0;	//count the # of bytes received through usart
 bool cmd_start = false;		//start of cmd detection
@@ -39,8 +39,13 @@ uint8_t port_num = 0;	//DPS port number
 uint8_t data_dump = 0;	//flush usart buffer
 const uint8_t bit_sh = 2;	//digital phase shifter data bit shift
 
+volatile uint8_t LE1_led = 0;
+volatile uint8_t LE2_led = 0;
+volatile uint8_t LE3_led = 0;
+volatile uint8_t LE4_led = 0;
+
 const uint8_t LE_t = 1;		//LE pulse width
-const uint16_t delay_t = 100;	//LED flash
+const uint8_t LEx_led_t = 50;		//LE pulse width
 
 void SPI_init();	//user defined function; send cmd to DPS
 void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh);	//user defined function; bit shift is built in the function
@@ -49,23 +54,68 @@ void USART1_init(uint8_t baud_rate);	//user defined function; receive cmd from b
 void USART1_TX(uint8_t TX_data);	//user defined function; test USART1 comm
 
 int main(void){
-				
+	const uint16_t delay_t = 1000;	//Debug LED flash
+	bool less_delay = false;	//compensate for LEx_led delay
+	
 	cli();//Disable Global Interrupt
 	SPI_init();
 	USART1_init(103);	//9600 baud rate
 	sei();	//Enable Global Interrupt
 	
+	//set port as output
 	//short pulse to execute the cmd received by the phase shifter
-	DDRB |= 1<<DDB6;	//LE1; set port as output
-	DDRB |= 1<<DDB5;	//LE2; set port as output
-	DDRB |= 1<<DDB4;	//LE3; set port as output
-	DDRB |= 1<<DDB7;	//LE4; set port as output
+	DDRB |= 1<<DDB6;	//LE1 pulse
+	DDRB |= 1<<DDB5;	//LE2 pulse
+	DDRB |= 1<<DDB4;	//LE3 pulse
+	DDRB |= 1<<DDB7;	//LE4 pulse
+	
+	//LED flashes after LE1 pulse is applied
+	DDRE |= 1<<DDE6;	//PE6; LE1 LED
+	DDRC |= 1<<DDC7;	//PC7; LE2 LED
+	DDRC |= 1<<DDC6;	//PC6; LE3 LED
+	DDRD |= 1<<DDD7;	//PD7; LE4 LED
 	
 	DDRB |= 1<<DDB0;	//debug; set port as output
 	
     while (1){							
-		PINB |= 1<<PINB0;				
-		_delay_ms(delay_t);
+		PINB |= 1<<PINB0;
+		
+		if(LE1_led == 1){
+			LE1_led = 0;
+			PINE |= 1<<PINE6;	//turn on
+			_delay_ms(LEx_led_t);
+			PINE |= 1<<PINE6;	//turn off
+			less_delay = true;
+		}
+		if(LE2_led == 1){
+			LE2_led = 0;
+			PINC |= 1<<PINC7;	//turn on
+			_delay_ms(LEx_led_t);
+			PINC |= 1<<PINC7;	//turn off
+			less_delay = true;
+		}
+		if(LE3_led == 1){
+			LE3_led = 0;
+			PINC |= 1<<PINC6;	//turn on
+			_delay_ms(LEx_led_t);
+			PINC |= 1<<PINC6;	//turn off
+			less_delay = true;
+		} 
+		if(LE4_led == 1){
+			LE4_led = 0;
+			PIND |= 1<<PIND7;	//turn on
+			_delay_ms(LEx_led_t);
+			PIND |= 1<<PIND7;	//turn off
+			less_delay = true;
+		}				
+		
+		if(less_delay){
+			_delay_ms(delay_t-LEx_led_t);	
+			less_delay = false;
+		} else{
+			_delay_ms(delay_t);	
+		}
+		
     }
 }
 
@@ -110,18 +160,22 @@ void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh){
 		_delay_loop_1(LE_t);
 		//_NOP();	//delay by 1 cpu cycle
 		PINB |= 1<<PINB6;	//toggle low
+		LE1_led = 1;
 	} else if (PORT == PORT2){	//LE2
 		PINB |= 1<<PINB5;	//toggle high
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB5;	//toggle low
+		LE2_led = 1;
 	} else if (PORT == PORT3){	//LE3
 		PINB |= 1<<PINB4;	//toggle high		
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB4;	//toggle low
+		LE3_led = 1;
 	} else if (PORT == PORT4){	//LE4
 		PINB |= 1<<PINB7;	//toggle high		
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB7;	//toggle low
+		LE4_led = 1;
 	}	
 }
 
