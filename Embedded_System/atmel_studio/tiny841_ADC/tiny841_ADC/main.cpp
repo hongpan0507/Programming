@@ -39,7 +39,7 @@ int main(void){
 		ADC_val[1] = ADCH;		//read high bits; refer to programming notes for more information
 		ADCSRA |= (1<<ADIF); //clear ADIF; page 148
 		
-		volt_data |= ADC_val[1];
+		volt_data = ADC_val[1];
 		volt_data = volt_data << 8;
 		volt_data |= ADC_val[0];
 		volt = 	v_ref * double(volt_data) / 1024.0;	

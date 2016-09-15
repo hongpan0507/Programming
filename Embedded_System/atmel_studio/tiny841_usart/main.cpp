@@ -55,10 +55,11 @@
  #include <util/delay.h>
 
  
- void SPI_init();	//initialize SPI module
- void I2C_init(uint8_t slave_addr);	//initialize I2C module
+ //void SPI_init();	//initialize SPI module
+ //void I2C_init(uint8_t slave_addr);	//initialize I2C module
  void USART1_init(uint8_t baud_rate);	//initialize USART1 module
- void USART0_SPI_init(uint8_t baud_rate);	//initialize SPI module
+ void USART1_TX(uint8_t data_out);	//send data
+ //void USART0_SPI_init(uint8_t baud_rate);	//initialize SPI module
 
  volatile uint8_t data_in = 0;	//receive data
  volatile uint8_t data_out[] = {0x15, 0xAB, 0x04, 0x45};	//send data
@@ -66,21 +67,21 @@
 
 int main(){
 	DDRB |= 1<<DDRB2;	//set PB2 as output to flash LED
+	DDRA |= 1<<DDRA7;	//set PA7 as output to flash LED	
 	cli();	//disable global interrupt; atmel built-in function
-	USART0_SPI_init(0);	//initialize USART0 module; user defined function; set the baud_rate to 1Mbps; page 180
+	//USART0_SPI_init(0);	//initialize USART0 module; user defined function; set the baud_rate to 1Mbps; page 180
 	USART1_init(103);	//initialize USART1 module; user defined function; set the baud_rate to 9600; page 179
 	//I2C_init(0x08);		//initialize I2C module with address = 0x08; user defined function
 	//SPI_init();	//initialize SPI module; user defined function
 	sei();	//enable global interrupt; atmel built-in function
 		 
 	while(1){
-		if(received_signal){
-			received_signal = false;
-			PINB |= 1<<PINB2;	//toggle PORTB2
-			_delay_ms(100);
-			PINB |= 1<<PINB2;	//toggle PORTB2
-			_delay_ms(100);
-		}
+		USART1_TX(0xFF);	//start detection
+		USART1_TX(0x05);	//address
+		USART1_TX(0x03);	//port number
+		USART1_TX(0x21);	//phase shift
+		PINA |= 1<<PINA7;
+		_delay_ms(1500);		
 	}
 }
 
@@ -119,23 +120,24 @@ ISR(TWI_SLAVE_vect, ISR_BLOCK){	//I2C interrupt service routine; blocking all ot
 	received_signal = true;
 }
 
-ISR(USART1_START_vect, ISR_BLOCK){	//USART1 start condition detection interrupt service routine	
-	if(UCSR1A & (1<<UDRE1)){	//check if the USART1 buffer is empty; page 181
-		UDR1 = data_out[1];	//place data to the USART1 transmiter buffer; page 180
-	}	
-	UCSR1D |= 1<<RXS1;	//clear start condition detection flag; page 185		
-}
+//ISR(USART1_START_vect, ISR_BLOCK){	//USART1 start condition detection interrupt service routine	
+	//if(UCSR1A & (1<<UDRE1)){	//check if the USART1 buffer is empty; page 181
+		//UDR1 = data_out[1];	//place data to the USART1 transmiter buffer; page 180
+	//}	
+	//UCSR1D |= 1<<RXS1;	//clear start condition detection flag; page 185		
+//}
 
-ISR(USART1_RX_vect, ISR_BLOCK){	//USART1 Receive complete interrupt service routine	
-	//send data to digital phase shifter here
-	data_in = UDR1;		//receive data from the USART1 receiver buffer; page 180
-	UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
-	while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
-		;
-	}
-	UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193
-	received_signal = true;	
-}
+//ISR(USART1_RX_vect, ISR_BLOCK){	//USART1 Receive complete interrupt service routine	
+	////send data to digital phase shifter here
+	//data_in = UDR1;		//receive data from the USART1 receiver buffer; page 180
+	//UDR0 = data_in;		//place data to USART0 data buffer and initiate data transfer; page 190
+	//while(!(UCSR0A & (1<<TXC0))){	//TXC0 bit is set if USART0_SPI transfer is complete; page 193
+		//;
+	//}
+	//UCSR0A |= 1<<TXC0;	//clear USART0_SPI transmit complete signal; page 193
+	//received_signal = true;	
+//}
+
 //---------------------------------------------------------------------------------------------------------------------
 
 //------------------------------User Defined Functions--------------------------------------------------------------
@@ -150,7 +152,7 @@ void USART1_init(uint8_t baud_rate){	//initialize USART1 module as asynchronous 
 	UBRR1 = baud_rate;	//set the baud_rate; page 179
 	UCSR1B |= 1<<RXCIE1;	//enable RX complete Interrupt; page 182
 	UCSR1D |= 1<<RXSIE1;	//enable RX start interrupt; page 185
-	UCSR1B |= (1<<TXEN1);	//enable receiver; page 182
+	UCSR1B |= (1<<TXEN1);	//enable transmitter; page 182
 	UCSR1B |= (1<<RXEN1);	//enable receiver; page 182
 }
 
@@ -186,5 +188,13 @@ void USART0_SPI_init(uint8_t baud_rate){	//initialize USART0 to operate in SPI m
 	UCSR0B |= (1<<TXEN0);	//enable receiver and transmitter; page 194
 	UCSR0B &= ~(1<<RXEN0);	//disable receiver; page 194
 	UBRR0 = baud_rate;	//set the baud_rate; baud_rate = 0 -> 1Mbps; page 180
+}
+
+void USART1_TX(uint8_t data_out){
+	UDR1 = data_out;
+	while(!(UCSR1A & (1<<TXC1))){	//TXC1 bit is set if USART0_SPI transfer is complete; page 181
+		;
+	}
+	UCSR1A |= 1<<TXC1;	//clear USART1 transmit complete signal; page 181	
 }
 //---------------------------------------------------------------------------------------------------------------------
