@@ -2,9 +2,9 @@
 Digital Phase Shifter
 
 Data Format received from BlueTooth through USART: 
-	"0xFF0xAA0xBB0xCC"
+	"0xFF0x050xBB0xCC"
 		0xFF == cmd start detection (cannot have phase shift of "0xFF")
-		0xAA == Address (board level)
+		0x05 == Address (board level)
 		0xBB == PORT # (DPS Chip)
 		0xCC == DPS cmd (phase shift)
 	
@@ -77,6 +77,9 @@ int main(void){
 	
 	DDRB |= 1<<DDB0;	//debug; set port as output
 	
+	DDRD |= 1<<DDD5;	//set port as output
+	PORTD |= 1<<PORTD5;	//turn off LED; active low
+	
     while (1){							
 		PINB |= 1<<PINB0;
 		
@@ -114,8 +117,7 @@ int main(void){
 			less_delay = false;
 		} else{
 			_delay_ms(delay_t);	
-		}
-		
+		}				
     }
 }
 
@@ -124,7 +126,9 @@ int main(void){
 void SPI_init(){	//initialize SPI as master
 	PRR0 &= ~(1<<PRSPI); //enable SPI module in PRR; page 167; Page 43
 	
-	SPCR |= 1<<SPIE;	//enable SPI interrupt; page 171
+	//do not enable interrupt if not necessary
+	//SPCR |= 1<<SPIE;	//enable SPI interrupt; page 171
+	
 	SPCR &= ~(1<<DORD);	//MSB to be transmitted first; page 171		
 	SPCR |= (1<<MSTR);	//enable master mode; page 171
 	SPCR &= ~(1<<CPOL | 1<<CPHA);	//SPI clk is low when idle; Data is valid on leading edge; page 171
@@ -193,35 +197,37 @@ void USART1_init(uint8_t baud_rate){
 	UCSR1B |= (1<<RXEN1);	//enable receiver; page 194	
 }
 
-//void USART1_TX(uint8_t TX_data){
-	//UDR1 = TX_data;		//place data to USART1 data buffer and initiate data transfer; page
-	//while(!(UCSR1A & (1<<TXC1))){	//TXC1 bit is set if USART1 transfer is complete; page 
-		//;
-	//}
-	//UCSR1A |= 1<<TXC1;	//clear USART1 transmit complete signal; page 
-//}
+void USART1_TX(uint8_t TX_data){
+	UDR1 = TX_data;		//place data to USART1 data buffer and initiate data transfer; page
+	while(!(UCSR1A & (1<<TXC1))){	//TXC1 bit is set if USART1 transfer is complete; page 
+		;
+	}
+	UCSR1A |= 1<<TXC1;	//clear USART1 transmit complete signal; page 
+}
 
 //----------------------------Interrupt Routine---------------------------------
 //USART1 Receive complete interrupt service routine
 //send data using SPI to digital phase shifter here
 ISR(USART1_RX_vect, ISR_BLOCK){		
 	++usart_byte_count;		//expect to receive 4 commands
+	uint8_t cmd_byte = UDR1;
+	USART1_TX(cmd_byte);	//Send back command only for debugging
 	if(usart_byte_count == 1){
-		if(UDR1 == 0xFF){	//cmd sync
+		if(cmd_byte == 0xFF){	//cmd sync
 			cmd_start = true;
 		} else {	//reset count if no start of cmd detected
 			usart_byte_count = 0;
 		}
 	} else if(cmd_start){
 		if(usart_byte_count == 2){		// second byte contains address
-			if(UDR1 != DPS_addr){	//if address does not match
+			if(cmd_byte != DPS_addr){	//if address does not match
 				usart_byte_count = 0;	//restart	
 				cmd_start = false;
 			}
 		} else if(usart_byte_count == 3){	//port number
-			port_num = UDR1;	//read port number
+			port_num = cmd_byte;	//read port number
 		} else if(usart_byte_count == 4){				//phase shift		
-			SPI_TX(port_num, UDR1, bit_sh);		//read data from USART buffer 1 then send to DPS chip							
+			SPI_TX(port_num, cmd_byte, bit_sh);		//read data from USART buffer 1 then send to DPS chip							
 			usart_byte_count = 0;
 			cmd_start = false;
 		}	//end of else if
