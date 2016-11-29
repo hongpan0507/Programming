@@ -1,0 +1,17 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  "C:/Xilinx/Vivado/2016.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+sv xil_defaultlib  "../../../Sonar.srcs/sources_1/new/seg7.sv" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+sv xil_defaultlib  "../../../Sonar.srcs/sources_1/new/bcd.sv" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+verilog xil_defaultlib  "../../../Sonar.ip_user_files/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0.v" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+verilog xil_defaultlib  "../../../Sonar.ip_user_files/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+verilog xil_defaultlib  "../../../Sonar.ip_user_files/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+verilog xil_defaultlib  "../../../Sonar.ip_user_files/bd/design_1/hdl/design_1.v" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+sv xil_defaultlib  "../../../Sonar.srcs/sources_1/new/seg_display.sv" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+sv xil_defaultlib  "../../../Sonar.srcs/sources_1/new/sonar.sv" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+sv xil_defaultlib  "../../../Sonar.srcs/sim_1/new/sonar_tb.sv" --include "../../../Sonar.ip_user_files/ipstatic/clk_wiz_v5_3"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
