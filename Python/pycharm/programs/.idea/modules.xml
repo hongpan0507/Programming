@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://E:/Dropbox (Personal)/tamu/eGaIn/hpan/cross_antenna/.idea/cross_antenna.iml" filepath="E:/Dropbox (Personal)/tamu/eGaIn/hpan/cross_antenna/.idea/cross_antenna.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fourier_transform/.idea/fourier_transform.iml" filepath="$PROJECT_DIR$/../fourier_transform/.idea/fourier_transform.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/programs.iml" filepath="$PROJECT_DIR$/.idea/programs.iml" />
+      <module fileurl="file://E:/Dropbox (Personal)/tamu/eGaIn/hpan/sinusoidal_antenna/.idea/sinusoidal_antenna.iml" filepath="E:/Dropbox (Personal)/tamu/eGaIn/hpan/sinusoidal_antenna/.idea/sinusoidal_antenna.iml" />
     </modules>
   </component>
 </project>

@@ -2,9 +2,9 @@
 Digital Phase Shifter
 
 Data Format received from BlueTooth through USART: 
-	"0xFF0xAA0xBB0xCC"
+	"0xFF0x050xBB0xCC"
 		0xFF == cmd start detection (cannot have phase shift of "0xFF")
-		0xAA == Address (board level)
+		0x05 == Address (board level)
 		0xBB == PORT # (DPS Chip)
 		0xCC == DPS cmd (phase shift)
 	
@@ -39,10 +39,10 @@ uint8_t port_num = 0;	//DPS port number
 uint8_t data_dump = 0;	//flush usart buffer
 const uint8_t bit_sh = 2;	//digital phase shifter data bit shift
 
-volatile uint8_t LE1_led = 0;
-volatile uint8_t LE2_led = 0;
-volatile uint8_t LE3_led = 0;
-volatile uint8_t LE4_led = 0;
+volatile bool LE1_led = false;
+volatile bool LE2_led = false;
+volatile bool LE3_led = false;
+volatile bool LE4_led = false;
 
 const uint8_t LE_t = 1;		//LE pulse width
 const uint8_t LEx_led_t = 50;		//LE pulse width
@@ -75,34 +75,46 @@ int main(void){
 	DDRC |= 1<<DDC6;	//PC6; LE3 LED
 	DDRD |= 1<<DDD7;	//PD7; LE4 LED
 	
+	//LED debugging; searching for bad LEDs
+	//PORTE |= 1<<PORTE6;
+	//PORTC |= 1<<PORTC7;
+	//PORTC |= 1<<PORTC6;
+	//PORTD |= 1<<PORTD7;
+	
 	DDRB |= 1<<DDB0;	//debug; set port as output
 	
+	DDRD |= 1<<DDD5;	//set port as output
+	PORTD |= 1<<PORTD5;	//turn off LED; active low
+	
+	//board #1 2nd LE LED
+	//all board USB LED
+	
+	
     while (1){							
-		PINB |= 1<<PINB0;
-		
-		if(LE1_led == 1){
-			LE1_led = 0;
+		PINB |= 1<<PINB0;		
+		if(LE1_led == true){
+			LE1_led = false;
 			PINE |= 1<<PINE6;	//turn on
 			_delay_ms(LEx_led_t);
 			PINE |= 1<<PINE6;	//turn off
 			less_delay = true;
 		}
-		if(LE2_led == 1){
-			LE2_led = 0;
+		if(LE2_led == true){
+			LE2_led = false;
 			PINC |= 1<<PINC7;	//turn on
 			_delay_ms(LEx_led_t);
 			PINC |= 1<<PINC7;	//turn off
 			less_delay = true;
 		}
-		if(LE3_led == 1){
-			LE3_led = 0;
+		if(LE3_led == true){
+			LE3_led = false;
 			PINC |= 1<<PINC6;	//turn on
 			_delay_ms(LEx_led_t);
 			PINC |= 1<<PINC6;	//turn off
 			less_delay = true;
 		} 
-		if(LE4_led == 1){
-			LE4_led = 0;
+		if(LE4_led == true){
+			LE4_led = false;
 			PIND |= 1<<PIND7;	//turn on
 			_delay_ms(LEx_led_t);
 			PIND |= 1<<PIND7;	//turn off
@@ -114,8 +126,7 @@ int main(void){
 			less_delay = false;
 		} else{
 			_delay_ms(delay_t);	
-		}
-		
+		}				
     }
 }
 
@@ -124,7 +135,9 @@ int main(void){
 void SPI_init(){	//initialize SPI as master
 	PRR0 &= ~(1<<PRSPI); //enable SPI module in PRR; page 167; Page 43
 	
-	SPCR |= 1<<SPIE;	//enable SPI interrupt; page 171
+	//do not enable interrupt if not necessary
+	//SPCR |= 1<<SPIE;	//enable SPI interrupt; page 171
+	
 	SPCR &= ~(1<<DORD);	//MSB to be transmitted first; page 171		
 	SPCR |= (1<<MSTR);	//enable master mode; page 171
 	SPCR &= ~(1<<CPOL | 1<<CPHA);	//SPI clk is low when idle; Data is valid on leading edge; page 171
@@ -160,22 +173,22 @@ void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh){
 		_delay_loop_1(LE_t);
 		//_NOP();	//delay by 1 cpu cycle
 		PINB |= 1<<PINB6;	//toggle low
-		LE1_led = 1;
+		LE1_led = true;
 	} else if (PORT == PORT2){	//LE2
 		PINB |= 1<<PINB5;	//toggle high
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB5;	//toggle low
-		LE2_led = 1;
+		LE2_led = true;
 	} else if (PORT == PORT3){	//LE3
 		PINB |= 1<<PINB4;	//toggle high		
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB4;	//toggle low
-		LE3_led = 1;
+		LE3_led = true;
 	} else if (PORT == PORT4){	//LE4
 		PINB |= 1<<PINB7;	//toggle high		
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB7;	//toggle low
-		LE4_led = 1;
+		LE4_led = true;
 	}	
 }
 
@@ -193,35 +206,37 @@ void USART1_init(uint8_t baud_rate){
 	UCSR1B |= (1<<RXEN1);	//enable receiver; page 194	
 }
 
-//void USART1_TX(uint8_t TX_data){
-	//UDR1 = TX_data;		//place data to USART1 data buffer and initiate data transfer; page
-	//while(!(UCSR1A & (1<<TXC1))){	//TXC1 bit is set if USART1 transfer is complete; page 
-		//;
-	//}
-	//UCSR1A |= 1<<TXC1;	//clear USART1 transmit complete signal; page 
-//}
+void USART1_TX(uint8_t TX_data){
+	UDR1 = TX_data;		//place data to USART1 data buffer and initiate data transfer; page
+	while(!(UCSR1A & (1<<TXC1))){	//TXC1 bit is set if USART1 transfer is complete; page 
+		;
+	}
+	UCSR1A |= 1<<TXC1;	//clear USART1 transmit complete signal; page 
+}
 
 //----------------------------Interrupt Routine---------------------------------
 //USART1 Receive complete interrupt service routine
 //send data using SPI to digital phase shifter here
 ISR(USART1_RX_vect, ISR_BLOCK){		
 	++usart_byte_count;		//expect to receive 4 commands
+	uint8_t cmd_byte = UDR1;
+	USART1_TX(cmd_byte);	//Send back command only for debugging
 	if(usart_byte_count == 1){
-		if(UDR1 == 0xFF){	//cmd sync
+		if(cmd_byte == 0xFF){	//cmd sync
 			cmd_start = true;
 		} else {	//reset count if no start of cmd detected
 			usart_byte_count = 0;
 		}
 	} else if(cmd_start){
 		if(usart_byte_count == 2){		// second byte contains address
-			if(UDR1 != DPS_addr){	//if address does not match
+			if(cmd_byte != DPS_addr){	//if address does not match
 				usart_byte_count = 0;	//restart	
 				cmd_start = false;
 			}
 		} else if(usart_byte_count == 3){	//port number
-			port_num = UDR1;	//read port number
+			port_num = cmd_byte;	//read port number
 		} else if(usart_byte_count == 4){				//phase shift		
-			SPI_TX(port_num, UDR1, bit_sh);		//read data from USART buffer 1 then send to DPS chip							
+			SPI_TX(port_num, cmd_byte, bit_sh);		//read data from USART buffer 1 then send to DPS chip							
 			usart_byte_count = 0;
 			cmd_start = false;
 		}	//end of else if

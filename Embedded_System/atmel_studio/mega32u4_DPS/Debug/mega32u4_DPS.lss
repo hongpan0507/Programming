@@ -3,31 +3,31 @@ mega32u4_DPS.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000003e2  2**0
+  0 .data         00000000  00800100  00800100  000003fe  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000036e  00000000  00000000  00000074  2**1
+  1 .text         0000038a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000007  00800100  00800100  000003e2  2**0
+  2 .bss          00000007  00800100  00800100  000003fe  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000003e2  2**0
+  3 .comment      00000030  00000000  00000000  000003fe  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000414  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000430  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000040  00000000  00000000  00000454  2**0
+  5 .debug_aranges 00000048  00000000  00000000  00000470  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000004b6  00000000  00000000  00000494  2**0
+  6 .debug_info   00000516  00000000  00000000  000004b8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000001d0  00000000  00000000  0000094a  2**0
+  7 .debug_abbrev 000001dd  00000000  00000000  000009ce  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000210  00000000  00000000  00000b1a  2**0
+  8 .debug_line   00000421  00000000  00000000  00000bab  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000ac  00000000  00000000  00000d2c  2**2
+  9 .debug_frame  000000c0  00000000  00000000  00000fcc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000002d3  00000000  00000000  00000dd8  2**0
+ 10 .debug_str    000002fc  00000000  00000000  0000108c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000003b4  00000000  00000000  000010ab  2**0
+ 11 .debug_loc    00000401  00000000  00000000  00001388  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000030  00000000  00000000  0000145f  2**0
+ 12 .debug_ranges 00000038  00000000  00000000  00001789  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -58,7 +58,7 @@ Disassembly of section .text:
   58:	0c 94 68 00 	jmp	0xd0	; 0xd0 <__bad_interrupt>
   5c:	0c 94 68 00 	jmp	0xd0	; 0xd0 <__bad_interrupt>
   60:	0c 94 68 00 	jmp	0xd0	; 0xd0 <__bad_interrupt>
-  64:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__vector_25>
+  64:	0c 94 6a 01 	jmp	0x2d4	; 0x2d4 <__vector_25>
   68:	0c 94 68 00 	jmp	0xd0	; 0xd0 <__bad_interrupt>
   6c:	0c 94 68 00 	jmp	0xd0	; 0xd0 <__bad_interrupt>
   70:	0c 94 68 00 	jmp	0xd0	; 0xd0 <__bad_interrupt>
@@ -98,8 +98,8 @@ Disassembly of section .text:
   c2:	a7 30       	cpi	r26, 0x07	; 7
   c4:	b2 07       	cpc	r27, r18
   c6:	e1 f7       	brne	.-8      	; 0xc0 <.do_clear_bss_loop>
-  c8:	0e 94 e7 00 	call	0x1ce	; 0x1ce <main>
-  cc:	0c 94 b5 01 	jmp	0x36a	; 0x36a <_exit>
+  c8:	0e 94 e4 00 	call	0x1c8	; 0x1c8 <main>
+  cc:	0c 94 c3 01 	jmp	0x386	; 0x386 <_exit>
 
 000000d0 <__bad_interrupt>:
   d0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -117,480 +117,516 @@ void SPI_init(){	//initialize SPI as master
   da:	8b 7f       	andi	r24, 0xFB	; 251
   dc:	80 83       	st	Z, r24
 	
-	SPCR |= 1<<SPIE;	//enable SPI interrupt; page 171
-  de:	8c b5       	in	r24, 0x2c	; 44
-  e0:	80 68       	ori	r24, 0x80	; 128
-  e2:	8c bd       	out	0x2c, r24	; 44
+	//do not enable interrupt if not necessary
+	//SPCR |= 1<<SPIE;	//enable SPI interrupt; page 171
+	
 	SPCR &= ~(1<<DORD);	//MSB to be transmitted first; page 171		
-  e4:	8c b5       	in	r24, 0x2c	; 44
-  e6:	8f 7d       	andi	r24, 0xDF	; 223
-  e8:	8c bd       	out	0x2c, r24	; 44
+  de:	8c b5       	in	r24, 0x2c	; 44
+  e0:	8f 7d       	andi	r24, 0xDF	; 223
+  e2:	8c bd       	out	0x2c, r24	; 44
 	SPCR |= (1<<MSTR);	//enable master mode; page 171
-  ea:	8c b5       	in	r24, 0x2c	; 44
-  ec:	80 61       	ori	r24, 0x10	; 16
-  ee:	8c bd       	out	0x2c, r24	; 44
+  e4:	8c b5       	in	r24, 0x2c	; 44
+  e6:	80 61       	ori	r24, 0x10	; 16
+  e8:	8c bd       	out	0x2c, r24	; 44
 	SPCR &= ~(1<<CPOL | 1<<CPHA);	//SPI clk is low when idle; Data is valid on leading edge; page 171
-  f0:	8c b5       	in	r24, 0x2c	; 44
-  f2:	83 7f       	andi	r24, 0xF3	; 243
-  f4:	8c bd       	out	0x2c, r24	; 44
+  ea:	8c b5       	in	r24, 0x2c	; 44
+  ec:	83 7f       	andi	r24, 0xF3	; 243
+  ee:	8c bd       	out	0x2c, r24	; 44
 	DDRB |= 1<<DDB1 | 1<<DDB2;	//set PB2/MOSI and PB1/SCK as output
-  f6:	84 b1       	in	r24, 0x04	; 4
-  f8:	86 60       	ori	r24, 0x06	; 6
-  fa:	84 b9       	out	0x04, r24	; 4
+  f0:	84 b1       	in	r24, 0x04	; 4
+  f2:	86 60       	ori	r24, 0x06	; 6
+  f4:	84 b9       	out	0x04, r24	; 4
 									// MISO is override as Input; p168
 	
 	SPCR &= ~(1<<SPR1 | 1<<SPR0);
-  fc:	8c b5       	in	r24, 0x2c	; 44
-  fe:	8c 7f       	andi	r24, 0xFC	; 252
- 100:	8c bd       	out	0x2c, r24	; 44
+  f6:	8c b5       	in	r24, 0x2c	; 44
+  f8:	8c 7f       	andi	r24, 0xFC	; 252
+  fa:	8c bd       	out	0x2c, r24	; 44
 	SPSR |= 1<<SPI2X;	//set SPI CLK frequency; p172; f_clk = f_osc/2
- 102:	8d b5       	in	r24, 0x2d	; 45
- 104:	81 60       	ori	r24, 0x01	; 1
- 106:	8d bd       	out	0x2d, r24	; 45
+  fc:	8d b5       	in	r24, 0x2d	; 45
+  fe:	81 60       	ori	r24, 0x01	; 1
+ 100:	8d bd       	out	0x2d, r24	; 45
 									
 	SPCR |= 1<<SPE;	//enable SPI module in SPI control Register; page 171
- 108:	8c b5       	in	r24, 0x2c	; 44
- 10a:	80 64       	ori	r24, 0x40	; 64
- 10c:	8c bd       	out	0x2c, r24	; 44
- 10e:	08 95       	ret
+ 102:	8c b5       	in	r24, 0x2c	; 44
+ 104:	80 64       	ori	r24, 0x40	; 64
+ 106:	8c bd       	out	0x2c, r24	; 44
+ 108:	08 95       	ret
 
-00000110 <_Z6SPI_TXhhh>:
+0000010a <_Z6SPI_TXhhh>:
 
 //PORT = one of the four phase shifter to have LE pulse applied
 //DPS_cmd = desired phase shift
 //bit_sh = number of bit shift (left) to the DPS_cmd
 void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh){	
 	DPS_cmd = DPS_cmd << bit_sh;	//shift bit according to the phase shifter datasheet
- 110:	70 e0       	ldi	r23, 0x00	; 0
- 112:	02 c0       	rjmp	.+4      	; 0x118 <_Z6SPI_TXhhh+0x8>
- 114:	66 0f       	add	r22, r22
- 116:	77 1f       	adc	r23, r23
- 118:	4a 95       	dec	r20
- 11a:	e2 f7       	brpl	.-8      	; 0x114 <_Z6SPI_TXhhh+0x4>
+ 10a:	70 e0       	ldi	r23, 0x00	; 0
+ 10c:	02 c0       	rjmp	.+4      	; 0x112 <_Z6SPI_TXhhh+0x8>
+ 10e:	66 0f       	add	r22, r22
+ 110:	77 1f       	adc	r23, r23
+ 112:	4a 95       	dec	r20
+ 114:	e2 f7       	brpl	.-8      	; 0x10e <_Z6SPI_TXhhh+0x4>
 	
 	SPDR = DPS_cmd;	//place data to SPI data buffer to start sending the data
- 11c:	6e bd       	out	0x2e, r22	; 46
+ 116:	6e bd       	out	0x2e, r22	; 46
 	//SPIF bit is set when a SPI transfer is complete; p158
 	//SPIF bit is cleared by reading SPSR register with SPIF set, then accessing SPDR; page 158
 	while(!(SPSR & (1<<SPIF))){
- 11e:	0d b4       	in	r0, 0x2d	; 45
- 120:	07 fe       	sbrs	r0, 7
- 122:	fd cf       	rjmp	.-6      	; 0x11e <_Z6SPI_TXhhh+0xe>
+ 118:	0d b4       	in	r0, 0x2d	; 45
+ 11a:	07 fe       	sbrs	r0, 7
+ 11c:	fd cf       	rjmp	.-6      	; 0x118 <_Z6SPI_TXhhh+0xe>
 	//selectively apply LE pulse after data is transmitted	
 	/* delay is required by the phase shifter, but the hardware cannot create a pulse that is as short as 1 cpu cycle
 	   assuming the clk is running at 16MHz because of the parasitic capacitance; consider adding an amp as a buffer
 	   to remove the charges faster;
 	   _delay_loop_1(count) time = 1/CPU_clk*3*count; or 3 CPU_clk time per loop  */	
 	if(PORT == PORT1){	//LE1
- 124:	81 30       	cpi	r24, 0x01	; 1
- 126:	41 f4       	brne	.+16     	; 0x138 <_Z6SPI_TXhhh+0x28>
+ 11e:	81 30       	cpi	r24, 0x01	; 1
+ 120:	41 f4       	brne	.+16     	; 0x132 <_Z6SPI_TXhhh+0x28>
 		PINB |= 1<<PINB6;	//toggle high
- 128:	1e 9a       	sbi	0x03, 6	; 3
+ 122:	1e 9a       	sbi	0x03, 6	; 3
 	__asm__ volatile (
 		"1: dec %0" "\n\t"
 		"brne 1b"
 		: "=r" (__count)
 		: "0" (__count)
 	);
- 12a:	98 2f       	mov	r25, r24
- 12c:	9a 95       	dec	r25
- 12e:	f1 f7       	brne	.-4      	; 0x12c <_Z6SPI_TXhhh+0x1c>
+ 124:	98 2f       	mov	r25, r24
+ 126:	9a 95       	dec	r25
+ 128:	f1 f7       	brne	.-4      	; 0x126 <_Z6SPI_TXhhh+0x1c>
 		_delay_loop_1(LE_t);
 		//_NOP();	//delay by 1 cpu cycle
 		PINB |= 1<<PINB6;	//toggle low
- 130:	1e 9a       	sbi	0x03, 6	; 3
-		LE1_led = 1;
- 132:	80 93 03 01 	sts	0x0103, r24
- 136:	08 95       	ret
+ 12a:	1e 9a       	sbi	0x03, 6	; 3
+		LE1_led = true;
+ 12c:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <LE1_led>
+ 130:	08 95       	ret
 	} else if (PORT == PORT2){	//LE2
- 138:	82 30       	cpi	r24, 0x02	; 2
- 13a:	49 f4       	brne	.+18     	; 0x14e <_Z6SPI_TXhhh+0x3e>
+ 132:	82 30       	cpi	r24, 0x02	; 2
+ 134:	49 f4       	brne	.+18     	; 0x148 <_Z6SPI_TXhhh+0x3e>
 		PINB |= 1<<PINB5;	//toggle high
- 13c:	1d 9a       	sbi	0x03, 5	; 3
- 13e:	81 e0       	ldi	r24, 0x01	; 1
- 140:	98 2f       	mov	r25, r24
- 142:	9a 95       	dec	r25
- 144:	f1 f7       	brne	.-4      	; 0x142 <_Z6SPI_TXhhh+0x32>
+ 136:	1d 9a       	sbi	0x03, 5	; 3
+ 138:	81 e0       	ldi	r24, 0x01	; 1
+ 13a:	98 2f       	mov	r25, r24
+ 13c:	9a 95       	dec	r25
+ 13e:	f1 f7       	brne	.-4      	; 0x13c <_Z6SPI_TXhhh+0x32>
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB5;	//toggle low
- 146:	1d 9a       	sbi	0x03, 5	; 3
-		LE2_led = 1;
- 148:	80 93 02 01 	sts	0x0102, r24
- 14c:	08 95       	ret
+ 140:	1d 9a       	sbi	0x03, 5	; 3
+		LE2_led = true;
+ 142:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <LE2_led>
+ 146:	08 95       	ret
 	} else if (PORT == PORT3){	//LE3
- 14e:	83 30       	cpi	r24, 0x03	; 3
- 150:	49 f4       	brne	.+18     	; 0x164 <_Z6SPI_TXhhh+0x54>
+ 148:	83 30       	cpi	r24, 0x03	; 3
+ 14a:	49 f4       	brne	.+18     	; 0x15e <_Z6SPI_TXhhh+0x54>
 		PINB |= 1<<PINB4;	//toggle high		
- 152:	1c 9a       	sbi	0x03, 4	; 3
- 154:	81 e0       	ldi	r24, 0x01	; 1
- 156:	98 2f       	mov	r25, r24
- 158:	9a 95       	dec	r25
- 15a:	f1 f7       	brne	.-4      	; 0x158 <_Z6SPI_TXhhh+0x48>
+ 14c:	1c 9a       	sbi	0x03, 4	; 3
+ 14e:	81 e0       	ldi	r24, 0x01	; 1
+ 150:	98 2f       	mov	r25, r24
+ 152:	9a 95       	dec	r25
+ 154:	f1 f7       	brne	.-4      	; 0x152 <_Z6SPI_TXhhh+0x48>
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB4;	//toggle low
- 15c:	1c 9a       	sbi	0x03, 4	; 3
-		LE3_led = 1;
- 15e:	80 93 01 01 	sts	0x0101, r24
- 162:	08 95       	ret
+ 156:	1c 9a       	sbi	0x03, 4	; 3
+		LE3_led = true;
+ 158:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <LE3_led>
+ 15c:	08 95       	ret
 	} else if (PORT == PORT4){	//LE4
- 164:	84 30       	cpi	r24, 0x04	; 4
- 166:	41 f4       	brne	.+16     	; 0x178 <_Z6SPI_TXhhh+0x68>
+ 15e:	84 30       	cpi	r24, 0x04	; 4
+ 160:	41 f4       	brne	.+16     	; 0x172 <_Z6SPI_TXhhh+0x68>
 		PINB |= 1<<PINB7;	//toggle high		
- 168:	1f 9a       	sbi	0x03, 7	; 3
- 16a:	81 e0       	ldi	r24, 0x01	; 1
- 16c:	98 2f       	mov	r25, r24
- 16e:	9a 95       	dec	r25
- 170:	f1 f7       	brne	.-4      	; 0x16e <_Z6SPI_TXhhh+0x5e>
+ 162:	1f 9a       	sbi	0x03, 7	; 3
+ 164:	81 e0       	ldi	r24, 0x01	; 1
+ 166:	98 2f       	mov	r25, r24
+ 168:	9a 95       	dec	r25
+ 16a:	f1 f7       	brne	.-4      	; 0x168 <_Z6SPI_TXhhh+0x5e>
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB7;	//toggle low
- 172:	1f 9a       	sbi	0x03, 7	; 3
-		LE4_led = 1;
- 174:	80 93 00 01 	sts	0x0100, r24
- 178:	08 95       	ret
+ 16c:	1f 9a       	sbi	0x03, 7	; 3
+		LE4_led = true;
+ 16e:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
+ 172:	08 95       	ret
 
-0000017a <_Z11USART1_inith>:
+00000174 <_Z11USART1_inith>:
 	}	
 }
 
 void USART1_init(uint8_t baud_rate){	
 	PRR1 &= ~(1<<PRUSART1);	//enable USART module in PRR; page43
- 17a:	e5 e6       	ldi	r30, 0x65	; 101
- 17c:	f0 e0       	ldi	r31, 0x00	; 0
- 17e:	90 81       	ld	r25, Z
- 180:	9e 7f       	andi	r25, 0xFE	; 254
- 182:	90 83       	st	Z, r25
+ 174:	e5 e6       	ldi	r30, 0x65	; 101
+ 176:	f0 e0       	ldi	r31, 0x00	; 0
+ 178:	90 81       	ld	r25, Z
+ 17a:	9e 7f       	andi	r25, 0xFE	; 254
+ 17c:	90 83       	st	Z, r25
 	UCSR1C &= ~((1<<UMSEL11) | (1<<UMSEL10));	//enable asynchronous mode in USART1; page 194
- 184:	ea ec       	ldi	r30, 0xCA	; 202
- 186:	f0 e0       	ldi	r31, 0x00	; 0
- 188:	90 81       	ld	r25, Z
- 18a:	9f 73       	andi	r25, 0x3F	; 63
- 18c:	90 83       	st	Z, r25
+ 17e:	ea ec       	ldi	r30, 0xCA	; 202
+ 180:	f0 e0       	ldi	r31, 0x00	; 0
+ 182:	90 81       	ld	r25, Z
+ 184:	9f 73       	andi	r25, 0x3F	; 63
+ 186:	90 83       	st	Z, r25
 	UCSR1C &= ~((1<<UPM11)|(1<<UPM10));	//disable parity check; page 195
- 18e:	90 81       	ld	r25, Z
- 190:	9f 7c       	andi	r25, 0xCF	; 207
- 192:	90 83       	st	Z, r25
+ 188:	90 81       	ld	r25, Z
+ 18a:	9f 7c       	andi	r25, 0xCF	; 207
+ 18c:	90 83       	st	Z, r25
 	UCSR1C &= ~(1<<USBS1);	//use 1 stop bit; page 195
- 194:	90 81       	ld	r25, Z
- 196:	97 7f       	andi	r25, 0xF7	; 247
- 198:	90 83       	st	Z, r25
+ 18e:	90 81       	ld	r25, Z
+ 190:	97 7f       	andi	r25, 0xF7	; 247
+ 192:	90 83       	st	Z, r25
 	UCSR1C |= ((1<<UCSZ11) | (1<<UCSZ10));	//use 8 character per frame; page 195
- 19a:	90 81       	ld	r25, Z
- 19c:	96 60       	ori	r25, 0x06	; 6
- 19e:	90 83       	st	Z, r25
+ 194:	90 81       	ld	r25, Z
+ 196:	96 60       	ori	r25, 0x06	; 6
+ 198:	90 83       	st	Z, r25
 	UCSR1B &= ~(1<<UCSZ12);	//use 8 character per frame; page 195
- 1a0:	a9 ec       	ldi	r26, 0xC9	; 201
- 1a2:	b0 e0       	ldi	r27, 0x00	; 0
- 1a4:	9c 91       	ld	r25, X
- 1a6:	9b 7f       	andi	r25, 0xFB	; 251
- 1a8:	9c 93       	st	X, r25
+ 19a:	a9 ec       	ldi	r26, 0xC9	; 201
+ 19c:	b0 e0       	ldi	r27, 0x00	; 0
+ 19e:	9c 91       	ld	r25, X
+ 1a0:	9b 7f       	andi	r25, 0xFB	; 251
+ 1a2:	9c 93       	st	X, r25
 	UCSR1C &= ~(1<<UCPOL1);		//Clk polarity; write zero when using asynchronous mode; page 195
- 1aa:	90 81       	ld	r25, Z
- 1ac:	9e 7f       	andi	r25, 0xFE	; 254
- 1ae:	90 83       	st	Z, r25
+ 1a4:	90 81       	ld	r25, Z
+ 1a6:	9e 7f       	andi	r25, 0xFE	; 254
+ 1a8:	90 83       	st	Z, r25
 	UBRR1 = baud_rate;	//set the baud_rate; page 196
- 1b0:	90 e0       	ldi	r25, 0x00	; 0
- 1b2:	90 93 cd 00 	sts	0x00CD, r25
- 1b6:	80 93 cc 00 	sts	0x00CC, r24
+ 1aa:	90 e0       	ldi	r25, 0x00	; 0
+ 1ac:	90 93 cd 00 	sts	0x00CD, r25	; 0x8000cd <__TEXT_REGION_LENGTH__+0x7e00cd>
+ 1b0:	80 93 cc 00 	sts	0x00CC, r24	; 0x8000cc <__TEXT_REGION_LENGTH__+0x7e00cc>
 	UCSR1B |= 1<<RXCIE1;	//enable RX complete Interrupt; page 193	
- 1ba:	8c 91       	ld	r24, X
- 1bc:	80 68       	ori	r24, 0x80	; 128
- 1be:	8c 93       	st	X, r24
+ 1b4:	8c 91       	ld	r24, X
+ 1b6:	80 68       	ori	r24, 0x80	; 128
+ 1b8:	8c 93       	st	X, r24
 	UCSR1B |= (1<<TXEN1);	//enable transmitter; page 194
- 1c0:	8c 91       	ld	r24, X
- 1c2:	88 60       	ori	r24, 0x08	; 8
- 1c4:	8c 93       	st	X, r24
+ 1ba:	8c 91       	ld	r24, X
+ 1bc:	88 60       	ori	r24, 0x08	; 8
+ 1be:	8c 93       	st	X, r24
 	UCSR1B |= (1<<RXEN1);	//enable receiver; page 194	
- 1c6:	8c 91       	ld	r24, X
- 1c8:	80 61       	ori	r24, 0x10	; 16
- 1ca:	8c 93       	st	X, r24
- 1cc:	08 95       	ret
+ 1c0:	8c 91       	ld	r24, X
+ 1c2:	80 61       	ori	r24, 0x10	; 16
+ 1c4:	8c 93       	st	X, r24
+ 1c6:	08 95       	ret
 
-000001ce <main>:
+000001c8 <main>:
 
 int main(void){
 	const uint16_t delay_t = 1000;	//Debug LED flash
 	bool less_delay = false;	//compensate for LEx_led delay
 	
 	cli();//Disable Global Interrupt
- 1ce:	f8 94       	cli
+ 1c8:	f8 94       	cli
 	SPI_init();
- 1d0:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z8SPI_initv>
+ 1ca:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z8SPI_initv>
 	USART1_init(103);	//9600 baud rate
- 1d4:	87 e6       	ldi	r24, 0x67	; 103
- 1d6:	0e 94 bd 00 	call	0x17a	; 0x17a <_Z11USART1_inith>
+ 1ce:	87 e6       	ldi	r24, 0x67	; 103
+ 1d0:	0e 94 ba 00 	call	0x174	; 0x174 <_Z11USART1_inith>
 	sei();	//Enable Global Interrupt
- 1da:	78 94       	sei
+ 1d4:	78 94       	sei
 	
 	//set port as output
 	//short pulse to execute the cmd received by the phase shifter
 	DDRB |= 1<<DDB6;	//LE1 pulse
- 1dc:	26 9a       	sbi	0x04, 6	; 4
+ 1d6:	26 9a       	sbi	0x04, 6	; 4
 	DDRB |= 1<<DDB5;	//LE2 pulse
- 1de:	25 9a       	sbi	0x04, 5	; 4
+ 1d8:	25 9a       	sbi	0x04, 5	; 4
 	DDRB |= 1<<DDB4;	//LE3 pulse
- 1e0:	24 9a       	sbi	0x04, 4	; 4
+ 1da:	24 9a       	sbi	0x04, 4	; 4
 	DDRB |= 1<<DDB7;	//LE4 pulse
- 1e2:	27 9a       	sbi	0x04, 7	; 4
+ 1dc:	27 9a       	sbi	0x04, 7	; 4
 	
 	//LED flashes after LE1 pulse is applied
 	DDRE |= 1<<DDE6;	//PE6; LE1 LED
- 1e4:	6e 9a       	sbi	0x0d, 6	; 13
+ 1de:	6e 9a       	sbi	0x0d, 6	; 13
 	DDRC |= 1<<DDC7;	//PC7; LE2 LED
- 1e6:	3f 9a       	sbi	0x07, 7	; 7
+ 1e0:	3f 9a       	sbi	0x07, 7	; 7
 	DDRC |= 1<<DDC6;	//PC6; LE3 LED
- 1e8:	3e 9a       	sbi	0x07, 6	; 7
+ 1e2:	3e 9a       	sbi	0x07, 6	; 7
 	DDRD |= 1<<DDD7;	//PD7; LE4 LED
- 1ea:	57 9a       	sbi	0x0a, 7	; 10
+ 1e4:	57 9a       	sbi	0x0a, 7	; 10
+	//PORTE |= 1<<PORTE6;
+	//PORTC |= 1<<PORTC7;
+	//PORTC |= 1<<PORTC6;
+	//PORTD |= 1<<PORTD7;
 	
 	DDRB |= 1<<DDB0;	//debug; set port as output
- 1ec:	20 9a       	sbi	0x04, 0	; 4
- 1ee:	20 e0       	ldi	r18, 0x00	; 0
-		if(LE1_led == 1){
-			LE1_led = 0;
+ 1e6:	20 9a       	sbi	0x04, 0	; 4
+	
+	DDRD |= 1<<DDD5;	//set port as output
+ 1e8:	55 9a       	sbi	0x0a, 5	; 10
+	PORTD |= 1<<PORTD5;	//turn off LED; active low
+ 1ea:	5d 9a       	sbi	0x0b, 5	; 11
+ 1ec:	20 e0       	ldi	r18, 0x00	; 0
+		if(LE1_led == true){
+			LE1_led = false;
 			PINE |= 1<<PINE6;	//turn on
 			_delay_ms(LEx_led_t);
 			PINE |= 1<<PINE6;	//turn off
 			less_delay = true;
- 1f0:	31 e0       	ldi	r19, 0x01	; 1
-	DDRD |= 1<<DDD7;	//PD7; LE4 LED
+ 1ee:	31 e0       	ldi	r19, 0x01	; 1
+	//board #1 2nd LE LED
+	//all board USB LED
 	
-	DDRB |= 1<<DDB0;	//debug; set port as output
 	
     while (1){							
-		PINB |= 1<<PINB0;
- 1f2:	18 9a       	sbi	0x03, 0	; 3
-		
-		if(LE1_led == 1){
- 1f4:	80 91 03 01 	lds	r24, 0x0103
- 1f8:	81 30       	cpi	r24, 0x01	; 1
- 1fa:	79 f4       	brne	.+30     	; 0x21a <main+0x4c>
-			LE1_led = 0;
- 1fc:	20 93 03 01 	sts	0x0103, r18
+		PINB |= 1<<PINB0;		
+ 1f0:	18 9a       	sbi	0x03, 0	; 3
+		if(LE1_led == true){
+ 1f2:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <LE1_led>
+ 1f6:	88 23       	and	r24, r24
+ 1f8:	79 f0       	breq	.+30     	; 0x218 <main+0x50>
+			LE1_led = false;
+ 1fa:	20 93 03 01 	sts	0x0103, r18	; 0x800103 <LE1_led>
 			PINE |= 1<<PINE6;	//turn on
- 200:	66 9a       	sbi	0x0c, 6	; 12
+ 1fe:	66 9a       	sbi	0x0c, 6	; 12
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 202:	4f ef       	ldi	r20, 0xFF	; 255
- 204:	80 e7       	ldi	r24, 0x70	; 112
- 206:	92 e0       	ldi	r25, 0x02	; 2
- 208:	41 50       	subi	r20, 0x01	; 1
- 20a:	80 40       	sbci	r24, 0x00	; 0
- 20c:	90 40       	sbci	r25, 0x00	; 0
- 20e:	e1 f7       	brne	.-8      	; 0x208 <main+0x3a>
- 210:	00 c0       	rjmp	.+0      	; 0x212 <main+0x44>
- 212:	00 00       	nop
+ 200:	4f ef       	ldi	r20, 0xFF	; 255
+ 202:	80 e7       	ldi	r24, 0x70	; 112
+ 204:	92 e0       	ldi	r25, 0x02	; 2
+ 206:	41 50       	subi	r20, 0x01	; 1
+ 208:	80 40       	sbci	r24, 0x00	; 0
+ 20a:	90 40       	sbci	r25, 0x00	; 0
+ 20c:	e1 f7       	brne	.-8      	; 0x206 <main+0x3e>
+ 20e:	00 c0       	rjmp	.+0      	; 0x210 <main+0x48>
+ 210:	00 00       	nop
 			_delay_ms(LEx_led_t);
 			PINE |= 1<<PINE6;	//turn off
- 214:	66 9a       	sbi	0x0c, 6	; 12
+ 212:	66 9a       	sbi	0x0c, 6	; 12
 			less_delay = true;
- 216:	93 2f       	mov	r25, r19
- 218:	01 c0       	rjmp	.+2      	; 0x21c <main+0x4e>
- 21a:	92 2f       	mov	r25, r18
+ 214:	83 2f       	mov	r24, r19
+ 216:	01 c0       	rjmp	.+2      	; 0x21a <main+0x52>
+ 218:	82 2f       	mov	r24, r18
 		}
-		if(LE2_led == 1){
- 21c:	80 91 02 01 	lds	r24, 0x0102
- 220:	81 30       	cpi	r24, 0x01	; 1
- 222:	71 f4       	brne	.+28     	; 0x240 <main+0x72>
-			LE2_led = 0;
- 224:	20 93 02 01 	sts	0x0102, r18
+		if(LE2_led == true){
+ 21a:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <LE2_led>
+ 21e:	99 23       	and	r25, r25
+ 220:	71 f0       	breq	.+28     	; 0x23e <main+0x76>
+			LE2_led = false;
+ 222:	20 93 02 01 	sts	0x0102, r18	; 0x800102 <LE2_led>
 			PINC |= 1<<PINC7;	//turn on
- 228:	37 9a       	sbi	0x06, 7	; 6
- 22a:	4f ef       	ldi	r20, 0xFF	; 255
- 22c:	80 e7       	ldi	r24, 0x70	; 112
- 22e:	92 e0       	ldi	r25, 0x02	; 2
- 230:	41 50       	subi	r20, 0x01	; 1
- 232:	80 40       	sbci	r24, 0x00	; 0
- 234:	90 40       	sbci	r25, 0x00	; 0
- 236:	e1 f7       	brne	.-8      	; 0x230 <main+0x62>
- 238:	00 c0       	rjmp	.+0      	; 0x23a <main+0x6c>
- 23a:	00 00       	nop
+ 226:	37 9a       	sbi	0x06, 7	; 6
+ 228:	4f ef       	ldi	r20, 0xFF	; 255
+ 22a:	80 e7       	ldi	r24, 0x70	; 112
+ 22c:	92 e0       	ldi	r25, 0x02	; 2
+ 22e:	41 50       	subi	r20, 0x01	; 1
+ 230:	80 40       	sbci	r24, 0x00	; 0
+ 232:	90 40       	sbci	r25, 0x00	; 0
+ 234:	e1 f7       	brne	.-8      	; 0x22e <main+0x66>
+ 236:	00 c0       	rjmp	.+0      	; 0x238 <main+0x70>
+ 238:	00 00       	nop
 			_delay_ms(LEx_led_t);
 			PINC |= 1<<PINC7;	//turn off
- 23c:	37 9a       	sbi	0x06, 7	; 6
+ 23a:	37 9a       	sbi	0x06, 7	; 6
 			less_delay = true;
- 23e:	93 2f       	mov	r25, r19
+ 23c:	83 2f       	mov	r24, r19
 		}
-		if(LE3_led == 1){
- 240:	80 91 01 01 	lds	r24, 0x0101
- 244:	81 30       	cpi	r24, 0x01	; 1
- 246:	91 f4       	brne	.+36     	; 0x26c <main+0x9e>
-			LE3_led = 0;
- 248:	20 93 01 01 	sts	0x0101, r18
+		if(LE3_led == true){
+ 23e:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <LE3_led>
+ 242:	99 23       	and	r25, r25
+ 244:	91 f0       	breq	.+36     	; 0x26a <main+0xa2>
+			LE3_led = false;
+ 246:	20 93 01 01 	sts	0x0101, r18	; 0x800101 <LE3_led>
 			PINC |= 1<<PINC6;	//turn on
- 24c:	36 9a       	sbi	0x06, 6	; 6
- 24e:	4f ef       	ldi	r20, 0xFF	; 255
- 250:	80 e7       	ldi	r24, 0x70	; 112
- 252:	92 e0       	ldi	r25, 0x02	; 2
- 254:	41 50       	subi	r20, 0x01	; 1
- 256:	80 40       	sbci	r24, 0x00	; 0
- 258:	90 40       	sbci	r25, 0x00	; 0
- 25a:	e1 f7       	brne	.-8      	; 0x254 <main+0x86>
- 25c:	00 c0       	rjmp	.+0      	; 0x25e <main+0x90>
- 25e:	00 00       	nop
+ 24a:	36 9a       	sbi	0x06, 6	; 6
+ 24c:	4f ef       	ldi	r20, 0xFF	; 255
+ 24e:	80 e7       	ldi	r24, 0x70	; 112
+ 250:	92 e0       	ldi	r25, 0x02	; 2
+ 252:	41 50       	subi	r20, 0x01	; 1
+ 254:	80 40       	sbci	r24, 0x00	; 0
+ 256:	90 40       	sbci	r25, 0x00	; 0
+ 258:	e1 f7       	brne	.-8      	; 0x252 <main+0x8a>
+ 25a:	00 c0       	rjmp	.+0      	; 0x25c <main+0x94>
+ 25c:	00 00       	nop
 			_delay_ms(LEx_led_t);
 			PINC |= 1<<PINC6;	//turn off
- 260:	36 9a       	sbi	0x06, 6	; 6
+ 25e:	36 9a       	sbi	0x06, 6	; 6
 			less_delay = true;
 		} 
-		if(LE4_led == 1){
- 262:	80 91 00 01 	lds	r24, 0x0100
- 266:	81 30       	cpi	r24, 0x01	; 1
- 268:	a9 f4       	brne	.+42     	; 0x294 <main+0xc6>
- 26a:	04 c0       	rjmp	.+8      	; 0x274 <main+0xa6>
- 26c:	80 91 00 01 	lds	r24, 0x0100
- 270:	81 30       	cpi	r24, 0x01	; 1
- 272:	71 f4       	brne	.+28     	; 0x290 <main+0xc2>
-			LE4_led = 0;
- 274:	20 93 00 01 	sts	0x0100, r18
+		if(LE4_led == true){
+ 260:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 264:	88 23       	and	r24, r24
+ 266:	a9 f0       	breq	.+42     	; 0x292 <main+0xca>
+ 268:	04 c0       	rjmp	.+8      	; 0x272 <main+0xaa>
+ 26a:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <_edata>
+ 26e:	99 23       	and	r25, r25
+ 270:	71 f0       	breq	.+28     	; 0x28e <main+0xc6>
+			LE4_led = false;
+ 272:	20 93 00 01 	sts	0x0100, r18	; 0x800100 <_edata>
 			PIND |= 1<<PIND7;	//turn on
- 278:	4f 9a       	sbi	0x09, 7	; 9
- 27a:	4f ef       	ldi	r20, 0xFF	; 255
- 27c:	80 e7       	ldi	r24, 0x70	; 112
- 27e:	92 e0       	ldi	r25, 0x02	; 2
- 280:	41 50       	subi	r20, 0x01	; 1
- 282:	80 40       	sbci	r24, 0x00	; 0
- 284:	90 40       	sbci	r25, 0x00	; 0
- 286:	e1 f7       	brne	.-8      	; 0x280 <main+0xb2>
- 288:	00 c0       	rjmp	.+0      	; 0x28a <main+0xbc>
- 28a:	00 00       	nop
+ 276:	4f 9a       	sbi	0x09, 7	; 9
+ 278:	4f ef       	ldi	r20, 0xFF	; 255
+ 27a:	80 e7       	ldi	r24, 0x70	; 112
+ 27c:	92 e0       	ldi	r25, 0x02	; 2
+ 27e:	41 50       	subi	r20, 0x01	; 1
+ 280:	80 40       	sbci	r24, 0x00	; 0
+ 282:	90 40       	sbci	r25, 0x00	; 0
+ 284:	e1 f7       	brne	.-8      	; 0x27e <main+0xb6>
+ 286:	00 c0       	rjmp	.+0      	; 0x288 <main+0xc0>
+ 288:	00 00       	nop
 			_delay_ms(LEx_led_t);
 			PIND |= 1<<PIND7;	//turn off
- 28c:	4f 9a       	sbi	0x09, 7	; 9
- 28e:	02 c0       	rjmp	.+4      	; 0x294 <main+0xc6>
+ 28a:	4f 9a       	sbi	0x09, 7	; 9
+ 28c:	02 c0       	rjmp	.+4      	; 0x292 <main+0xca>
 			less_delay = true;
 		}				
 		
 		if(less_delay){
- 290:	99 23       	and	r25, r25
- 292:	51 f0       	breq	.+20     	; 0x2a8 <main+0xda>
- 294:	4f ef       	ldi	r20, 0xFF	; 255
- 296:	82 e6       	ldi	r24, 0x62	; 98
- 298:	9e e2       	ldi	r25, 0x2E	; 46
- 29a:	41 50       	subi	r20, 0x01	; 1
- 29c:	80 40       	sbci	r24, 0x00	; 0
- 29e:	90 40       	sbci	r25, 0x00	; 0
- 2a0:	e1 f7       	brne	.-8      	; 0x29a <main+0xcc>
- 2a2:	00 c0       	rjmp	.+0      	; 0x2a4 <main+0xd6>
- 2a4:	00 00       	nop
- 2a6:	a5 cf       	rjmp	.-182    	; 0x1f2 <main+0x24>
- 2a8:	4f ef       	ldi	r20, 0xFF	; 255
- 2aa:	83 ed       	ldi	r24, 0xD3	; 211
- 2ac:	90 e3       	ldi	r25, 0x30	; 48
- 2ae:	41 50       	subi	r20, 0x01	; 1
- 2b0:	80 40       	sbci	r24, 0x00	; 0
- 2b2:	90 40       	sbci	r25, 0x00	; 0
- 2b4:	e1 f7       	brne	.-8      	; 0x2ae <main+0xe0>
- 2b6:	00 c0       	rjmp	.+0      	; 0x2b8 <main+0xea>
- 2b8:	00 00       	nop
- 2ba:	9b cf       	rjmp	.-202    	; 0x1f2 <main+0x24>
+ 28e:	88 23       	and	r24, r24
+ 290:	51 f0       	breq	.+20     	; 0x2a6 <main+0xde>
+ 292:	4f ef       	ldi	r20, 0xFF	; 255
+ 294:	82 e6       	ldi	r24, 0x62	; 98
+ 296:	9e e2       	ldi	r25, 0x2E	; 46
+ 298:	41 50       	subi	r20, 0x01	; 1
+ 29a:	80 40       	sbci	r24, 0x00	; 0
+ 29c:	90 40       	sbci	r25, 0x00	; 0
+ 29e:	e1 f7       	brne	.-8      	; 0x298 <main+0xd0>
+ 2a0:	00 c0       	rjmp	.+0      	; 0x2a2 <main+0xda>
+ 2a2:	00 00       	nop
+ 2a4:	a5 cf       	rjmp	.-182    	; 0x1f0 <main+0x28>
+ 2a6:	4f ef       	ldi	r20, 0xFF	; 255
+ 2a8:	83 ed       	ldi	r24, 0xD3	; 211
+ 2aa:	90 e3       	ldi	r25, 0x30	; 48
+ 2ac:	41 50       	subi	r20, 0x01	; 1
+ 2ae:	80 40       	sbci	r24, 0x00	; 0
+ 2b0:	90 40       	sbci	r25, 0x00	; 0
+ 2b2:	e1 f7       	brne	.-8      	; 0x2ac <main+0xe4>
+ 2b4:	00 c0       	rjmp	.+0      	; 0x2b6 <main+0xee>
+ 2b6:	00 00       	nop
+ 2b8:	9b cf       	rjmp	.-202    	; 0x1f0 <main+0x28>
 
-000002bc <__vector_25>:
-//}
+000002ba <_Z9USART1_TXh>:
+	UCSR1B |= (1<<TXEN1);	//enable transmitter; page 194
+	UCSR1B |= (1<<RXEN1);	//enable receiver; page 194	
+}
+
+void USART1_TX(uint8_t TX_data){
+	UDR1 = TX_data;		//place data to USART1 data buffer and initiate data transfer; page
+ 2ba:	80 93 ce 00 	sts	0x00CE, r24	; 0x8000ce <__TEXT_REGION_LENGTH__+0x7e00ce>
+	while(!(UCSR1A & (1<<TXC1))){	//TXC1 bit is set if USART1 transfer is complete; page 
+ 2be:	e8 ec       	ldi	r30, 0xC8	; 200
+ 2c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2c2:	80 81       	ld	r24, Z
+ 2c4:	86 ff       	sbrs	r24, 6
+ 2c6:	fd cf       	rjmp	.-6      	; 0x2c2 <_Z9USART1_TXh+0x8>
+		;
+	}
+	UCSR1A |= 1<<TXC1;	//clear USART1 transmit complete signal; page 
+ 2c8:	e8 ec       	ldi	r30, 0xC8	; 200
+ 2ca:	f0 e0       	ldi	r31, 0x00	; 0
+ 2cc:	80 81       	ld	r24, Z
+ 2ce:	80 64       	ori	r24, 0x40	; 64
+ 2d0:	80 83       	st	Z, r24
+ 2d2:	08 95       	ret
+
+000002d4 <__vector_25>:
+}
 
 //----------------------------Interrupt Routine---------------------------------
 //USART1 Receive complete interrupt service routine
 //send data using SPI to digital phase shifter here
 ISR(USART1_RX_vect, ISR_BLOCK){		
- 2bc:	1f 92       	push	r1
- 2be:	0f 92       	push	r0
- 2c0:	0f b6       	in	r0, 0x3f	; 63
- 2c2:	0f 92       	push	r0
- 2c4:	11 24       	eor	r1, r1
- 2c6:	2f 93       	push	r18
- 2c8:	3f 93       	push	r19
- 2ca:	4f 93       	push	r20
- 2cc:	5f 93       	push	r21
- 2ce:	6f 93       	push	r22
- 2d0:	7f 93       	push	r23
- 2d2:	8f 93       	push	r24
- 2d4:	9f 93       	push	r25
- 2d6:	af 93       	push	r26
- 2d8:	bf 93       	push	r27
- 2da:	ef 93       	push	r30
- 2dc:	ff 93       	push	r31
+ 2d4:	1f 92       	push	r1
+ 2d6:	0f 92       	push	r0
+ 2d8:	0f b6       	in	r0, 0x3f	; 63
+ 2da:	0f 92       	push	r0
+ 2dc:	11 24       	eor	r1, r1
+ 2de:	2f 93       	push	r18
+ 2e0:	3f 93       	push	r19
+ 2e2:	4f 93       	push	r20
+ 2e4:	5f 93       	push	r21
+ 2e6:	6f 93       	push	r22
+ 2e8:	7f 93       	push	r23
+ 2ea:	8f 93       	push	r24
+ 2ec:	9f 93       	push	r25
+ 2ee:	af 93       	push	r26
+ 2f0:	bf 93       	push	r27
+ 2f2:	cf 93       	push	r28
+ 2f4:	ef 93       	push	r30
+ 2f6:	ff 93       	push	r31
 	++usart_byte_count;		//expect to receive 4 commands
- 2de:	80 91 06 01 	lds	r24, 0x0106
- 2e2:	8f 5f       	subi	r24, 0xFF	; 255
- 2e4:	80 93 06 01 	sts	0x0106, r24
+ 2f8:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <usart_byte_count>
+ 2fc:	8f 5f       	subi	r24, 0xFF	; 255
+ 2fe:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <usart_byte_count>
+	uint8_t cmd_byte = UDR1;
+ 302:	c0 91 ce 00 	lds	r28, 0x00CE	; 0x8000ce <__TEXT_REGION_LENGTH__+0x7e00ce>
+	USART1_TX(cmd_byte);	//Send back command only for debugging
+ 306:	8c 2f       	mov	r24, r28
+ 308:	0e 94 5d 01 	call	0x2ba	; 0x2ba <_Z9USART1_TXh>
 	if(usart_byte_count == 1){
- 2e8:	81 30       	cpi	r24, 0x01	; 1
- 2ea:	59 f4       	brne	.+22     	; 0x302 <__vector_25+0x46>
-		if(UDR1 == 0xFF){	//cmd sync
- 2ec:	80 91 ce 00 	lds	r24, 0x00CE
- 2f0:	8f 3f       	cpi	r24, 0xFF	; 255
- 2f2:	21 f4       	brne	.+8      	; 0x2fc <__vector_25+0x40>
+ 30c:	90 91 06 01 	lds	r25, 0x0106	; 0x800106 <usart_byte_count>
+ 310:	91 30       	cpi	r25, 0x01	; 1
+ 312:	49 f4       	brne	.+18     	; 0x326 <__vector_25+0x52>
+		if(cmd_byte == 0xFF){	//cmd sync
+ 314:	cf 3f       	cpi	r28, 0xFF	; 255
+ 316:	21 f4       	brne	.+8      	; 0x320 <__vector_25+0x4c>
 			cmd_start = true;
- 2f4:	81 e0       	ldi	r24, 0x01	; 1
- 2f6:	80 93 05 01 	sts	0x0105, r24
- 2fa:	26 c0       	rjmp	.+76     	; 0x348 <__vector_25+0x8c>
+ 318:	81 e0       	ldi	r24, 0x01	; 1
+ 31a:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <cmd_start>
+ 31e:	21 c0       	rjmp	.+66     	; 0x362 <__vector_25+0x8e>
 		} else {	//reset count if no start of cmd detected
 			usart_byte_count = 0;
- 2fc:	10 92 06 01 	sts	0x0106, r1
- 300:	23 c0       	rjmp	.+70     	; 0x348 <__vector_25+0x8c>
+ 320:	10 92 06 01 	sts	0x0106, r1	; 0x800106 <usart_byte_count>
+ 324:	1e c0       	rjmp	.+60     	; 0x362 <__vector_25+0x8e>
 		}
 	} else if(cmd_start){
- 302:	90 91 05 01 	lds	r25, 0x0105
- 306:	99 23       	and	r25, r25
- 308:	f9 f0       	breq	.+62     	; 0x348 <__vector_25+0x8c>
+ 326:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <cmd_start>
+ 32a:	88 23       	and	r24, r24
+ 32c:	d1 f0       	breq	.+52     	; 0x362 <__vector_25+0x8e>
 		if(usart_byte_count == 2){		// second byte contains address
- 30a:	82 30       	cpi	r24, 0x02	; 2
- 30c:	49 f4       	brne	.+18     	; 0x320 <__vector_25+0x64>
-			if(UDR1 != DPS_addr){	//if address does not match
- 30e:	80 91 ce 00 	lds	r24, 0x00CE
- 312:	85 30       	cpi	r24, 0x05	; 5
- 314:	c9 f0       	breq	.+50     	; 0x348 <__vector_25+0x8c>
+ 32e:	92 30       	cpi	r25, 0x02	; 2
+ 330:	39 f4       	brne	.+14     	; 0x340 <__vector_25+0x6c>
+			if(cmd_byte != DPS_addr){	//if address does not match
+ 332:	c5 30       	cpi	r28, 0x05	; 5
+ 334:	b1 f0       	breq	.+44     	; 0x362 <__vector_25+0x8e>
 				usart_byte_count = 0;	//restart	
- 316:	10 92 06 01 	sts	0x0106, r1
+ 336:	10 92 06 01 	sts	0x0106, r1	; 0x800106 <usart_byte_count>
 				cmd_start = false;
- 31a:	10 92 05 01 	sts	0x0105, r1
- 31e:	14 c0       	rjmp	.+40     	; 0x348 <__vector_25+0x8c>
+ 33a:	10 92 05 01 	sts	0x0105, r1	; 0x800105 <cmd_start>
+ 33e:	11 c0       	rjmp	.+34     	; 0x362 <__vector_25+0x8e>
 			}
 		} else if(usart_byte_count == 3){	//port number
- 320:	83 30       	cpi	r24, 0x03	; 3
- 322:	29 f4       	brne	.+10     	; 0x32e <__vector_25+0x72>
-			port_num = UDR1;	//read port number
- 324:	80 91 ce 00 	lds	r24, 0x00CE
- 328:	80 93 04 01 	sts	0x0104, r24
- 32c:	0d c0       	rjmp	.+26     	; 0x348 <__vector_25+0x8c>
+ 340:	93 30       	cpi	r25, 0x03	; 3
+ 342:	19 f4       	brne	.+6      	; 0x34a <__vector_25+0x76>
+			port_num = cmd_byte;	//read port number
+ 344:	c0 93 04 01 	sts	0x0104, r28	; 0x800104 <port_num>
+ 348:	0c c0       	rjmp	.+24     	; 0x362 <__vector_25+0x8e>
 		} else if(usart_byte_count == 4){				//phase shift		
- 32e:	84 30       	cpi	r24, 0x04	; 4
- 330:	59 f4       	brne	.+22     	; 0x348 <__vector_25+0x8c>
-			SPI_TX(port_num, UDR1, bit_sh);		//read data from USART buffer 1 then send to DPS chip							
- 332:	60 91 ce 00 	lds	r22, 0x00CE
- 336:	42 e0       	ldi	r20, 0x02	; 2
- 338:	80 91 04 01 	lds	r24, 0x0104
- 33c:	0e 94 88 00 	call	0x110	; 0x110 <_Z6SPI_TXhhh>
+ 34a:	94 30       	cpi	r25, 0x04	; 4
+ 34c:	51 f4       	brne	.+20     	; 0x362 <__vector_25+0x8e>
+			SPI_TX(port_num, cmd_byte, bit_sh);		//read data from USART buffer 1 then send to DPS chip							
+ 34e:	42 e0       	ldi	r20, 0x02	; 2
+ 350:	6c 2f       	mov	r22, r28
+ 352:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <port_num>
+ 356:	0e 94 85 00 	call	0x10a	; 0x10a <_Z6SPI_TXhhh>
 			usart_byte_count = 0;
- 340:	10 92 06 01 	sts	0x0106, r1
+ 35a:	10 92 06 01 	sts	0x0106, r1	; 0x800106 <usart_byte_count>
 			cmd_start = false;
- 344:	10 92 05 01 	sts	0x0105, r1
+ 35e:	10 92 05 01 	sts	0x0105, r1	; 0x800105 <cmd_start>
 		}	//end of else if
 	}	//end of else if
 }	//end of ISR
- 348:	ff 91       	pop	r31
- 34a:	ef 91       	pop	r30
- 34c:	bf 91       	pop	r27
- 34e:	af 91       	pop	r26
- 350:	9f 91       	pop	r25
- 352:	8f 91       	pop	r24
- 354:	7f 91       	pop	r23
- 356:	6f 91       	pop	r22
- 358:	5f 91       	pop	r21
- 35a:	4f 91       	pop	r20
- 35c:	3f 91       	pop	r19
- 35e:	2f 91       	pop	r18
- 360:	0f 90       	pop	r0
- 362:	0f be       	out	0x3f, r0	; 63
- 364:	0f 90       	pop	r0
- 366:	1f 90       	pop	r1
- 368:	18 95       	reti
+ 362:	ff 91       	pop	r31
+ 364:	ef 91       	pop	r30
+ 366:	cf 91       	pop	r28
+ 368:	bf 91       	pop	r27
+ 36a:	af 91       	pop	r26
+ 36c:	9f 91       	pop	r25
+ 36e:	8f 91       	pop	r24
+ 370:	7f 91       	pop	r23
+ 372:	6f 91       	pop	r22
+ 374:	5f 91       	pop	r21
+ 376:	4f 91       	pop	r20
+ 378:	3f 91       	pop	r19
+ 37a:	2f 91       	pop	r18
+ 37c:	0f 90       	pop	r0
+ 37e:	0f be       	out	0x3f, r0	; 63
+ 380:	0f 90       	pop	r0
+ 382:	1f 90       	pop	r1
+ 384:	18 95       	reti
 
-0000036a <_exit>:
- 36a:	f8 94       	cli
+00000386 <_exit>:
+ 386:	f8 94       	cli
 
-0000036c <__stop_program>:
- 36c:	ff cf       	rjmp	.-2      	; 0x36c <__stop_program>
+00000388 <__stop_program>:
+ 388:	ff cf       	rjmp	.-2      	; 0x388 <__stop_program>
