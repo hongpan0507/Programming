@@ -39,10 +39,10 @@ uint8_t port_num = 0;	//DPS port number
 uint8_t data_dump = 0;	//flush usart buffer
 const uint8_t bit_sh = 2;	//digital phase shifter data bit shift
 
-volatile uint8_t LE1_led = 0;
-volatile uint8_t LE2_led = 0;
-volatile uint8_t LE3_led = 0;
-volatile uint8_t LE4_led = 0;
+volatile bool LE1_led = false;
+volatile bool LE2_led = false;
+volatile bool LE3_led = false;
+volatile bool LE4_led = false;
 
 const uint8_t LE_t = 1;		//LE pulse width
 const uint8_t LEx_led_t = 50;		//LE pulse width
@@ -75,37 +75,46 @@ int main(void){
 	DDRC |= 1<<DDC6;	//PC6; LE3 LED
 	DDRD |= 1<<DDD7;	//PD7; LE4 LED
 	
+	//LED debugging; searching for bad LEDs
+	//PORTE |= 1<<PORTE6;
+	//PORTC |= 1<<PORTC7;
+	//PORTC |= 1<<PORTC6;
+	//PORTD |= 1<<PORTD7;
+	
 	DDRB |= 1<<DDB0;	//debug; set port as output
 	
 	DDRD |= 1<<DDD5;	//set port as output
 	PORTD |= 1<<PORTD5;	//turn off LED; active low
 	
+	//board #1 2nd LE LED
+	//all board USB LED
+	
+	
     while (1){							
-		PINB |= 1<<PINB0;
-		
-		if(LE1_led == 1){
-			LE1_led = 0;
+		PINB |= 1<<PINB0;		
+		if(LE1_led == true){
+			LE1_led = false;
 			PINE |= 1<<PINE6;	//turn on
 			_delay_ms(LEx_led_t);
 			PINE |= 1<<PINE6;	//turn off
 			less_delay = true;
 		}
-		if(LE2_led == 1){
-			LE2_led = 0;
+		if(LE2_led == true){
+			LE2_led = false;
 			PINC |= 1<<PINC7;	//turn on
 			_delay_ms(LEx_led_t);
 			PINC |= 1<<PINC7;	//turn off
 			less_delay = true;
 		}
-		if(LE3_led == 1){
-			LE3_led = 0;
+		if(LE3_led == true){
+			LE3_led = false;
 			PINC |= 1<<PINC6;	//turn on
 			_delay_ms(LEx_led_t);
 			PINC |= 1<<PINC6;	//turn off
 			less_delay = true;
 		} 
-		if(LE4_led == 1){
-			LE4_led = 0;
+		if(LE4_led == true){
+			LE4_led = false;
 			PIND |= 1<<PIND7;	//turn on
 			_delay_ms(LEx_led_t);
 			PIND |= 1<<PIND7;	//turn off
@@ -164,22 +173,22 @@ void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh){
 		_delay_loop_1(LE_t);
 		//_NOP();	//delay by 1 cpu cycle
 		PINB |= 1<<PINB6;	//toggle low
-		LE1_led = 1;
+		LE1_led = true;
 	} else if (PORT == PORT2){	//LE2
 		PINB |= 1<<PINB5;	//toggle high
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB5;	//toggle low
-		LE2_led = 1;
+		LE2_led = true;
 	} else if (PORT == PORT3){	//LE3
 		PINB |= 1<<PINB4;	//toggle high		
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB4;	//toggle low
-		LE3_led = 1;
+		LE3_led = true;
 	} else if (PORT == PORT4){	//LE4
 		PINB |= 1<<PINB7;	//toggle high		
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB7;	//toggle low
-		LE4_led = 1;
+		LE4_led = true;
 	}	
 }
 

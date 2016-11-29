@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 000001dd  00000000  00000000  000009ce  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000422  00000000  00000000  00000bab  2**0
+  8 .debug_line   00000421  00000000  00000000  00000bab  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000c0  00000000  00000000  00000fd0  2**2
+  9 .debug_frame  000000c0  00000000  00000000  00000fcc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000002fc  00000000  00000000  00001090  2**0
+ 10 .debug_str    000002fc  00000000  00000000  0000108c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000401  00000000  00000000  0000138c  2**0
+ 11 .debug_loc    00000401  00000000  00000000  00001388  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000038  00000000  00000000  0000178d  2**0
+ 12 .debug_ranges 00000038  00000000  00000000  00001789  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -198,7 +198,7 @@ void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh){
 		//_NOP();	//delay by 1 cpu cycle
 		PINB |= 1<<PINB6;	//toggle low
  12a:	1e 9a       	sbi	0x03, 6	; 3
-		LE1_led = 1;
+		LE1_led = true;
  12c:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <LE1_led>
  130:	08 95       	ret
 	} else if (PORT == PORT2){	//LE2
@@ -213,7 +213,7 @@ void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh){
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB5;	//toggle low
  140:	1d 9a       	sbi	0x03, 5	; 3
-		LE2_led = 1;
+		LE2_led = true;
  142:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <LE2_led>
  146:	08 95       	ret
 	} else if (PORT == PORT3){	//LE3
@@ -228,7 +228,7 @@ void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh){
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB4;	//toggle low
  156:	1c 9a       	sbi	0x03, 4	; 3
-		LE3_led = 1;
+		LE3_led = true;
  158:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <LE3_led>
  15c:	08 95       	ret
 	} else if (PORT == PORT4){	//LE4
@@ -243,7 +243,7 @@ void SPI_TX(uint8_t PORT, uint8_t DPS_cmd, uint8_t bit_sh){
 		_delay_loop_1(LE_t);
 		PINB |= 1<<PINB7;	//toggle low
  16c:	1f 9a       	sbi	0x03, 7	; 3
-		LE4_led = 1;
+		LE4_led = true;
  16e:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
  172:	08 95       	ret
 
@@ -340,6 +340,10 @@ int main(void){
  1e2:	3e 9a       	sbi	0x07, 6	; 7
 	DDRD |= 1<<DDD7;	//PD7; LE4 LED
  1e4:	57 9a       	sbi	0x0a, 7	; 10
+	//PORTE |= 1<<PORTE6;
+	//PORTC |= 1<<PORTC7;
+	//PORTC |= 1<<PORTC6;
+	//PORTD |= 1<<PORTD7;
 	
 	DDRB |= 1<<DDB0;	//debug; set port as output
  1e6:	20 9a       	sbi	0x04, 0	; 4
@@ -349,26 +353,25 @@ int main(void){
 	PORTD |= 1<<PORTD5;	//turn off LED; active low
  1ea:	5d 9a       	sbi	0x0b, 5	; 11
  1ec:	20 e0       	ldi	r18, 0x00	; 0
-		if(LE1_led == 1){
-			LE1_led = 0;
+		if(LE1_led == true){
+			LE1_led = false;
 			PINE |= 1<<PINE6;	//turn on
 			_delay_ms(LEx_led_t);
 			PINE |= 1<<PINE6;	//turn off
 			less_delay = true;
  1ee:	31 e0       	ldi	r19, 0x01	; 1
+	//board #1 2nd LE LED
+	//all board USB LED
 	
-	DDRD |= 1<<DDD5;	//set port as output
-	PORTD |= 1<<PORTD5;	//turn off LED; active low
 	
     while (1){							
-		PINB |= 1<<PINB0;
+		PINB |= 1<<PINB0;		
  1f0:	18 9a       	sbi	0x03, 0	; 3
-		
-		if(LE1_led == 1){
+		if(LE1_led == true){
  1f2:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <LE1_led>
- 1f6:	81 30       	cpi	r24, 0x01	; 1
- 1f8:	79 f4       	brne	.+30     	; 0x218 <main+0x50>
-			LE1_led = 0;
+ 1f6:	88 23       	and	r24, r24
+ 1f8:	79 f0       	breq	.+30     	; 0x218 <main+0x50>
+			LE1_led = false;
  1fa:	20 93 03 01 	sts	0x0103, r18	; 0x800103 <LE1_led>
 			PINE |= 1<<PINE6;	//turn on
  1fe:	66 9a       	sbi	0x0c, 6	; 12
@@ -391,15 +394,15 @@ int main(void){
 			PINE |= 1<<PINE6;	//turn off
  212:	66 9a       	sbi	0x0c, 6	; 12
 			less_delay = true;
- 214:	93 2f       	mov	r25, r19
+ 214:	83 2f       	mov	r24, r19
  216:	01 c0       	rjmp	.+2      	; 0x21a <main+0x52>
- 218:	92 2f       	mov	r25, r18
+ 218:	82 2f       	mov	r24, r18
 		}
-		if(LE2_led == 1){
- 21a:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <LE2_led>
- 21e:	81 30       	cpi	r24, 0x01	; 1
- 220:	71 f4       	brne	.+28     	; 0x23e <main+0x76>
-			LE2_led = 0;
+		if(LE2_led == true){
+ 21a:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <LE2_led>
+ 21e:	99 23       	and	r25, r25
+ 220:	71 f0       	breq	.+28     	; 0x23e <main+0x76>
+			LE2_led = false;
  222:	20 93 02 01 	sts	0x0102, r18	; 0x800102 <LE2_led>
 			PINC |= 1<<PINC7;	//turn on
  226:	37 9a       	sbi	0x06, 7	; 6
@@ -416,13 +419,13 @@ int main(void){
 			PINC |= 1<<PINC7;	//turn off
  23a:	37 9a       	sbi	0x06, 7	; 6
 			less_delay = true;
- 23c:	93 2f       	mov	r25, r19
+ 23c:	83 2f       	mov	r24, r19
 		}
-		if(LE3_led == 1){
- 23e:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <LE3_led>
- 242:	81 30       	cpi	r24, 0x01	; 1
- 244:	91 f4       	brne	.+36     	; 0x26a <main+0xa2>
-			LE3_led = 0;
+		if(LE3_led == true){
+ 23e:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <LE3_led>
+ 242:	99 23       	and	r25, r25
+ 244:	91 f0       	breq	.+36     	; 0x26a <main+0xa2>
+			LE3_led = false;
  246:	20 93 01 01 	sts	0x0101, r18	; 0x800101 <LE3_led>
 			PINC |= 1<<PINC6;	//turn on
  24a:	36 9a       	sbi	0x06, 6	; 6
@@ -440,15 +443,15 @@ int main(void){
  25e:	36 9a       	sbi	0x06, 6	; 6
 			less_delay = true;
 		} 
-		if(LE4_led == 1){
+		if(LE4_led == true){
  260:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
- 264:	81 30       	cpi	r24, 0x01	; 1
- 266:	a9 f4       	brne	.+42     	; 0x292 <main+0xca>
+ 264:	88 23       	and	r24, r24
+ 266:	a9 f0       	breq	.+42     	; 0x292 <main+0xca>
  268:	04 c0       	rjmp	.+8      	; 0x272 <main+0xaa>
- 26a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
- 26e:	81 30       	cpi	r24, 0x01	; 1
- 270:	71 f4       	brne	.+28     	; 0x28e <main+0xc6>
-			LE4_led = 0;
+ 26a:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <_edata>
+ 26e:	99 23       	and	r25, r25
+ 270:	71 f0       	breq	.+28     	; 0x28e <main+0xc6>
+			LE4_led = false;
  272:	20 93 00 01 	sts	0x0100, r18	; 0x800100 <_edata>
 			PIND |= 1<<PIND7;	//turn on
  276:	4f 9a       	sbi	0x09, 7	; 9
@@ -469,7 +472,7 @@ int main(void){
 		}				
 		
 		if(less_delay){
- 28e:	99 23       	and	r25, r25
+ 28e:	88 23       	and	r24, r24
  290:	51 f0       	breq	.+20     	; 0x2a6 <main+0xde>
  292:	4f ef       	ldi	r20, 0xFF	; 255
  294:	82 e6       	ldi	r24, 0x62	; 98
