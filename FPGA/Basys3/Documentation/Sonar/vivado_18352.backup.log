@@ -1,0 +1,234 @@
+#-----------------------------------------------------------
+# Vivado v2016.2 (64-bit)
+# SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+# Start of session at: Tue Sep 20 17:03:57 2016
+# Process ID: 18352
+# Current directory: C:/Users/meie2116/AppData/Roaming/Xilinx/Vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5732
+# Log file: C:/Users/meie2116/AppData/Roaming/Xilinx/Vivado/vivado.log
+# Journal file: C:/Users/meie2116/AppData/Roaming/Xilinx/Vivado\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project W:/Sonar/Sonar.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'.
+ERROR: [Project 1-202] Error writing the XML file 'W:/Sonar/Sonar.xpr'
+ERROR: [Common 17-69] Command failed: ERROR: [Project 1-202] Error writing the XML file 'W:/Sonar/Sonar.xpr'
+
+open_bd_design {W:/Sonar/Sonar.srcs/sources_1/bd/design_1/design_1.bd}
+Adding cell -- xilinx.com:ip:xadc_wiz:3.3 - xadc_wiz_0
+Adding cell -- xilinx.com:ip:clk_wiz:5.3 - clk_wiz_0
+Adding cell -- xilinx.com:ip:fir_compiler:7.2 - fir_compiler_0
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding cell -- xilinx.com:ip:cic_compiler:4.0 - cic_compiler_0
+Adding cell -- xilinx.com:ip:fifo_generator:13.1 - fifo_generator_0
+INFO: [xilinx.com:ip:fifo_generator:13.1-5968] /fifo_generator_0Executing the post_config_ip from bd
+Adding cell -- xilinx.com:ip:axis_broadcaster:1.1 - axis_broadcaster_0
+Successfully read diagram <design_1> from BD file <W:/Sonar/Sonar.srcs/sources_1/bd/design_1/design_1.bd>
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 17:53:51 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 17:53:51 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 17:55:24 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 17:55:24 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 17:57:06 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 17:57:06 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 17:58:08 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 17:58:08 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 18:01:56 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 18:01:56 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 18:03:29 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 18:03:29 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 18:07:49 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 18:07:49 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 18:08:06 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 18:08:06 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 18:08:38 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 18:08:38 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 21:21:22 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 21:21:22 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 21:21:41 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 21:21:41 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 21:22:14 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 21:22:14 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 21:25:02 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 21:25:02 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 21:25:42 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 21:25:42 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 21:31:32 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 21:31:32 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 21:32:45 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 21:32:45 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Tue Sep 20 21:33:09 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Tue Sep 20 21:33:09 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Wed Sep 21 13:55:21 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Wed Sep 21 13:55:21 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2016.2
+  **** Build date : Jun  2 2016-16:57:03
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A28071A
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+set_property PROBES.FILE {W:/Sonar/Sonar.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {W:/Sonar/Sonar.runs/impl_1/sonar.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream
+[Wed Sep 21 14:00:09 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+set_property PROBES.FILE {W:/Sonar/Sonar.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {W:/Sonar/Sonar.runs/impl_1/sonar.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+set_property PROBES.FILE {W:/Sonar/Sonar.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {W:/Sonar/Sonar.runs/impl_1/sonar.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Wed Sep 21 14:22:36 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Wed Sep 21 14:22:36 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+[Wed Sep 21 14:23:24 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/synth_1/runme.log
+[Wed Sep 21 14:23:24 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar/Sonar.runs/impl_1/runme.log
+archive_project W:/Sonar.xpr.zip -temp_dir C:/Users/meie2116/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-18352-Jpc -force
+INFO: [Coretcl 2-137] starting archive...
+INFO: [Coretcl 2-1499] Saving project copy to temporary location 'C:/Users/meie2116/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-18352-Jpc' for archiving project
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'.
+ERROR: [Project 1-202] Error writing the XML file 'W:/Sonar/Sonar.xpr'
+ERROR: [Coretcl 2-15] (archive_project): Received exception from open project
+current_project Sonar
+archive_project W:/Sonar.xpr.zip -temp_dir C:/Users/meie2116/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-18352-Jpc -force
+INFO: [Coretcl 2-137] starting archive...
+INFO: [Coretcl 2-1499] Saving project copy to temporary location 'C:/Users/meie2116/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-18352-Jpc' for archiving project
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'.
+INFO: [Coretcl 2-1211] Creating project copy for archival...
+INFO: [Coretcl 2-1213] Including run results for 'synth_1'
+INFO: [Coretcl 2-1213] Including run results for 'impl_1'
+INFO: [Coretcl 2-1212] Importing remotely added design sources and verilog include files (if any)...
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'constrs_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'constrs_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'sim_1'
+INFO: [filemgmt 20-334] All file(s) are already imported in fileset: 'sources_1'
+INFO: [filemgmt 20-348] Importing the appropriate files for fileset: 'sources_1'

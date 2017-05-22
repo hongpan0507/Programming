@@ -1,0 +1,865 @@
+#-----------------------------------------------------------
+# Vivado v2016.2 (64-bit)
+# SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+# Start of session at: Tue Oct 25 11:20:42 2016
+# Process ID: 5484
+# Current directory: W:/Sonar.runs/synth_1
+# Command line: vivado.exe -log sonar.vds -mode batch -messageDb vivado.pb -notrace -source sonar.tcl
+# Log file: W:/Sonar.runs/synth_1/sonar.vds
+# Journal file: W:/Sonar.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source sonar.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'.
+Command: synth_design -top sonar -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 6808 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 312.711 ; gain = 105.492
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'sonar' [W:/Sonar.srcs/sources_1/new/sonar.sv:3]
+INFO: [Synth 8-638] synthesizing module 'design_1' [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:13]
+INFO: [Synth 8-638] synthesizing module 'design_1_xadc_wiz_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0.v:52]
+INFO: [Synth 8-638] synthesizing module 'design_1_xadc_wiz_0_0_axi_xadc' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_axi_xadc.vhd:122]
+INFO: [Synth 8-3491] module 'design_1_xadc_wiz_0_0_xadc_core_drp' declared at 'w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_xadc_core_drp.vhd:113' bound to instance 'AXI_XADC_CORE_I' of component 'design_1_xadc_wiz_0_0_xadc_core_drp' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_axi_xadc.vhd:159]
+INFO: [Synth 8-638] synthesizing module 'design_1_xadc_wiz_0_0_xadc_core_drp' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_xadc_core_drp.vhd:140]
+INFO: [Synth 8-3491] module 'drp_to_axi4stream' declared at 'w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_drp_to_axi_stream.vhd:55' bound to instance 'drp_to_axi4stream_inst' of component 'drp_to_axi4stream' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_xadc_core_drp.vhd:269]
+INFO: [Synth 8-638] synthesizing module 'drp_to_axi4stream' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_drp_to_axi_stream.vhd:82]
+INFO: [Synth 8-113] binding component instance 'FIFO18E1_inst_data' to cell 'FIFO18E1' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_drp_to_axi_stream.vhd:229]
+INFO: [Synth 8-113] binding component instance 'FIFO18E1_inst_tid' to cell 'FIFO18E1' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_drp_to_axi_stream.vhd:270]
+INFO: [Synth 8-256] done synthesizing module 'drp_to_axi4stream' (1#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_drp_to_axi_stream.vhd:82]
+INFO: [Synth 8-113] binding component instance 'XADC_INST' to cell 'XADC' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_xadc_core_drp.vhd:380]
+INFO: [Synth 8-256] done synthesizing module 'design_1_xadc_wiz_0_0_xadc_core_drp' (2#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_xadc_core_drp.vhd:140]
+INFO: [Synth 8-256] done synthesizing module 'design_1_xadc_wiz_0_0_axi_xadc' (3#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0_axi_xadc.vhd:122]
+INFO: [Synth 8-256] done synthesizing module 'design_1_xadc_wiz_0_0' (4#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0.v:52]
+WARNING: [Synth 8-350] instance 'ADC' of module 'design_1_xadc_wiz_0_0' requires 16 connections, but only 11 given [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:158]
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v:70]
+INFO: [Synth 8-638] synthesizing module 'design_1_clk_wiz_0_0_clk_wiz' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v:68]
+INFO: [Synth 8-638] synthesizing module 'IBUF' [C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:14145]
+INFO: [Synth 8-256] done synthesizing module 'IBUF' (5#1) [C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:14145]
+INFO: [Synth 8-638] synthesizing module 'MMCME2_ADV' [C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:20396]
+INFO: [Synth 8-256] done synthesizing module 'MMCME2_ADV' (6#1) [C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:20396]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (7#1) [C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0_clk_wiz' (8#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v:68]
+INFO: [Synth 8-256] done synthesizing module 'design_1_clk_wiz_0_0' (9#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v:70]
+INFO: [Synth 8-638] synthesizing module 'design_1_fir_compiler_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fir_compiler_0_0/synth/design_1_fir_compiler_0_0.vhd:71]
+INFO: [Synth 8-3491] module 'fir_compiler_v7_2_6' declared at 'w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/fir_compiler_v7_2/hdl/fir_compiler_v7_2.vhd:57' bound to instance 'U0' of component 'fir_compiler_v7_2_6' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fir_compiler_0_0/synth/design_1_fir_compiler_0_0.vhd:196]
+INFO: [Synth 8-256] done synthesizing module 'design_1_fir_compiler_0_0' (24#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fir_compiler_0_0/synth/design_1_fir_compiler_0_0.vhd:71]
+INFO: [Synth 8-638] synthesizing module 'design_1_axis_switch_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_switch_0_0/synth/design_1_axis_switch_0_0.v:58]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axis_switch' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axis_switch.v:60]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_axis2vector.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector' (25#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_axis2vector.v:66]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axisc_decoder' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_decoder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:151]
+INFO: [Synth 8-256] done synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice' (26#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-638] synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized0' (26#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_vector2axis.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis' (27#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_vector2axis.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axisc_decoder' (28#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_decoder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axisc_transfer_mux' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_transfer_mux.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axisc_arb_responder' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_arb_responder.v:61]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axisc_arb_responder' (29#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_arb_responder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_mux_enc' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_mux_enc.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_mux_enc' (30#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_mux_enc.v:66]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_mux_enc__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_mux_enc.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_mux_enc__parameterized0' (30#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_mux_enc.v:66]
+INFO: [Synth 8-638] synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized1' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized1' (30#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axisc_transfer_mux' (31#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_transfer_mux.v:61]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axis_switch' (32#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axis_switch.v:60]
+INFO: [Synth 8-256] done synthesizing module 'design_1_axis_switch_0_0' (33#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_switch_0_0/synth/design_1_axis_switch_0_0.v:58]
+WARNING: [Synth 8-350] instance 'dist_demux' of module 'design_1_axis_switch_0_0' requires 13 connections, but only 12 given [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:183]
+INFO: [Synth 8-638] synthesizing module 'design_1_cic_compiler_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_cic_compiler_0_0/synth/design_1_cic_compiler_0_0.vhd:75]
+INFO: [Synth 8-3491] module 'cic_compiler_v4_0_10' declared at 'w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/cic_compiler_v4_0/hdl/cic_compiler_v4_0.vhd:55' bound to instance 'U0' of component 'cic_compiler_v4_0_10' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_cic_compiler_0_0/synth/design_1_cic_compiler_0_0.vhd:159]
+INFO: [Synth 8-256] done synthesizing module 'design_1_cic_compiler_0_0' (46#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_cic_compiler_0_0/synth/design_1_cic_compiler_0_0.vhd:75]
+WARNING: [Synth 8-350] instance 'dist_downsample' of module 'design_1_cic_compiler_0_0' requires 11 connections, but only 10 given [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:196]
+INFO: [Synth 8-638] synthesizing module 'design_1_fifo_generator_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/synth/design_1_fifo_generator_0_0.vhd:73]
+INFO: [Synth 8-3491] module 'fifo_generator_v13_1_1' declared at 'w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/fifo_generator_v13_1/hdl/fifo_generator_v13_1.vhd:75' bound to instance 'U0' of component 'fifo_generator_v13_1_1' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/synth/design_1_fifo_generator_0_0.vhd:540]
+INFO: [Synth 8-256] done synthesizing module 'design_1_fifo_generator_0_0' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/synth/design_1_fifo_generator_0_0.vhd:73]
+INFO: [Synth 8-638] synthesizing module 'design_1_axis_switch_0_1' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_switch_0_1/synth/design_1_axis_switch_0_1.v:58]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axis_switch__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axis_switch.v:60]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axisc_decoder__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_decoder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized2' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized2' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-638] synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized3' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized3' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axisc_decoder__parameterized0' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_decoder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axisc_decoder__parameterized1' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_decoder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized4' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized4' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-638] synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized5' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized5' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axisc_decoder__parameterized1' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_decoder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axisc_transfer_mux__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_transfer_mux.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axisc_arb_responder__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_arb_responder.v:61]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axisc_arb_responder__parameterized0' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_arb_responder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_mux_enc__parameterized1' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_mux_enc.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_mux_enc__parameterized1' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_mux_enc.v:66]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_mux_enc__parameterized2' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_mux_enc.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_mux_enc__parameterized2' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_mux_enc.v:66]
+INFO: [Synth 8-638] synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized6' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_register_slice_v1_1_9_axisc_register_slice__parameterized6' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_register_slice_v1_1/hdl/verilog/axis_register_slice_v1_1_axisc_register_slice.v:62]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axisc_transfer_mux__parameterized0' (65#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axisc_transfer_mux.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_axis_switch_arbiter' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axis_switch_arbiter.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_arb_rr' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_arb_rr.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_dynamic_priority_encoder' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_dynamic_priority_encoder.v:61]
+INFO: [Synth 8-638] synthesizing module 'axis_switch_v1_1_9_dynamic_priority_encoder__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_dynamic_priority_encoder.v:61]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_dynamic_priority_encoder__parameterized0' (66#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_dynamic_priority_encoder.v:61]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_dynamic_priority_encoder' (66#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_dynamic_priority_encoder.v:61]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_arb_rr' (67#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_arb_rr.v:61]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axis_switch_arbiter' (68#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axis_switch_arbiter.v:61]
+INFO: [Synth 8-256] done synthesizing module 'axis_switch_v1_1_9_axis_switch__parameterized0' (68#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axis_switch.v:60]
+INFO: [Synth 8-256] done synthesizing module 'design_1_axis_switch_0_1' (69#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_switch_0_1/synth/design_1_axis_switch_0_1.v:58]
+WARNING: [Synth 8-350] instance 'dist_mux' of module 'design_1_axis_switch_0_1' requires 14 connections, but only 13 given [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:217]
+INFO: [Synth 8-638] synthesizing module 'design_1_dist_split_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_dist_split_0/synth/design_1_dist_split_0.v:57]
+INFO: [Synth 8-638] synthesizing module 'top_design_1_dist_split_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_dist_split_0/hdl/top_design_1_dist_split_0.v:60]
+INFO: [Synth 8-638] synthesizing module 'axis_broadcaster_v1_1_9_core' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_broadcaster_v1_1/hdl/verilog/axis_broadcaster_v1_1_core.v:59]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_vector2axis.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis__parameterized0' (69#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_vector2axis.v:66]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis__parameterized1' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_vector2axis.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_util_vector2axis__parameterized1' (69#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_vector2axis.v:66]
+INFO: [Synth 8-638] synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_axis2vector.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_infrastructure_v1_1_0_util_axis2vector__parameterized0' (69#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_infrastructure_v1_1/hdl/verilog/axis_infrastructure_v1_1_util_axis2vector.v:66]
+INFO: [Synth 8-256] done synthesizing module 'axis_broadcaster_v1_1_9_core' (70#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_broadcaster_v1_1/hdl/verilog/axis_broadcaster_v1_1_core.v:59]
+INFO: [Synth 8-638] synthesizing module 'tdata_design_1_dist_split_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_dist_split_0/hdl/tdata_design_1_dist_split_0.v:49]
+INFO: [Synth 8-256] done synthesizing module 'tdata_design_1_dist_split_0' (71#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_dist_split_0/hdl/tdata_design_1_dist_split_0.v:49]
+INFO: [Synth 8-638] synthesizing module 'tuser_design_1_dist_split_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_dist_split_0/hdl/tuser_design_1_dist_split_0.v:49]
+INFO: [Synth 8-256] done synthesizing module 'tuser_design_1_dist_split_0' (72#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_dist_split_0/hdl/tuser_design_1_dist_split_0.v:49]
+INFO: [Synth 8-256] done synthesizing module 'top_design_1_dist_split_0' (73#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_dist_split_0/hdl/top_design_1_dist_split_0.v:60]
+INFO: [Synth 8-256] done synthesizing module 'design_1_dist_split_0' (74#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_dist_split_0/synth/design_1_dist_split_0.v:57]
+WARNING: [Synth 8-689] width (16) of port connection 'm_axis_tdata' does not match port width (32) of module 'design_1_dist_split_0' [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:234]
+WARNING: [Synth 8-689] width (5) of port connection 'm_axis_tid' does not match port width (10) of module 'design_1_dist_split_0' [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:235]
+WARNING: [Synth 8-689] width (1) of port connection 'm_axis_tvalid' does not match port width (2) of module 'design_1_dist_split_0' [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:237]
+INFO: [Synth 8-638] synthesizing module 'design_1_axis_broadcaster_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_broadcaster_0_0/synth/design_1_axis_broadcaster_0_0.v:57]
+INFO: [Synth 8-638] synthesizing module 'top_design_1_axis_broadcaster_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_broadcaster_0_0/hdl/top_design_1_axis_broadcaster_0_0.v:60]
+INFO: [Synth 8-638] synthesizing module 'axis_broadcaster_v1_1_9_core__parameterized0' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_broadcaster_v1_1/hdl/verilog/axis_broadcaster_v1_1_core.v:59]
+INFO: [Synth 8-256] done synthesizing module 'axis_broadcaster_v1_1_9_core__parameterized0' (74#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_broadcaster_v1_1/hdl/verilog/axis_broadcaster_v1_1_core.v:59]
+INFO: [Synth 8-638] synthesizing module 'tdata_design_1_axis_broadcaster_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_broadcaster_0_0/hdl/tdata_design_1_axis_broadcaster_0_0.v:49]
+INFO: [Synth 8-256] done synthesizing module 'tdata_design_1_axis_broadcaster_0_0' (75#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_broadcaster_0_0/hdl/tdata_design_1_axis_broadcaster_0_0.v:49]
+INFO: [Synth 8-638] synthesizing module 'tuser_design_1_axis_broadcaster_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_broadcaster_0_0/hdl/tuser_design_1_axis_broadcaster_0_0.v:49]
+INFO: [Synth 8-256] done synthesizing module 'tuser_design_1_axis_broadcaster_0_0' (76#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_broadcaster_0_0/hdl/tuser_design_1_axis_broadcaster_0_0.v:49]
+INFO: [Synth 8-256] done synthesizing module 'top_design_1_axis_broadcaster_0_0' (77#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_broadcaster_0_0/hdl/top_design_1_axis_broadcaster_0_0.v:60]
+INFO: [Synth 8-256] done synthesizing module 'design_1_axis_broadcaster_0_0' (78#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_axis_broadcaster_0_0/synth/design_1_axis_broadcaster_0_0.v:57]
+WARNING: [Synth 8-689] width (1) of port connection 'm_axis_tdest' does not match port width (2) of module 'design_1_axis_broadcaster_0_0' [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:246]
+WARNING: [Synth 8-689] width (5) of port connection 'm_axis_tid' does not match port width (10) of module 'design_1_axis_broadcaster_0_0' [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:247]
+INFO: [Synth 8-638] synthesizing module 'design_1_proc_sys_reset_0_0' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/synth/design_1_proc_sys_reset_0_0.vhd:71]
+INFO: [Synth 8-3491] module 'proc_sys_reset' declared at 'w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/proc_sys_reset.vhd:140' bound to instance 'U0' of component 'proc_sys_reset' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/synth/design_1_proc_sys_reset_0_0.vhd:116]
+INFO: [Synth 8-638] synthesizing module 'proc_sys_reset' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/proc_sys_reset.vhd:199]
+INFO: [Synth 8-638] synthesizing module 'lpf' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/lpf.vhd:138]
+INFO: [Synth 8-3491] module 'SRL16' declared at 'C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:43294' bound to instance 'POR_SRL_I' of component 'SRL16' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/lpf.vhd:190]
+INFO: [Synth 8-638] synthesizing module 'SRL16' [C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:43294]
+INFO: [Synth 8-256] done synthesizing module 'SRL16' (79#1) [C:/Xilinx/Vivado/2016.2/scripts/rt/data/unisim_comp.v:43294]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/lib_cdc_v1_0/hdl/src/vhdl/cdc_sync.vhd:106]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_IN_cdc_to' to cell 'FDR' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/lib_cdc_v1_0/hdl/src/vhdl/cdc_sync.vhd:514]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d2' to cell 'FDR' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/lib_cdc_v1_0/hdl/src/vhdl/cdc_sync.vhd:545]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d3' to cell 'FDR' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/lib_cdc_v1_0/hdl/src/vhdl/cdc_sync.vhd:554]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d4' to cell 'FDR' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/lib_cdc_v1_0/hdl/src/vhdl/cdc_sync.vhd:564]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5' to cell 'FDR' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/lib_cdc_v1_0/hdl/src/vhdl/cdc_sync.vhd:574]
+INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6' to cell 'FDR' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/lib_cdc_v1_0/hdl/src/vhdl/cdc_sync.vhd:584]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync' (80#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/lib_cdc_v1_0/hdl/src/vhdl/cdc_sync.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'lpf' (81#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/lpf.vhd:138]
+INFO: [Synth 8-638] synthesizing module 'sequence_psr' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/sequence_psr.vhd:146]
+INFO: [Synth 8-638] synthesizing module 'upcnt_n' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/upcnt_n.vhd:125]
+INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (82#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/upcnt_n.vhd:125]
+INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (83#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/sequence_psr.vhd:146]
+INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (84#1) [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/proc_sys_reset.vhd:199]
+INFO: [Synth 8-256] done synthesizing module 'design_1_proc_sys_reset_0_0' (85#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/synth/design_1_proc_sys_reset_0_0.vhd:71]
+WARNING: [Synth 8-350] instance 'reset_gen' of module 'design_1_proc_sys_reset_0_0' requires 10 connections, but only 7 given [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:255]
+INFO: [Synth 8-638] synthesizing module 'design_1_fifo_generator_0_1' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_1/synth/design_1_fifo_generator_0_1.vhd:73]
+INFO: [Synth 8-3491] module 'fifo_generator_v13_1_1' declared at 'w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/fifo_generator_v13_1/hdl/fifo_generator_v13_1.vhd:75' bound to instance 'U0' of component 'fifo_generator_v13_1_1' [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_1/synth/design_1_fifo_generator_0_1.vhd:540]
+INFO: [Synth 8-256] done synthesizing module 'design_1_fifo_generator_0_1' (86#1) [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_1/synth/design_1_fifo_generator_0_1.vhd:73]
+INFO: [Synth 8-256] done synthesizing module 'design_1' (87#1) [W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v:13]
+WARNING: [Synth 8-689] width (32) of port connection 'velocity_in_tready' does not match port width (1) of module 'design_1' [W:/Sonar.srcs/sources_1/new/sonar.sv:82]
+WARNING: [Synth 8-2900] ignoring illegal expression in output port connection [W:/Sonar.srcs/sources_1/new/sonar.sv:82]
+WARNING: [Synth 8-350] instance 'block_design' of module 'design_1' requires 27 connections, but only 23 given [W:/Sonar.srcs/sources_1/new/sonar.sv:62]
+INFO: [Synth 8-638] synthesizing module 'seg_display' [W:/Sonar.srcs/sources_1/new/seg_display.sv:3]
+INFO: [Synth 8-226] default block is never used [W:/Sonar.srcs/sources_1/new/seg_display.sv:88]
+INFO: [Synth 8-638] synthesizing module 'bcd' [W:/Sonar.srcs/sources_1/new/bcd.sv:3]
+INFO: [Synth 8-256] done synthesizing module 'bcd' (88#1) [W:/Sonar.srcs/sources_1/new/bcd.sv:3]
+WARNING: [Synth 8-689] width (5) of port connection 'thousands' does not match port width (4) of module 'bcd' [W:/Sonar.srcs/sources_1/new/seg_display.sv:133]
+WARNING: [Synth 8-689] width (5) of port connection 'hundreds' does not match port width (4) of module 'bcd' [W:/Sonar.srcs/sources_1/new/seg_display.sv:134]
+WARNING: [Synth 8-689] width (5) of port connection 'tens' does not match port width (4) of module 'bcd' [W:/Sonar.srcs/sources_1/new/seg_display.sv:135]
+WARNING: [Synth 8-689] width (5) of port connection 'ones' does not match port width (4) of module 'bcd' [W:/Sonar.srcs/sources_1/new/seg_display.sv:136]
+INFO: [Synth 8-638] synthesizing module 'seg7' [W:/Sonar.srcs/sources_1/new/seg7.sv:3]
+INFO: [Synth 8-256] done synthesizing module 'seg7' (89#1) [W:/Sonar.srcs/sources_1/new/seg7.sv:3]
+INFO: [Synth 8-256] done synthesizing module 'seg_display' (90#1) [W:/Sonar.srcs/sources_1/new/seg_display.sv:3]
+INFO: [Synth 8-226] default block is never used [W:/Sonar.srcs/sources_1/new/sonar.sv:225]
+INFO: [Synth 8-226] default block is never used [W:/Sonar.srcs/sources_1/new/sonar.sv:246]
+INFO: [Synth 8-256] done synthesizing module 'sonar' (91#1) [W:/Sonar.srcs/sources_1/new/sonar.sv:3]
+WARNING: [Synth 8-3331] design bcd has unconnected port number[15]
+WARNING: [Synth 8-3331] design bcd has unconnected port number[14]
+WARNING: [Synth 8-3331] design bcd has unconnected port number[13]
+WARNING: [Synth 8-3331] design bcd has unconnected port number[12]
+WARNING: [Synth 8-3331] design bcd has unconnected port number[11]
+WARNING: [Synth 8-3331] design bcd has unconnected port number[10]
+WARNING: [Synth 8-3331] design bcd has unconnected port number[9]
+WARNING: [Synth 8-3331] design bcd has unconnected port number[8]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH[3]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH[2]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH[1]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH[0]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH_ASSERT[3]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH_ASSERT[2]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH_ASSERT[1]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH_ASSERT[0]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH_NEGATE[3]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH_NEGATE[2]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH_NEGATE[1]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port PROG_FULL_THRESH_NEGATE[0]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port SRST
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port SRST_FULL_FF
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port FULL
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port EMPTY
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port RAM_ALMOST_FULL
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port RAM_ALMOST_EMPTY
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port WR_PNTR[3]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port WR_PNTR[2]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port WR_PNTR[1]
+WARNING: [Synth 8-3331] design wr_pf_ss has unconnected port WR_PNTR[0]
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port SRST_FULL_FF
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_RST
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port SRST
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_PNTR_PLUS2[3]
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_PNTR_PLUS2[2]
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_PNTR_PLUS2[1]
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_PNTR_PLUS2[0]
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_PNTR_PLUS3[3]
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_PNTR_PLUS3[2]
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_PNTR_PLUS3[1]
+WARNING: [Synth 8-3331] design wr_status_flags_ss has unconnected port WR_PNTR_PLUS3[0]
+WARNING: [Synth 8-3331] design wr_bin_cntr has unconnected port SRST
+WARNING: [Synth 8-3331] design wr_logic has unconnected port RD_EN
+WARNING: [Synth 8-3331] design rd_fwft has unconnected port SRST
+WARNING: [Synth 8-3331] design rd_fwft has unconnected port RAM_ALMOST_EMPTY
+WARNING: [Synth 8-3331] design rd_status_flags_ss has unconnected port SRST
+WARNING: [Synth 8-3331] design rd_status_flags_ss has unconnected port RD_PNTR_PLUS2[3]
+WARNING: [Synth 8-3331] design rd_status_flags_ss has unconnected port RD_PNTR_PLUS2[2]
+WARNING: [Synth 8-3331] design rd_status_flags_ss has unconnected port RD_PNTR_PLUS2[1]
+WARNING: [Synth 8-3331] design rd_status_flags_ss has unconnected port RD_PNTR_PLUS2[0]
+WARNING: [Synth 8-3331] design rd_bin_cntr has unconnected port SRST
+WARNING: [Synth 8-3331] design rd_logic has unconnected port RST_FULL_FF
+WARNING: [Synth 8-3331] design rd_logic has unconnected port ALMOST_FULL_FB
+WARNING: [Synth 8-3331] design rd_logic has unconnected port FULL
+WARNING: [Synth 8-3331] design rd_logic has unconnected port WR_PNTR_PLUS1_RD[3]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port WR_PNTR_PLUS1_RD[2]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port WR_PNTR_PLUS1_RD[1]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port WR_PNTR_PLUS1_RD[0]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH[3]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH[2]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH[1]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH[0]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH_ASSERT[3]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH_ASSERT[2]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH_ASSERT[1]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH_ASSERT[0]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH_NEGATE[3]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH_NEGATE[2]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH_NEGATE[1]
+WARNING: [Synth 8-3331] design rd_logic has unconnected port PROG_EMPTY_THRESH_NEGATE[0]
+WARNING: [Synth 8-3331] design dmem has unconnected port SRST
+WARNING: [Synth 8-3331] design memory has unconnected port FAB_REGOUT_EN
+WARNING: [Synth 8-3331] design memory has unconnected port SFT_RST
+WARNING: [Synth 8-3331] design memory has unconnected port SRST
+WARNING: [Synth 8-3331] design memory has unconnected port SLEEP
+WARNING: [Synth 8-3331] design memory has unconnected port INJECTDBITERR
+WARNING: [Synth 8-3331] design memory has unconnected port INJECTSBITERR
+WARNING: [Synth 8-3331] design output_blk has unconnected port ALMOST_FULL_I
+WARNING: [Synth 8-3331] design output_blk has unconnected port ALMOST_EMPTY_I
+WARNING: [Synth 8-3331] design output_blk has unconnected port PROG_EMPTY_I
+WARNING: [Synth 8-3331] design output_blk has unconnected port WR_ACK_I
+WARNING: [Synth 8-3331] design output_blk has unconnected port VALID_I
+WARNING: [Synth 8-3331] design output_blk has unconnected port OVERFLOW_I
+WARNING: [Synth 8-3331] design output_blk has unconnected port UNDERFLOW_I
+WARNING: [Synth 8-3331] design output_blk has unconnected port DATA_COUNT_I[4]
+WARNING: [Synth 8-3331] design output_blk has unconnected port DATA_COUNT_I[3]
+WARNING: [Synth 8-3331] design output_blk has unconnected port DATA_COUNT_I[2]
+WARNING: [Synth 8-3331] design output_blk has unconnected port DATA_COUNT_I[1]
+WARNING: [Synth 8-3331] design output_blk has unconnected port DATA_COUNT_I[0]
+WARNING: [Synth 8-3331] design output_blk has unconnected port WR_DATA_COUNT_I[4]
+WARNING: [Synth 8-3331] design output_blk has unconnected port WR_DATA_COUNT_I[3]
+WARNING: [Synth 8-3331] design output_blk has unconnected port WR_DATA_COUNT_I[2]
+WARNING: [Synth 8-3331] design output_blk has unconnected port WR_DATA_COUNT_I[1]
+WARNING: [Synth 8-3331] design output_blk has unconnected port WR_DATA_COUNT_I[0]
+WARNING: [Synth 8-3331] design output_blk has unconnected port RD_DATA_COUNT_I[4]
+WARNING: [Synth 8-3331] design output_blk has unconnected port RD_DATA_COUNT_I[3]
+WARNING: [Synth 8-3331] design output_blk has unconnected port RD_DATA_COUNT_I[2]
+WARNING: [Synth 8-3331] design output_blk has unconnected port RD_DATA_COUNT_I[1]
+WARNING: [Synth 8-3331] design output_blk has unconnected port RD_DATA_COUNT_I[0]
+WARNING: [Synth 8-3331] design output_blk has unconnected port SBITERR_I
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 761.727 ; gain = 554.508
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 761.727 ; gain = 554.508
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 82 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0.xdc] for cell 'block_design/ADC/inst'
+Finished Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_xadc_wiz_0_0/design_1_xadc_wiz_0_0.xdc] for cell 'block_design/ADC/inst'
+Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc] for cell 'block_design/clk_gen/inst'
+Finished Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_board.xdc] for cell 'block_design/clk_gen/inst'
+Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc] for cell 'block_design/clk_gen/inst'
+Finished Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc] for cell 'block_design/clk_gen/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/sonar_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/sonar_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fir_compiler_0_0/fir_compiler_v7_2_6/constraints/fir_compiler_v7_2.xdc] for cell 'block_design/dist_cal/U0'
+Finished Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fir_compiler_0_0/fir_compiler_v7_2_6/constraints/fir_compiler_v7_2.xdc] for cell 'block_design/dist_cal/U0'
+Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_board.xdc] for cell 'block_design/reset_gen/U0'
+Finished Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_board.xdc] for cell 'block_design/reset_gen/U0'
+Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0.xdc] for cell 'block_design/reset_gen/U0'
+Finished Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0.xdc] for cell 'block_design/reset_gen/U0'
+Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0.xdc] for cell 'block_design/dist_fifo/U0'
+Finished Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0.xdc] for cell 'block_design/dist_fifo/U0'
+Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_1/design_1_fifo_generator_0_1/design_1_fifo_generator_0_1.xdc] for cell 'block_design/vel_fifo/U0'
+Finished Parsing XDC File [w:/Sonar.srcs/sources_1/bd/design_1/ip/design_1_fifo_generator_0_1/design_1_fifo_generator_0_1/design_1_fifo_generator_0_1.xdc] for cell 'block_design/vel_fifo/U0'
+INFO: [Timing 38-2] Deriving generated clocks
+Parsing XDC File [W:/Sonar.srcs/constrs_1/imports/Basys3_Master.xdc]
+Finished Parsing XDC File [W:/Sonar.srcs/constrs_1/imports/Basys3_Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [W:/Sonar.srcs/constrs_1/imports/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/sonar_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/sonar_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [W:/Sonar.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [W:/Sonar.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [W:/Sonar.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/sonar_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/sonar_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 53 instances were transformed.
+  FDR => FDRE: 12 instances
+  FDRSE => FDRSE (FDRE, LUT4, VCC): 21 instances
+  MUXCY_L => MUXCY: 19 instances
+  SRL16 => SRL16E: 1 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 800.957 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 800.957 ; gain = 593.738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 800.957 ; gain = 593.738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for block_design/ADC/inst. (constraint file  W:/Sonar.runs/synth_1/dont_touch.xdc, line 45).
+Applied set_property DONT_TOUCH = true for block_design/clk_gen/inst. (constraint file  W:/Sonar.runs/synth_1/dont_touch.xdc, line 48).
+Applied set_property DONT_TOUCH = true for block_design/dist_cal/U0. (constraint file  W:/Sonar.runs/synth_1/dont_touch.xdc, line 56).
+Applied set_property DONT_TOUCH = true for block_design/reset_gen/U0. (constraint file  W:/Sonar.runs/synth_1/dont_touch.xdc, line 61).
+Applied set_property DONT_TOUCH = true for block_design/dist_fifo/U0. (constraint file  W:/Sonar.runs/synth_1/dont_touch.xdc, line 71).
+Applied set_property DONT_TOUCH = true for block_design/vel_fifo/U0. (constraint file  W:/Sonar.runs/synth_1/dont_touch.xdc, line 78).
+Applied set_property DONT_TOUCH = true for block_design. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/ADC. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/clk_gen. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/dist_cal. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/dist_demux. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/dist_downsample. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/dist_fifo. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/dist_mux. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/dist_shift. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/dist_split. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/reset_gen. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for block_design/vel_fifo. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 800.957 ; gain = 593.738
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'drp_to_axi4stream'
+INFO: [Synth 8-5544] ROM "mode_change_sig_reset" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "den_o" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "channel_id" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "rom". This will be implemented in logic
+INFO: [Synth 8-5546] ROM "add" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_AB_reg_slice.state_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'gen_AB_reg_slice.state_reg' through user attribute
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "DEC_SCALE_LUT". This will be implemented in logic
+INFO: [Synth 8-5546] ROM "px_cnt_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ip_rate_cnt_max_unreg" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "op_rate_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "comb_px_cnt_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "leaving_empty_fwft" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-4471] merging register 'seq_cnt_en_reg' into 'from_sys_reg' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/proc_sys_reset_v5_0/hdl/src/vhdl/sequence_psr.vhd:222]
+INFO: [Synth 8-5544] ROM "found_leading_digit" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "led_signed_mode" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5587] ROM size for "led" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "led" is below threshold of ROM address width. It will be mapped to LUTs
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+        wait_mode_change |                             0000 |                             0100
+       rd_en_ctrl_reg_41 |                             0001 |                             0000
+          rd_ctrl_reg_41 |                             0010 |                             0001
+           wait_sim_samp |                             0011 |                             0101
+                rd_a_reg |                             0100 |                             0110
+            rd_b_reg_cmd |                             0101 |                             0111
+                rd_b_reg |                             0110 |                             1000
+            wait_ind_adc |                             0111 |                             0011
+           wait_seq_s_ch |                             1000 |                             0010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'drp_to_axi4stream'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:05 ; elapsed = 00:01:08 . Memory (MB): peak = 800.957 ; gain = 593.738
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'block_design/dist_split/inst/broadcaster_core/MI_SLOT[0].util_vector2axis' (axis_infrastructure_v1_1_0_util_vector2axis) to 'block_design/dist_split/inst/broadcaster_core/MI_SLOT[1].util_vector2axis'
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:01:05 ; elapsed = 00:01:09 . Memory (MB): peak = 800.957 ; gain = 593.738
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5587] ROM size for "p_0_out" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "decimator.decimation_filter/ip_rate_cnt_max_unreg" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "decimator.decimation_filter/op_rate_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "decimator.decimation_filter/comb_px_cnt_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "decimator.decimation_filter/px_cnt_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-4471] merging register 'inst/areset_r_reg' into 'inst/gen_int_arbiter.gen_arbiter.axis_switch_v1_1_9_axis_switch_arbiter/areset_reg' [w:/Sonar.srcs/sources_1/bd/design_1/ipshared/xilinx.com/axis_switch_v1_1/hdl/verilog/axis_switch_v1_1_axis_switch.v:290]
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:01:16 ; elapsed = 00:01:19 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+Finished Parallel Reinference  : Time (s): cpu = 00:01:16 ; elapsed = 00:01:19 . Memory (MB): peak = 808.586 ; gain = 601.367
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+INFO: [Synth 8-3332] Sequential element (g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_cntrl_signals[6].i_delay/gen_dly.gen_regs.delay_bus_reg[0][0]) is unused and will be removed from module fir_compiler_v7_2_6_viv.
+INFO: [Synth 8-3332] Sequential element (g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_cntrl_signals[6].i_delay/gen_dly.gen_regs.delay_bus_reg[1][0]) is unused and will be removed from module fir_compiler_v7_2_6_viv.
+INFO: [Synth 8-3332] Sequential element (g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_cntrl_signals[6].i_delay/gen_dly.gen_regs.delay_bus_reg[2][0]) is unused and will be removed from module fir_compiler_v7_2_6_viv.
+INFO: [Synth 8-3332] Sequential element (g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_cntrl_signals[5].i_delay/gen_reg.d_reg_reg[0]) is unused and will be removed from module fir_compiler_v7_2_6_viv.
+INFO: [Synth 8-3332] Sequential element (g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_cntrl_signals[4].i_delay/gen_reg.d_reg_reg[0]) is unused and will be removed from module fir_compiler_v7_2_6_viv.
+INFO: [Synth 8-3332] Sequential element (g_single_rate.i_single_rate/g_semi_parallel_and_smac.flush_data_reg) is unused and will be removed from module fir_compiler_v7_2_6_viv.
+INFO: [Synth 8-3332] Sequential element (g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_cntrl_signals[2].i_delay/gen_reg.d_reg_reg[0]) is unused and will be removed from module fir_compiler_v7_2_6_viv.
+INFO: [Synth 8-3332] Sequential element (g_single_rate.i_single_rate/g_semi_parallel_and_smac.flush_datax2_reg) is unused and will be removed from module fir_compiler_v7_2_6_viv.
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[21]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[1]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[23]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[3]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[22]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[2]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[20]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[19]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[18]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[7]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[6]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[5]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[4]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[3]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[2]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[1]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[0]' (FD) to 'seg_display_i/bcd_decoder/thousands_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[10]' (FD) to 'seg_display_i/bcd_decoder/ones_reg[2]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[11]' (FD) to 'seg_display_i/bcd_decoder/ones_reg[3]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[9]' (FD) to 'seg_display_i/bcd_decoder/ones_reg[1]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[14]' (FD) to 'seg_display_i/bcd_decoder/tens_reg[2]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[15]' (FD) to 'seg_display_i/bcd_decoder/tens_reg[3]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[13]' (FD) to 'seg_display_i/bcd_decoder/tens_reg[1]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[12]' (FD) to 'seg_display_i/bcd_decoder/tens_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\seg_display_i/bcd_decoder/thousands_reg[0] )
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[17]' (FD) to 'seg_display_i/bcd_decoder/hundreds_reg[1]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[16]' (FD) to 'seg_display_i/bcd_decoder/hundreds_reg[0]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/bcd_decoder/shift_reg[8]' (FD) to 'seg_display_i/bcd_decoder/ones_reg[0]'
+INFO: [Synth 8-3886] merging instance 'distance_reg[15]' (FDRE) to 'distance_reg[16]'
+INFO: [Synth 8-3886] merging instance 'seg_display_i/formatted_bcd_reg[2][3]' (FDR) to 'seg_display_i/formatted_bcd_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[0]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'measurement_reg[12]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'measurement_reg[13]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'measurement_reg[14]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'measurement_reg[15]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[1]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[3]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[2]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[4]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[6]' (FDR) to 'update_cycles_reg[14]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[8]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\update_cycles_reg[9] )
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[10]' (FDS) to 'update_cycles_reg[15]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[13]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[17]' (FDR) to 'update_cycles_reg[18]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[20]' (FDR) to 'update_cycles_reg[23]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[21]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[22]' (FDR) to 'cic_rate_reg[13]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[24]' (FDR) to 'seg_display_i/seg_enabled_reg[1]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[25]' (FDR) to 'seg_display_i/seg_enabled_reg[1]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[26]' (FDR) to 'seg_display_i/seg_enabled_reg[1]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[27]' (FDR) to 'seg_display_i/seg_enabled_reg[1]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[28]' (FDR) to 'seg_display_i/seg_enabled_reg[1]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[29]' (FDR) to 'seg_display_i/seg_enabled_reg[1]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[30]' (FDR) to 'seg_display_i/seg_enabled_reg[1]'
+INFO: [Synth 8-3886] merging instance 'update_cycles_reg[31]' (FDR) to 'seg_display_i/seg_enabled_reg[1]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_reg[0]' (FDR) to 'cic_rate_reg[5]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_reg[1]' (FDR) to 'cic_rate_reg[11]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_reg[6]' (FDR) to 'seg_display_i/seg_reg[0]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_reg[8]' (FDR) to 'cic_rate_reg[10]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_reg[11]' (FDR) to 'cic_rate_reg[12]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_reg[13]' (FDR) to 'cic_rate_reg[14]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_reg[14]' (FDR) to 'cic_rate_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\cic_rate_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\seg_display_i/seg_enabled_reg[1] )
+INFO: [Synth 8-3886] merging instance 'cic_rate_q_reg[0]' (FDR) to 'cic_rate_q_reg[5]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_q_reg[1]' (FDR) to 'cic_rate_q_reg[11]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_q_reg[8]' (FDR) to 'cic_rate_q_reg[10]'
+INFO: [Synth 8-3886] merging instance 'cic_rate_q_reg[11]' (FDR) to 'cic_rate_q_reg[12]'
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[20]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[17]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[10]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[9]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[6]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/formatted_bcd_reg[2][3]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (distance_reg[15]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (measurement_reg[11]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_reg[11]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_reg[8]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_reg[1]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_reg[0]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_q_reg[15]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_q_reg[14]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_q_reg[13]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_q_reg[11]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_q_reg[8]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_q_reg[1]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_q_reg[0]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[21]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[23]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[22]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/thousands_reg[0]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[20]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[19]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[18]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[7]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[6]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[5]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[4]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[3]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[2]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[1]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[0]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[10]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[11]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[9]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[14]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[15]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[13]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[12]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[17]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[16]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/bcd_decoder/shift_reg[8]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_reg[13]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[0]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (measurement_reg[12]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (measurement_reg[13]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (measurement_reg[14]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (measurement_reg[15]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[1]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[3]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[2]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[4]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[8]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[13]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[21]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[22]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (seg_display_i/seg_enabled_reg[1]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[24]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[25]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[26]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[27]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[28]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[29]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[30]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (update_cycles_reg[31]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_reg[6]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_reg[14]) is unused and will be removed from module sonar.
+WARNING: [Synth 8-3332] Sequential element (cic_rate_reg[15]) is unused and will be removed from module sonar.
+INFO: [Synth 8-3886] merging instance 'block_design/ADC/inst/AXI_XADC_CORE_I/drp_to_axi4stream_inst/dwe_o_reg' (FDCE) to 'block_design/ADC/inst/AXI_XADC_CORE_I/drp_to_axi4stream_inst/channel_id_reg[5]'
+INFO: [Synth 8-3886] merging instance 'block_design/ADC/inst/AXI_XADC_CORE_I/drp_to_axi4stream_inst/channel_id_reg[5]' (FDCE) to 'block_design/ADC/inst/AXI_XADC_CORE_I/drp_to_axi4stream_inst/channel_id_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (block_design/ADC/inst/\AXI_XADC_CORE_I/drp_to_axi4stream_inst/channel_id_reg[7] )
+WARNING: [Synth 8-3332] Sequential element (AXI_XADC_CORE_I/drp_to_axi4stream_inst/dwe_o_reg) is unused and will be removed from module design_1_xadc_wiz_0_0_axi_xadc.
+WARNING: [Synth 8-3332] Sequential element (AXI_XADC_CORE_I/drp_to_axi4stream_inst/channel_id_reg[5]) is unused and will be removed from module design_1_xadc_wiz_0_0_axi_xadc.
+WARNING: [Synth 8-3332] Sequential element (AXI_XADC_CORE_I/drp_to_axi4stream_inst/channel_id_reg[7]) is unused and will be removed from module design_1_xadc_wiz_0_0_axi_xadc.
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[3]' (FDSE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[5]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[5]' (FDSE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[8]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[6]' (FDRE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[0]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[9]' (FDRE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[0]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[0]' (FDRE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[1]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[1]' (FDRE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (block_design/dist_cal/U0/i_synth/\g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_smac_cntrl.accum_opcode_reg[2] )
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[2]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[17]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[3]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[4]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[5]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[18]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[6]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[17]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[7]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[17]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[8]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[17]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[9]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[17]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[10]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[17]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[11]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[17]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[12]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[18]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[13]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[18]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[14]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[18]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[15]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[18]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[16]' (FDE) to 'block_design/dist_cal/U0/i_synth/g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_mem_array[1].i_mem/g_individual.i_mem_a/gen_dram.gen_rom.d_out_reg[17]'
+INFO: [Synth 8-3332] Sequential element (rd_avail_2_reg) is unused and will be removed from module glb_srl_fifo.
+INFO: [Synth 8-3332] Sequential element (rd_valid_2_reg) is unused and will be removed from module glb_srl_fifo.
+INFO: [Synth 8-3332] Sequential element (full_1_reg) is unused and will be removed from module glb_srl_fifo.
+INFO: [Synth 8-3332] Sequential element (not_full_1_reg) is unused and will be removed from module glb_srl_fifo.
+INFO: [Synth 8-3332] Sequential element (afull_1_reg) is unused and will be removed from module glb_srl_fifo.
+INFO: [Synth 8-3332] Sequential element (aempty_1_reg) is unused and will be removed from module glb_srl_fifo.
+INFO: [Synth 8-3332] Sequential element (not_aempty_1_reg) is unused and will be removed from module glb_srl_fifo.
+INFO: [Synth 8-3332] Sequential element (fifo0/full_1_reg) is unused and will be removed from module glb_ifx_master.
+INFO: [Synth 8-3332] Sequential element (fifo0/afull_1_reg) is unused and will be removed from module glb_ifx_master.
+INFO: [Synth 8-3332] Sequential element (fifo0/aempty_1_reg) is unused and will be removed from module glb_ifx_master.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[16]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[15]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[14]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[13]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[12]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[11]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[10]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[9]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Synth 8-3332] Sequential element (gen_dram.gen_rom.d_out_reg[8]) is unused and will be removed from module sp_mem__parameterized0.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/int/gen_stages[0].gen_folded.int_comb_stage/gen_split_accum[1].gen_nd_src/gen_rtl.gen_dly.gen_regs.delay_bus_reg[0]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/int/gen_stages[0].gen_folded.int_comb_stage/gen_nd_out_dly/gen_rtl.gen_dly.gen_regs.delay_bus_reg[0]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/int/gen_stages[0].gen_folded.int_comb_stage/gen_split_accum[1].gen_en_src/gen_rtl.gen_dly.gen_regs.delay_bus_reg[0]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/int/gen_stages[0].gen_folded.int_comb_stage/gen_split_accum[0].gen_mem_we/gen_rtl.gen_dly.gen_regs.delay_bus_reg[0]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/int/gen_stages[0].gen_folded.int_comb_stage/gen_split_accum[1].gen_nd_src/gen_rtl.gen_dly.gen_regs.delay_bus_reg[1]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/int/gen_stages[0].gen_folded.int_comb_stage/gen_nd_out_dly/gen_rtl.gen_dly.gen_regs.delay_bus_reg[1]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[0]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[1]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[2]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[3]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[4]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[5]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[6]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[6]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[7]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[7]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[8]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[8]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[9]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[9]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[10]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[10]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[11]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[12]'
+INFO: [Synth 8-3886] merging instance 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[12]' (FDRE) to 'block_design/dist_downsample/U0/i_synth/decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[13]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (block_design/dist_downsample/U0/i_synth/\decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (block_design/dist_downsample/U0/i_synth/\decimator.decimation_filter/int/gen_stages[0].gen_folded.int_comb_stage/gen_split_accum[0].gen_sum_struct.opcode_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (block_design/dist_downsample/U0/i_synth/\decimator.decimation_filter/int/gen_stages[0].gen_folded.int_comb_stage/gen_split_accum[0].gen_sum_struct.addsub_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (block_design/dist_downsample/U0/i_synth/\decimator.decimation_filter/comb/gen_stages[0].gen_folded.int_comb_stage/gen_split_accum[0].gen_sum_struct.opcode_reg[6] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (block_design/dist_downsample/U0/i_synth/\decimator.decimation_filter/gen_prog_rate.v_aresetn_d_reg )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (block_design/dist_downsample/U0/i_synth/\decimator.decimation_filter/first_channel_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (block_design/dist_downsample/U0/i_synth/\decimator.decimation_filter/gen_prog_rate_ip.gen_scaler/din_reg_reg[18] )
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:01:20 ; elapsed = 00:01:24 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+Finished Parallel Area Optimization  : Time (s): cpu = 00:01:20 ; elapsed = 00:01:24 . Memory (MB): peak = 808.586 ; gain = 601.367
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:33 ; elapsed = 00:01:38 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:34 ; elapsed = 00:01:38 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:35 ; elapsed = 00:01:40 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:01:35 ; elapsed = 00:01:40 . Memory (MB): peak = 808.586 ; gain = 601.367
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:01:35 ; elapsed = 00:01:40 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4618] Found max_fanout attribute set to 18 on net \g_single_rate.i_single_rate/g_semi_parallel_and_smac.g_paths[0].g_smac.i_maccum/i_addsub_mult_accum/g_dsp48.g_preadd.i_preadd/bypass_src . Fanout reduced from 19 to 10 by creating 1 replicas.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:36 ; elapsed = 00:01:41 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:36 ; elapsed = 00:01:41 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:36 ; elapsed = 00:01:41 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:36 ; elapsed = 00:01:41 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:37 ; elapsed = 00:01:41 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:37 ; elapsed = 00:01:41 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |BUFG       |     2|
+|2     |CARRY4     |    80|
+|3     |DSP48E1    |     1|
+|4     |DSP48E1_1  |     2|
+|5     |FIFO18E1   |     2|
+|6     |LUT1       |   223|
+|7     |LUT2       |   197|
+|8     |LUT3       |   185|
+|9     |LUT4       |   128|
+|10    |LUT5       |   125|
+|11    |LUT6       |   230|
+|12    |MMCME2_ADV |     1|
+|13    |MUXCY_L    |    19|
+|14    |MUXF7      |     4|
+|15    |RAM32M     |     6|
+|16    |SRL16      |     1|
+|17    |SRL16E     |   121|
+|18    |XADC       |     1|
+|19    |XORCY      |    19|
+|20    |FDCE       |    56|
+|21    |FDPE       |    56|
+|22    |FDR        |     8|
+|23    |FDRE       |   980|
+|24    |FDSE       |    43|
+|25    |IBUF       |    14|
+|26    |OBUF       |    28|
+|27    |OBUFT      |     1|
++------+-----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:37 ; elapsed = 00:01:41 . Memory (MB): peak = 808.586 ; gain = 601.367
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 628 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:39 ; elapsed = 00:01:30 . Memory (MB): peak = 808.586 ; gain = 546.355
+Synthesis Optimization Complete : Time (s): cpu = 00:01:37 ; elapsed = 00:01:41 . Memory (MB): peak = 808.586 ; gain = 601.367
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 154 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 22 instances were transformed.
+  (MUXCY,XORCY) => CARRY4: 7 instances
+  FDR => FDRE: 8 instances
+  RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 6 instances
+  SRL16 => SRL16E: 1 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+351 Infos, 190 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:36 ; elapsed = 00:01:38 . Memory (MB): peak = 808.586 ; gain = 586.551
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 808.586 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Tue Oct 25 11:22:27 2016...
