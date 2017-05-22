@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../DSP_first/.idea/DSP_first.iml" filepath="$PROJECT_DIR$/../DSP_first/.idea/DSP_first.iml" />
       <module fileurl="file://E:/Dropbox (Personal)/tamu/eGaIn/hpan/cross_antenna/.idea/cross_antenna.iml" filepath="E:/Dropbox (Personal)/tamu/eGaIn/hpan/cross_antenna/.idea/cross_antenna.iml" />
       <module fileurl="file://$PROJECT_DIR$/../fourier_transform/.idea/fourier_transform.iml" filepath="$PROJECT_DIR$/../fourier_transform/.idea/fourier_transform.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/programs.iml" filepath="$PROJECT_DIR$/.idea/programs.iml" />

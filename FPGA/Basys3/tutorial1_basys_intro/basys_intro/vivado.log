@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# Vivado v2016.2 (64-bit)
+# SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+# Start of session at: Tue Dec 13 20:45:18 2016
+# Process ID: 5732
+# Current directory: E:/Github/Programming/FPGA/Basys3/tutorial1_basys_intro/basys_intro
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16624 E:\Github\Programming\FPGA\Basys3\tutorial1_basys_intro\basys_intro\basys_intro.xpr
+# Log file: E:/Github/Programming/FPGA/Basys3/tutorial1_basys_intro/basys_intro/vivado.log
+# Journal file: E:/Github/Programming/FPGA/Basys3/tutorial1_basys_intro/basys_intro\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/Github/Programming/FPGA/Basys3/tutorial1_basys_intro/basys_intro/basys_intro.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'.
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [Common 17-344] 'set_property' was cancelled
+INFO: [Common 17-344] 'set_property' was cancelled
+INFO: [Common 17-344] 'open_project' was cancelled
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Dec 13 20:45:31 2016...

@@ -42,6 +42,24 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Seg_7_Display.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Seg_7_Display.v"/>
+          <Attr Name="ImportTime" Val="1480391186"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Segment_Scroll.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Segment_Scroll.v"/>
+          <Attr Name="ImportTime" Val="1480391186"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/multi_4_4_pp3.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/multi_4_4_pp3.v"/>
@@ -51,27 +69,9 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Binary_to_BCD_B2_bcdout2.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Binary_to_BCD_B2_bcdout2.v"/>
-          <Attr Name="ImportTime" Val="1480391186"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/multi_4_4_pp2.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/multi_4_4_pp2.v"/>
-          <Attr Name="ImportTime" Val="1480391186"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Divider.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Divider.v"/>
           <Attr Name="ImportTime" Val="1480391186"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -96,45 +96,9 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Adder_Subtractor.v">
+      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Divider.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Adder_Subtractor.v"/>
-          <Attr Name="ImportTime" Val="1480391186"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Binary_to_BCD_B1_bcdout1.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Binary_to_BCD_B1_bcdout1.v"/>
-          <Attr Name="ImportTime" Val="1480391186"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Display_QU.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Display_QU.v"/>
-          <Attr Name="ImportTime" Val="1480391186"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Seg_7_Display.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Seg_7_Display.v"/>
-          <Attr Name="ImportTime" Val="1480391186"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Binary_to_BCD_B_bcdout.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Binary_to_BCD_B_bcdout.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Divider.v"/>
           <Attr Name="ImportTime" Val="1480391186"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -150,9 +114,45 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Segment_Scroll.v">
+      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Display_QU.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Segment_Scroll.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Display_QU.v"/>
+          <Attr Name="ImportTime" Val="1480391186"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Binary_to_BCD_B_bcdout.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Binary_to_BCD_B_bcdout.v"/>
+          <Attr Name="ImportTime" Val="1480391186"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Binary_to_BCD_B2_bcdout2.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Binary_to_BCD_B2_bcdout2.v"/>
+          <Attr Name="ImportTime" Val="1480391186"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Binary_to_BCD_B1_bcdout1.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Binary_to_BCD_B1_bcdout1.v"/>
+          <Attr Name="ImportTime" Val="1480391186"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Abacus_Verilog_SrcFiles/Adder_Subtractor.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Abacus_Verilog_SrcFiles/Adder_Subtractor.v"/>
           <Attr Name="ImportTime" Val="1480391186"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
