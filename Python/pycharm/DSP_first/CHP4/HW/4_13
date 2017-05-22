@@ -1,0 +1,33 @@
+# 3/4/2017
+# DSP first; page 115; problem 4.10
+
+import numpy as np
+from numpy import cos, pi
+from matplotlib import pyplot
+
+F0 = 13
+t_step = 1/(30*F0)
+t_start = 0
+t_stop = 13*1/F0
+
+tt = np.arange(t_start, t_stop, t_step)
+
+amp = 1
+x1_t = amp*cos(2*pi*F0*tt - pi/2)
+
+n = 1
+fig = pyplot.figure(n, figsize=(9, 12), dpi=80, facecolor='w', edgecolor='k')
+
+ax0 = pyplot.subplot(111)
+ax0.set_title('x'+r'$_1$'+'(t)', fontsize=14)
+ax0.plot(tt, x1_t, 'r-', label='x1(t)')
+ax0.set_xlabel('t (S)', fontsize=14)
+ax0.set_ylabel('Amplitude', fontsize=14)
+ax0.axis([t_start, t_stop, -amp*1.5, amp*1.5])     # [xmin, xmax, ymin, ymax]
+# ax0.axis([t_start, 1/F0, -amp, amp])     # [xmin, xmax, ymin, ymax]
+ax0.axhline(y=0, color='k')
+ax0.axvline(x=0, color='k')
+ax0.grid()
+
+fig.subplots_adjust(hspace=.5)
+pyplot.show()

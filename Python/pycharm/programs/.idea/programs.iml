@@ -7,5 +7,6 @@
     <orderEntry type="module" module-name="sinusoidal_antenna" />
     <orderEntry type="module" module-name="cross_antenna" />
     <orderEntry type="module" module-name="fourier_transform" />
+    <orderEntry type="module" module-name="DSP_first" />
   </component>
 </module>

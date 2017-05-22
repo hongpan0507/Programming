@@ -1,0 +1,538 @@
+#-----------------------------------------------------------
+# Vivado v2016.2 (64-bit)
+# SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+# IP Build 1577682 on Fri Jun  3 12:00:54 MDT 2016
+# Start of session at: Tue Oct 25 10:44:36 2016
+# Process ID: 7620
+# Current directory: W:/
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2816 W:\Sonar.xpr
+# Log file: W:/vivado.log
+# Journal file: W:/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project W:/Sonar.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'.
+WARNING: [BD 41-1661] One or more IPs have been locked in the design 'design_1.bd'. Please run report_ip_status for more details and recommendations on how to fix this issue.
+List of locked IPs:
+design_1_clk_wiz_0_0
+design_1_proc_sys_reset_0_0
+
+ERROR: [Project 1-202] Error writing the XML file 'W:/Sonar.xpr'
+ERROR: [Common 17-69] Command failed: ERROR: [Project 1-202] Error writing the XML file 'W:/Sonar.xpr'
+
+reset_run synth_1
+launch_runs impl_1
+[Tue Oct 25 10:45:05 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar.runs/synth_1/runme.log
+[Tue Oct 25 10:45:05 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2016.2
+  **** Build date : Jun  2 2016-16:57:03
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A28071A
+current_hw_device [lindex [get_hw_devices] 0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+launch_runs impl_1 -to_step write_bitstream
+[Tue Oct 25 10:48:16 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar.runs/impl_1/runme.log
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream
+[Tue Oct 25 10:49:24 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar.runs/impl_1/runme.log
+set_property PROBES.FILE {W:/Sonar.runs/impl_1/debug_nets.ltx} [lindex [get_hw_devices] 0]
+set_property PROGRAM.FILE {W:/Sonar.runs/impl_1/sonar.bit} [lindex [get_hw_devices] 0]
+program_hw_devices [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+open_bd_design {W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd}
+Adding cell -- xilinx.com:ip:xadc_wiz:3.3 - ADC
+Adding cell -- xilinx.com:ip:clk_wiz:5.3 - clk_gen
+Adding cell -- xilinx.com:ip:fir_compiler:7.2 - dist_cal
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - reset_gen
+Adding cell -- xilinx.com:ip:cic_compiler:4.0 - dist_downsample
+Adding cell -- xilinx.com:ip:fifo_generator:13.1 - dist_fifo
+INFO: [xilinx.com:ip:fifo_generator:13.1-5968] /dist_fifoExecuting the post_config_ip from bd
+Adding cell -- xilinx.com:ip:axis_broadcaster:1.1 - dist_split
+Adding cell -- xilinx.com:ip:fifo_generator:13.1 - vel_fifo
+INFO: [xilinx.com:ip:fifo_generator:13.1-5968] /vel_fifoExecuting the post_config_ip from bd
+Adding cell -- xilinx.com:ip:axis_switch:1.1 - dist_demux
+Adding cell -- xilinx.com:ip:axis_switch:1.1 - dist_mux
+Adding cell -- xilinx.com:ip:axis_broadcaster:1.1 - dist_split1
+CRITICAL WARNING: [BD 41-1287] Associated interface by name filter_in not found for clock port /clk_out
+CRITICAL WARNING: [BD 41-1287] Associated interface by name adc_out not found for clock port /clk_out
+CRITICAL WARNING: [BD 41-1287] Associated interface by name S00_AXIS not found for clock port /clk_out
+Successfully read diagram <design_1> from BD file <W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd>
+open_bd_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 939.313 ; gain = 56.418
+set_property name dist_shift [get_bd_cells dist_split1]
+reorder_files -after W:/Sonar.srcs/sources_1/new/seg7.sv W:/Sonar.srcs/sources_1/new/sonar.sv
+save_bd_design
+Wrote  : <W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+WARNING: [Runs 36-337] The following IPs are either missing output products or output products are not up-to-date for Synthesis target. Since these IPs are locked, no update to the output products cant be done. 
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd
+
+WARNING: [Runs 36-337] The following IPs are either missing output products or output products are not up-to-date for Implementation target. Since these IPs are locked, no update to the output products cant be done. 
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd
+
+[Tue Oct 25 11:01:22 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar.runs/synth_1/runme.log
+[Tue Oct 25 11:01:22 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+WARNING: [Runs 36-337] The following IPs are either missing output products or output products are not up-to-date for Synthesis target. Since these IPs are locked, no update to the output products cant be done. 
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd
+
+WARNING: [Runs 36-337] The following IPs are either missing output products or output products are not up-to-date for Implementation target. Since these IPs are locked, no update to the output products cant be done. 
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd
+
+[Tue Oct 25 11:01:51 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar.runs/synth_1/runme.log
+[Tue Oct 25 11:01:51 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+WARNING: [Runs 36-337] The following IPs are either missing output products or output products are not up-to-date for Synthesis target. Since these IPs are locked, no update to the output products cant be done. 
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd
+
+WARNING: [Runs 36-337] The following IPs are either missing output products or output products are not up-to-date for Implementation target. Since these IPs are locked, no update to the output products cant be done. 
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd
+
+[Tue Oct 25 11:05:59 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar.runs/synth_1/runme.log
+[Tue Oct 25 11:05:59 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar.runs/impl_1/runme.log
+regenerate_bd_layout
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+save_bd_design
+report_ip_status -name ip_status 
+export_ip_user_files -of_objects [get_ips  {design_1_proc_sys_reset_0_0 design_1_clk_wiz_0_0}] -no_script -reset -quiet
+upgrade_ip [get_ips  {design_1_proc_sys_reset_0_0 design_1_clk_wiz_0_0}] -log ip_upgrade.log
+Upgrading 'W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd'
+DADDR_08: 1145	-CLKOUT0 Register 1
+DADDR_09: 0000	-CLKOUT0 Register 2
+DADDR_08: 1145	-CLKOUT0 Register 1
+DADDR_09: 0000	-CLKOUT0 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0A: 1041	-CLKOUT1 Register 1
+DADDR_0B: 00c0	-CLKOUT1 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0A: 1041	-CLKOUT1 Register 1
+DADDR_0B: 00c0	-CLKOUT1 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0C: 1041	-CLKOUT2 Register 1
+DADDR_0D: 00c0	-CLKOUT2 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0C: 1041	-CLKOUT2 Register 1
+DADDR_0D: 00c0	-CLKOUT2 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0E: 1041	-CLKOUT3 Register 1
+DADDR_0F: 00c0	-CLKOUT3 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0E: 1041	-CLKOUT3 Register 1
+DADDR_0F: 00c0	-CLKOUT3 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_10: 1041	-CLKOUT4 Register 1
+DADDR_11: 00c0	-CLKOUT4 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_10: 1041	-CLKOUT4 Register 1
+DADDR_11: 00c0	-CLKOUT4 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_06: 1041	-CLKOUT5 Register 1
+DADDR_07: 00c0	-CLKOUT5 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_06: 1041	-CLKOUT5 Register 1
+DADDR_07: 00c0	-CLKOUT5 Register 2
+DADDR_08: 1145	-CLKOUT0 Register 1
+DADDR_09: 0000	-CLKOUT0 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_12: 1041	-CLKOUT6 Register 1
+DADDR_13: 00c0	-CLKOUT6 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_12: 1041	-CLKOUT6 Register 1
+DADDR_13: 00c0	-CLKOUT6 Register 2
+DADDR_08: 1145	-CLKOUT0 Register 1
+DADDR_09: 0000	-CLKOUT0 Register 2
+DADDR_08: 1145	-CLKOUT0 Register 1
+DADDR_09: 0000	-CLKOUT0 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0A: 1041	-CLKOUT1 Register 1
+DADDR_0B: 00c0	-CLKOUT1 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0A: 1041	-CLKOUT1 Register 1
+DADDR_0B: 00c0	-CLKOUT1 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0C: 1041	-CLKOUT2 Register 1
+DADDR_0D: 00c0	-CLKOUT2 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0C: 1041	-CLKOUT2 Register 1
+DADDR_0D: 00c0	-CLKOUT2 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0E: 1041	-CLKOUT3 Register 1
+DADDR_0F: 00c0	-CLKOUT3 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_0E: 1041	-CLKOUT3 Register 1
+DADDR_0F: 00c0	-CLKOUT3 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_10: 1041	-CLKOUT4 Register 1
+DADDR_11: 00c0	-CLKOUT4 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_10: 1041	-CLKOUT4 Register 1
+DADDR_11: 00c0	-CLKOUT4 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_06: 1041	-CLKOUT5 Register 1
+DADDR_07: 00c0	-CLKOUT5 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_06: 1041	-CLKOUT5 Register 1
+DADDR_07: 00c0	-CLKOUT5 Register 2
+DADDR_08: 1145	-CLKOUT0 Register 1
+DADDR_09: 0000	-CLKOUT0 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_12: 1041	-CLKOUT6 Register 1
+DADDR_13: 00c0	-CLKOUT6 Register 2
+
+	WARNING: Min duty cycle violation 0.500 < 1.0
+	         Changing dutycycle to 1.0
+
+
+	WARNING: Max duty cycle is 1.0 > 0.0
+	         Changing dutycycle to 0.0
+
+DADDR_12: 1041	-CLKOUT6 Register 1
+DADDR_13: 00c0	-CLKOUT6 Register 2
+WARNING: [IP_Flow 19-3461] Value 'Reset' is out of the range for parameter 'RESET BOARD INTERFACE(RESET_BOARD_INTERFACE)' for BD Cell 'clk_gen' . Valid values are - Custom
+WARNING: [IP_Flow 19-3438] Customization errors found on 'clk_gen'. Restoring to previous valid configuration.
+WARNING: [IP_Flow 19-1721] During upgrade of 'design_1_clk_wiz_0_0':
+The upgraded user parameter set contained parameters that could not be mapped on to the upgraded IP. When checking the upgrade script, note that parameter names are case sensitive.
+
+CRITICAL WARNING: [IP_Flow 19-3419] Update of 'design_1_clk_wiz_0_0' to current project options has resulted in an incomplete parameterization. Please review the message log, and recustomize this instance before continuing with your design.
+WARNING: [IP_Flow 19-3461] Value 'Reset' is out of the range for parameter 'RESET BOARD INTERFACE(RESET_BOARD_INTERFACE)' for BD Cell 'reset_gen' . Valid values are - Custom
+WARNING: [IP_Flow 19-3438] Customization errors found on 'reset_gen'. Restoring to previous valid configuration.
+WARNING: [IP_Flow 19-1721] During upgrade of 'design_1_proc_sys_reset_0_0':
+The upgraded user parameter set contained parameters that could not be mapped on to the upgraded IP. When checking the upgrade script, note that parameter names are case sensitive.
+
+CRITICAL WARNING: [IP_Flow 19-3419] Update of 'design_1_proc_sys_reset_0_0' to current project options has resulted in an incomplete parameterization. Please review the message log, and recustomize this instance before continuing with your design.
+CRITICAL WARNING: [Coretcl 2-1279] The upgrade of 'IP design_1_clk_wiz_0_0' has identified issues that may require user intervention. Please review the upgrade log 'w:/ip_upgrade.log', and verify that the upgraded IP is correctly configured.
+CRITICAL WARNING: [Coretcl 2-1279] The upgrade of 'IP design_1_proc_sys_reset_0_0' has identified issues that may require user intervention. Please review the upgrade log 'w:/ip_upgrade.log', and verify that the upgraded IP is correctly configured.
+Wrote  : <W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd> 
+INFO: [Coretcl 2-1525] Wrote upgrade log to 'W:/ip_upgrade.log'.
+generate_target all [get_files  W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd]
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [xilinx.com:ip:fir_compiler:7.2-308] /dist_cal S_AXIS_DATA-TDATA: Validating field: chan_0_path_0(16:0): fix16_0 against /dist_downsample M_AXIS_DATA-TDATA: chan_0(16:0): fix16_0.
+Verilog Output written to : W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.v
+Verilog Output written to : W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v
+Wrote  : <W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd> 
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ADC .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_gen .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dist_cal .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block reset_gen .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dist_downsample .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dist_fifo .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dist_split .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block vel_fifo .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dist_demux .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dist_mux .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block dist_shift .
+Exporting to file W:/Sonar.srcs/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Block Design Tcl file W:/Sonar.srcs/sources_1/bd/design_1/hw_handoff/design_1_bd.tcl
+Generated Hardware Definition File W:/Sonar.srcs/sources_1/bd/design_1/hdl/design_1.hwdef
+generate_target: Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1210.273 ; gain = 141.035
+export_ip_user_files -of_objects [get_files W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd] -no_script -force -quiet
+export_simulation -of_objects [get_files W:/Sonar.srcs/sources_1/bd/design_1/design_1.bd] -directory W:/Sonar.ip_user_files/sim_scripts -ip_user_files_dir W:/Sonar.ip_user_files -ipstatic_source_dir W:/Sonar.ip_user_files/ipstatic -force -quiet
+startgroup
+endgroup
+startgroup
+endgroup
+save_bd_design
+report_ip_status -name ip_status 
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+save_bd_design
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Oct 25 11:15:38 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar.runs/synth_1/runme.log
+[Tue Oct 25 11:15:38 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Oct 25 11:20:42 2016] Launched synth_1...
+Run output will be captured here: W:/Sonar.runs/synth_1/runme.log
+[Tue Oct 25 11:20:42 2016] Launched impl_1...
+Run output will be captured here: W:/Sonar.runs/impl_1/runme.log
+set PROMfile "W:/Sonar/Sonar.runs/impl_1/sonar.mcs"
+W:/Sonar/Sonar.runs/impl_1/sonar.mcs
+write_cfgmem  -format mcs -size 4 -interface SPIx4 -loadbit "up 0x00000000 W:/Sonar/Sonar.runs/impl_1/sonar.bit " -force -file $PROMfile
+Creating config memory files...
+Creating bitstream load up from address 0x00000000
+Loading bitfile W:/Sonar/Sonar.runs/impl_1/sonar.bit
+ERROR: [Bitstream 40-47] File W:/Sonar/Sonar.runs/impl_1/sonar.bit does not exist.
+ERROR: [Bitstream 40-46] File W:/Sonar/Sonar.runs/impl_1/sonar.bit cannot be opened for input.
+ERROR: [Writecfgmem 68-7] Could not load bitfile W:/Sonar/Sonar.runs/impl_1/sonar.bit.
+ERROR: [Common 17-39] 'write_cfgmem' failed due to earlier errors.
+set PROMfile "W:/Sonar.runs/impl_1/sonar.mcs"
+W:/Sonar.runs/impl_1/sonar.mcs
+write_cfgmem  -format mcs -size 4 -interface SPIx4 -loadbit "up 0x00000000 W:/Sonar.runs/impl_1/sonar.bit " -force -file $PROMfile
+Creating config memory files...
+Creating bitstream load up from address 0x00000000
+Loading bitfile W:/Sonar.runs/impl_1/sonar.bit
+Writing file W:/Sonar.runs/impl_1/sonar.mcs
+Writing log file W:/Sonar.runs/impl_1/sonar.prm
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               4M
+Start Address      0x00000000
+End Address        0x003FFFFF
+
+Addr1         Addr2         Date                    File(s)
+0x00000000    0x0021728B    Oct 25 11:23:47 2016    W:/Sonar.runs/impl_1/sonar.bit
+set my_mem_device [lindex [get_cfgmem_parts {s25fl032p-spi-x1_x2_x4}] 0]
+s25fl032p-spi-x1_x2_x4
+set my_hw_cfgmem [create_hw_cfgmem -hw_device [lindex [get_hw_devices] 0] -mem_dev $my_mem_device]
+cfgmem_0
+set_property PROGRAM.ADDRESS_RANGE  {use_file} $my_hw_cfgmem
+set_property PROGRAM.FILES [list $PROMfile ] $my_hw_cfgmem
+set_property PROGRAM.UNUSED_PIN_TERMINATION {pull-none} $my_hw_cfgmem
+set_property PROGRAM.BLANK_CHECK  0 $my_hw_cfgmem
+set_property PROGRAM.ERASE  1 $my_hw_cfgmem
+set_property PROGRAM.CFG_PROGRAM  1 $my_hw_cfgmem
+set_property PROGRAM.VERIFY  1 $my_hw_cfgmem
+set_property PROGRAM.CHECKSUM  0 $my_hw_cfgmem
+startgroup 
+1
+if {![string equal [get_property PROGRAM.HW_CFGMEM_TYPE  [lindex [get_hw_devices] 0]] [get_property MEM_TYPE [get_property CFGMEM_PART [get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices] 0 ]]]]] }  { create_hw_bitstream -hw_device [lindex [get_hw_devices] 0] [get_property PROGRAM.HW_CFGMEM_BITFILE [ lindex [get_hw_devices] 0]]; program_hw_devices [lindex [get_hw_devices] 0]; }; 
+INFO: [Labtools 27-3164] End of startup status: HIGH
+program_hw_cfgmem -hw_cfgmem [get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices] 0 ]]
+Mfg ID : 1   Memory Type : 2   Memory Capacity : 15   Device ID 1 : 0   Device ID 2 : 0
+Performing Erase Operation...
+Erase Operation successful.
+Performing Program and Verify Operations...
+Program/Verify Operation successful.
+INFO: [Labtoolstcl 44-377] Flash programming completed successfully
+program_hw_cfgmem: Time (s): cpu = 00:00:05 ; elapsed = 00:11:37 . Memory (MB): peak = 1351.516 ; gain = 0.000
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210183A28071A
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A28071A
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+WARNING: [Labtools 27-1428] Failed writing XML file 'W:/Sonar.hw/hw_1/hw.xml'
+Resolution: Check the file and directory permissions to ensure the file can be written to the specified path.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210183A28071A
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A28071A
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210183A28071A
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A28071A
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3123] The debug hub core was not detected at User Scan Chain 1 or 3.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active OR
+2. Manually launch hw_server with -e "set xsdb-user-bscan <C_USER_SCAN_CHAIN scan_chain_number>" to detect the debug hub at User Scan Chain of 2 or 4. To determine the user scan chain setting, open the implemented design and use: get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub].
+set_property location {-19 238} [get_bd_intf_ports alng_sonar]
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210183A28071A
+save_bd_design
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 28 08:30:05 2016...
