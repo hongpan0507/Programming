@@ -1,0 +1,23 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: ATmega324PB_Xplained_Pro.PcbDoc   7/8/2015  10:49:27 AM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer LF-signals to Bottom Layer LF-signals
+ASCII RoundHoles File : ATmega324PB_Xplained_Pro-RoundHoles.TXT
+ASCII SlotHoles File : ATmega324PB_Xplained_Pro-SlotHoles.TXT
+EIA File   : ATmega324PB_Xplained_Pro.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        0.2mm (7.874mil)         Round          22               31.27 mm (1.23 Inch)
+T2        0.25mm (9.842mil)        Round          205              697.92 mm (27.48 Inch)
+T3        0.65mm (25.591mil)       Round          10               13.00 mm (0.51 Inch)
+T4        0.65mm (25.591mil)       Slot           2                9.30 mm (0.37 Inch)
+T5        0.825mm (32.48mil)       Slot           2                17.73 mm (0.70 Inch)
+T6        1mm (39.37mil)           Round          79               407.63 mm (16.05 Inch)
+T7        1.2mm (47.244mil)        Round          8                17.78 mm (0.70 Inch)
+T8        2.7mm (106.299mil)       Round          4                188.81 mm (7.43 Inch)
+---------------------------------------------------------------------------
+Totals                                            332              1383.44 mm (54.47 Inch)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

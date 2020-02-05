@@ -4,7 +4,7 @@ import csv
 
 # convert from csv file to touchstone file (.snp; n = 1, 2, 3...)
 def s1p(file_name):
-    file_r = open(file_name, 'rb')  # open the file
+    file_r = open(file_name, 'rt')  # open the file
     csv_data = csv.reader(file_r, delimiter=',')   # convert cvs file to python list
 
     freq = []   # cell to hold data
